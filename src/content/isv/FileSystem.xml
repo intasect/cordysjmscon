@@ -1,0 +1,22 @@
+<filesystem>
+	<file
+		source="${build.web}"
+		destdir="\Web${project.deploy}"
+		ecxdir="cordys_install_dir"
+	/>
+	<file
+		source="${build.jar}/${project.jar.name}.jar"
+		destdir="${project.deploy}"
+		ecxdir="cordys_install_dir"
+	/>
+	<file
+		source="${lib.dir}/coelib.jar"
+		destdir="${project.deploy}"
+		ecxdir="cordys_install_dir"
+	/>
+	<file
+		source="${build.docs}"
+		destdir="${project.deploy}/documentation"
+		ecxdir="cordys_install_dir"
+	/>			
+</filesystem>

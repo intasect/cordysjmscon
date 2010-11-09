@@ -1,0 +1,5 @@
+<applicationconnectors>
+    <applicationconnector file="${src.content.appcon}/com.cordys.coe.ac.jmsconnector.JMSConnector"
+                          key="/Cordys/WCP/Application Connector/com.cordys.coe.ac.jmsconnector.JMSConnector"
+                          name="com.cordys.coe.ac.jmsconnector.JMSConnector"/>
+</applicationconnectors>

@@ -1,0 +1,3 @@
+<methodsets>
+    <methodset file="${src.content.methodsets}/Method Set JMS Connection.xml"/>
+</methodsets>

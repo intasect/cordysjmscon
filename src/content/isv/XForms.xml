@@ -1,0 +1,8 @@
+<xforms>
+    <xform file="${src.content.studio.xforms}/JC_ConfigLoadDialog.caf" key="/Cordys/WCP/XForms/runtime/JC_ConfigLoadDialog.caf"
+           name="JC_ConfigLoadDialog.caf"/>
+    <xform file="${src.content.studio.xforms}/GenerateMethods.caf" key="/Cordys/WCP/XForms/runtime/GenerateMethods.caf"
+           name="GenerateMethods.caf"/>
+    <xform file="${src.content.studio.xforms}/JMSConnectorConfig.caf" key="/Cordys/WCP/XForms/runtime/JMSConnectorConfig.caf"
+           name="JMSConnectorConfig.caf"/>
+</xforms>
