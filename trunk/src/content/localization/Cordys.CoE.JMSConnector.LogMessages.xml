@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<MessageBundle id="Cordys.CoE.JMSConnector.LogMessages">
+    <Message id="connectorManagementDescription">
+        <MessageText><![CDATA[This component can access messaging middleware via JMS]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="coelibVersionMismatch">
+        <MessageText><![CDATA[Coelib version mismatch.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStarting">
+        <MessageText><![CDATA[Starting JMS Connector]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStarted">
+        <MessageText><![CDATA[JMS connector started.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStartException">
+        <MessageText><![CDATA[An error occurred while starting the JMS connector.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStopped">
+        <MessageText><![CDATA[JMS connector stopped.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorReset">
+        <MessageText><![CDATA[Resetting JMS connector]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="doNotProcessRedeliveredMessage">
+        <MessageText><![CDATA[Message with ID {0} is redelivered from destination {1}. Hence ignoring the message.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="problemJmsConnection">
+        <MessageText><![CDATA[An error has occurred while opening a connection to message queue. {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="problemResolvedJmsConnection">
+        <MessageText><![CDATA[Message queue connection recovered.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="transactionAbort">
+        <MessageText><![CDATA[Aborted the transaction.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="transactionCommit">
+        <MessageText><![CDATA[Committed the transaction.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="transactionError">
+        <MessageText><![CDATA[An error occurred while processing the SOAP request: {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationInitialize">
+        <MessageText><![CDATA[Initializing destination {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationStarting">
+        <MessageText><![CDATA[Starting destination {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationInitializationJndiError">
+        <MessageText><![CDATA[Destination {0} not found in JNDI]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationInitializationError">
+        <MessageText><![CDATA[Error while initializing {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationSendMessageError">
+        <MessageText><![CDATA[JMS Exception at sending to destination {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationBTCParseError">
+        <MessageText><![CDATA[Binary transformation parse error at sending to destination {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationGetMessageError">
+        <MessageText><![CDATA[Exception while receiving from destination {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationGetMessageErrorQueueError">
+        <MessageText><![CDATA[JMS Exception while sending message to error queue {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="destinationSendErrorMessage">
+        <MessageText><![CDATA[Sending message to error queue {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="jmxDestianationSubcomponenetName">
+        <MessageText><![CDATA[A JMS destination]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="jmxHandledIncomingMessageCount">
+        <MessageText><![CDATA[The amount of messages red from the destination and the time it took to handle them]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="jmxHandledOutgoingMessageCount">
+        <MessageText><![CDATA[The amount of messages send from the destination and the time it took to handle them]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="jmxMessageHandlingErrorCounter">
+        <MessageText><![CDATA[The amount of messages that resulted in an error]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_INITIALIZING">
+        <MessageText><![CDATA[Initializing destination manager {0}.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="JMX_DESTINATION_MANAGER_SUBCOMPONENT_NAME">
+        <MessageText><![CDATA[A destination manager]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_CONNECTION_ERROR">
+        <MessageText><![CDATA[Could not connect to destination manager {0}. Check if the middleware system is running and reachable.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_JNDI_LOOKUP_FAILURE">
+        <MessageText><![CDATA[JNDI not found or destination manager {0} not found in JNDI.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_UNABLE_TO_INITIALIZE">
+        <MessageText><![CDATA[Error while initializing destination manager {0}.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_STARTING">
+        <MessageText><![CDATA[Starting destination manager {0}.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_RESTARTING">
+        <MessageText><![CDATA[Got connection to JMS provider - restarting destination manager {0}.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_TRYING_TO_RESTART">
+        <MessageText><![CDATA[Trying to restart Destination Manager {0}.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATIONMANAGER_UNABLE_TO_RESTART">
+        <MessageText><![CDATA[Not able to restart Destination Manager {0}. Issue: {1}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="TRIGGER_INITIALIZING">
+        <MessageText><![CDATA[Initializing trigger {0}.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="JMX_TRIGGER_SUBCOMPONENT_NAME">
+        <MessageText><![CDATA[A trigger defined for this destination.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="JMX_TRIGGER_MESSAGE_HANDLING_COUNTER_NAME">
+        <MessageText><![CDATA[The amount of messages read from the destination and the time it took to handle them.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="JMX_TRIGGER_MESSAGE_HANDLING_ERROR_COUNTER_NAME">
+        <MessageText><![CDATA[The amount of messages that resulted in an error.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="TRIGGER_EXECUTION_ERROR">
+        <MessageText><![CDATA[Exception at execution of trigger after receiving message from destination {0}. Received response: {1}."]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="TRIGGER_RECEIVE_ERROR">
+        <MessageText><![CDATA[JMS Exception at receiving from destination {0}. MessageID = {1}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="TRIGGER_ERROR_SENDING_TO_ERROR_DESTINATION">
+        <MessageText><![CDATA[JMS Exception at sending message to error destination  {0}. MessageID = {1}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="TRIGGER_MESSAGE_SENT_TO_ERROR_DESTINATION">
+        <MessageText><![CDATA[Message {1} has been sent to to error destination {0} with ID {2}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="TRIGGER_ROLLBACK_ERROR">
+        <MessageText><![CDATA[JMS Exception at rolling back message from destination {0}. MessageID = {1}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATION_MULTIPLE_DYNAMIC_DESTINATIONS">
+        <MessageText><![CDATA[Destination manager {0} already has a dynamic destination set. 
+Triggers will use the already set destination.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="DESTINATION_ERROR_DESTINATION_ALREADY_SET">
+        <MessageText><![CDATA[Destination manager {0} already has a default error destination. Setting for destination {0} is ignored.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+</MessageBundle>

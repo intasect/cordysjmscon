@@ -1,0 +1,1 @@
+<studio_flows buildfile="${build.studio.isv.filename}" destdir="${project.deploy}" ecxdir="cordys_install_dir"></studio_flows>

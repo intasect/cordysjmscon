@@ -1,0 +1,81 @@
+<html xmlns:eibus onapplicationready="appReady()">
+	<head>
+		<title> JMSConnector </title>
+		<script type="text/javascript" src="/cordys/wcp/application.js"></script>
+		<script type="text/javascript" src="/cordys/wcp/admin/behavior/applicationconnector.js"></script>
+		<script type="text/javascript" src="/cordys/coe/jmsconnector/coelib.js"></script>
+	</head>
+	<script type="text/javascript">
+		
+		function appReady()
+		{
+			var sUrl =  "/cordys/JMSConnectorConfig.caf";
+			var sOrg = findOrganization();
+		
+			if (sOrg) {
+				sUrl += "?organization=" + sOrg;
+			}
+		
+			//url, frame, id, caption, description, data, features, docked, left, top, width, height, callBack, useapplication
+			loadPage(sUrl, "jmsconnectorconfig", "jmsconnectorconfig", "jmsconnectorconfig", "jmsconnectorconfig", null, null, null, null, null, null, null, configPageLoaded, parent.application);
+		}
+		
+        function findOrganization() {
+			if (application.organization) {
+        		// We already have the right organization, so no need to add it to the URL.
+				return null;
+            }
+
+			// Check if we have the SOAP processor wizard in the system.containers
+			if (system.containers && 
+				system.containers.wizardSoapProcessor &&
+				system.containers.wizardSoapProcessor.organization) {
+				return system.containers.wizardSoapProcessor.organization;
+			}
+			
+			// This code will try to find the organization from new SOAP node wizard pages.
+            if (! parent || ! parent.frames || ! parent.frames.length) {
+            	return null; 
+			} 
+
+            len = parent.frames.length;
+
+            for (var i = 0; i < len; i++) {
+            	var f = parent.frames[i];
+
+            	if (f && f.application && f.application.organization) {
+                	return f.application.organization;
+				}
+			}
+			
+			return null;
+        }
+
+		function configPageLoaded()
+		{
+			//initialize();
+		}
+
+		function createConnectorConfiguration( configurationNode )
+		{
+			var bReturn = jmsconnectorconfig.frameElement.contentWindow.createConnectorConfiguration( configurationNode );
+			
+			setTimeout("jmsconnectorconfig.frameElement.contentWindow.setRestartRequired(false)", 10);
+			
+			return bReturn;
+		}
+
+		function fillInPropertyScreen( configurationNode )
+		{
+			return jmsconnectorconfig.frameElement.contentWindow.fillInPropertyScreen( configurationNode );
+		}
+		
+		function isRestartRequired() {
+			return jmsconnectorconfig.frameElement.contentWindow.isRestartRequired();
+		}
+	</script>
+	<body>
+		<iframe id="jmsconnectorconfig" style="width: 100%; height: 100%" class="container" src="about:blank">
+		</iframe>
+	</body>
+</html>
