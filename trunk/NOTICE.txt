@@ -1,0 +1,5 @@
+Cordys File Connector
+Copyright 2005 Cordys R&D B.V.
+
+This product includes software developed at
+Cordys (http://www.cordys.com/).
