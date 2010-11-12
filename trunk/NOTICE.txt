@@ -1,4 +1,4 @@
-Cordys File Connector
+Cordys JMS Connector
 Copyright 2005 Cordys R&D B.V.
 
 This product includes software developed at
