@@ -1,5 +1,6 @@
 /*
- *  Copyright 2007 Cordys R&D B.V. 
+ *
+ *  Copyright 2004 Cordys R&D B.V. 
  *
  *  This file is part of the Cordys JMS Connector. 
  *
