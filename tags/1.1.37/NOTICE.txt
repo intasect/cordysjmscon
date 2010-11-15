@@ -1,0 +1,5 @@
+Cordys JMS Connector
+Copyright 2004 Cordys R&D B.V.
+
+This product includes software developed at
+Cordys (http://www.cordys.com/).

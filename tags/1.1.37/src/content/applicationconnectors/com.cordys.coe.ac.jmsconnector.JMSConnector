@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applicationconnector>
+	<step>
+		<url>/cordys/coe/jmsconnector/jmsconnector.htm</url>
+		<description>JMS Connector</description>
+		<caption>Provide Details for JMSConnector Connector</caption>
+		<implementation>com.cordys.coe.ac.jmsconnector.JMSConnector</implementation>
+		<image>/cordys/wcp/images/admin/configurationconnector.png</image>
+		<sharejvm>true</sharejvm>
+		<product>JMS Connector</product>
+		<isv>CoE Connectors</isv>		
+		<metadata>
+			<url/>
+			<foradministrator>false</foradministrator>
+			<fordeveloper>false</fordeveloper>
+		</metadata>
+	    <loggercategory>
+	      <categorygroup displayname="Cordys CoE JMS Connector">
+	        <category>com.cordys.coe.ac.jmsconnector</category>
+	      </categorygroup>
+		</loggercategory>
+	    <classpath>
+	      <location>coe/jmsconnector/jmsconnector.jar</location>
+	      <location>coe/jmsconnector/coelib.jar</location>
+	      <location>cpc/bin/cpc.jar</location> <!-- C2 and earlier -->
+		  <location>components/datamapper/binarytransform.jar</location> <!-- C3 and later -->
+	    </classpath>		
+		<spycategory/>
+	</step>
+</applicationconnector>
