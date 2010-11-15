@@ -9,7 +9,7 @@ and request/reply with optional use of correlation id.
 
 License (see also LICENSE.txt)
 ==============================
-Collective work: Copyright 2005 Cordys R&D B.V.
+Collective work: Copyright 2004 Cordys R&D B.V.
 
 Licensed to Cordys R&D B.V. under one or more contributor license agreements.  
 See the NOTICE file distributed with this work for additional information 
@@ -36,5 +36,5 @@ The latest Cordys JMS Connector source code is available via Subversion at
 Credits
 =======
 See http://code.google.com/p/cordysjmscon/people/list for the list of connector 
-committers and main contributors. Special credits to Phillip Gussow, the 
+committers and main contributors. Special credits to Phillip Gussow and Mikko Poyhonen, the 
 original developer. 
