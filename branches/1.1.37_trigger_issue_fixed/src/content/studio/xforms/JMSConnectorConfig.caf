@@ -1,0 +1,2650 @@
+
+<caf
+	xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+	<documentProperties>
+		<name>JMSConnectorConfig</name>
+		<description>JMSConnectorConfig</description>
+		<caption/>
+		<mimeType>caf</mimeType>
+		<notes/>
+		<version>vcmdemo10</version>
+		<revision/>
+		<createdBy></createdBy>
+		<creationDate></creationDate>
+		<lastModifiedBy></lastModifiedBy>
+		<lastModificationDate></lastModificationDate>
+		<customProperties>
+			<published></published>
+			<publishDate></publishDate>
+			<publishUser></publishUser>
+			<publishPath>/cordys/XForms/JMSConnectorConfig.caf</publishPath>
+		</customProperties>
+	</documentProperties>
+	<content>
+		<xformhtml
+			xformsversion="1"
+			key="/JMSConnectorConfig_vcmdemo10.caf"
+			focusatstartup="true"
+			wcpforms:vcmVersion="vcmdemo10"
+			xmlns:eibus="http://schemas.cordys.com/wcp/webframework"
+			xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+			xmlns:ev="http://www.w3.org/2001/xml-events"
+			xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+			xmlns="http://schemas.cordys.com/1.0/xform">
+			<xhead
+				xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+				<script
+					src="/cordys/coe/jmsconnector/coelib.js"
+				/>
+				<xforms:model
+					id="DestinationConfigurationModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="false"
+					wcpforms:businessElement="DestinationManager"
+					promptToSave="false"
+					isValidationRequired="false"
+					isAutoInitialize="false"
+					isApplyAccessMode="false"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+					xmlns:ev="http://www.w3.org/2001/xml-events"
+					xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="1"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+					/>
+				</xforms:model>
+				<xforms:model
+					id="MessageTriggerModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="false"
+					wcpforms:businessElement="Trigger"
+					promptToSave="false"
+					isValidationRequired="false"
+					isAutoInitialize="false"
+					isApplyAccessMode="false"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+					xmlns:ev="http://www.w3.org/2001/xml-events"
+					xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+					/>
+				</xforms:model>
+				<xforms:model
+					id="MainConfigModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="false"
+					wcpforms:businessElement="configuration"
+					promptToSave="false"
+					isValidationRequired="false"
+					isAutoInitialize="false"
+					isApplyAccessMode="false"
+					xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+					xmlns:ev="http://www.w3.org/2001/xml-events"
+					xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+					/>
+				</xforms:model>
+				<xforms:model
+					id="GetOrganizationsModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="true"
+					wcpforms:businessElement="entry"
+					promptToSave="true"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					wcpforms:nontransactional="false"
+					associatedmodel=""
+					xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+					xmlns:ev="http://www.w3.org/2001/xml-events"
+					xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+						<wcpforms:dataset
+							src="http://schemas.cordys.com/1.0/ldap/GetOrganizations"
+							type="get"
+							xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						/>
+					</xforms:instance>
+					<xforms:action
+						ev:event="xforms-onrequest">
+						<xforms:GetOrganizationsModel_OnRequest/>
+					</xforms:action>
+					<wcpforms:instanceschema/>
+					<xforms:action
+						ev:event="xforms-onresponse">
+						<xforms:GetOrganizationsModel_OnResponse/>
+					</xforms:action>
+					<wcpforms:xpathmetainfo
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+						<wcpforms:namespace
+							prefix="xmlns">http://schemas.cordys.com/1.0/ldap</wcpforms:namespace>
+						<wcpforms:namespace
+							prefix="tns">http://schemas.cordys.com/1.0/ldap</wcpforms:namespace>
+					</wcpforms:xpathmetainfo>
+				</xforms:model>
+				<xforms:model
+					id="GetOrganizationalUsersModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="false"
+					wcpforms:businessElement="entry"
+					promptToSave="true"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					wcpforms:nontransactional="false"
+					associatedmodel="">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+						<wcpforms:dataset
+							src="http://schemas.cordys.com/1.0/ldap/GetOrganizationalUsers"
+							type="get"
+							xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						/>
+					</xforms:instance>
+					<xforms:action
+						ev:event="xforms-onrequest">
+						<xforms:GetOrganizationalUsersModel_OnRequest/>
+					</xforms:action>
+					<wcpforms:instanceschema/>
+					<xforms:action
+						ev:event="xforms-onresponse">
+						<xforms:GetOrganizationalUsersModel_OnResponse/>
+					</xforms:action>
+					<wcpforms:xpathmetainfo
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+						<wcpforms:namespace
+							prefix="xmlns">http://schemas.cordys.com/1.0/ldap</wcpforms:namespace>
+						<wcpforms:namespace
+							prefix="tns">http://schemas.cordys.com/1.0/ldap</wcpforms:namespace>
+					</wcpforms:xpathmetainfo>
+				</xforms:model>
+				<xml
+					xmlns="">
+					<xml
+						id="treeSchema">
+						<TreeSchema>
+							<searchPath>/configuration/DestinationManagers/</searchPath>
+							<updateAllowed>false</updateAllowed>
+							<Root>
+								<description>JMS Connector</description>
+								<icon>/cordys/wcp/images/admin/soapprocessor.gif</icon>
+							</Root>
+							<TreeItem
+								id="cDestinationManager">
+								<searchPath>DestinationManager</searchPath>
+								<description>@name</description>
+								<icon>/cordys/wcp/images/admin/methodset.gif</icon>
+								<onselect>onTreeDestinationManagerSelect</onselect>
+								<contextMenu>ctxMenuDestinations</contextMenu>
+							</TreeItem>
+							<TreeItem
+								id="cDestination">
+								<searchPath>Destination</searchPath>
+								<description>@name</description>
+								<icon>/cordys/wcp/images/admin/method.gif</icon>
+								<onselect>onTreeDestinationSelect</onselect>
+								<contextMenu>ctxMenuDestinations</contextMenu>
+							</TreeItem>
+						</TreeSchema>
+					</xml>
+					<xml
+						id="menuTriggerParameterHelpMenu">
+						<eibus:contextmenu
+							id="ctxMenuTPHelp"
+							xmlns:eibus="ce">
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$messageid}' )">Message ID</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$reply2destination}' )">Reply to destination</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$fromdestination}' )">From destination</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$messageprotocol}' )">Message protocol</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$correlationid}' )">Correlation ID</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$jmstype}' )">JMS Type</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$properties}' )">Properties</eibus:menuitem>
+							<eibus:menuitem
+								separator="true"
+							/>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$inputmessage}' )">Message body</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$inputmessagebase64}' )">Message body Base64 encoded</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$xmlmessage}' )">Message body converted to XML</eibus:menuitem>
+							<eibus:menuitem
+								id="cmTP"
+								onclick="insertParameter( '{$inputmessageinxml}' )">Message body interpreted as XML</eibus:menuitem>
+						</eibus:contextmenu>
+					</xml>
+					<xml
+						id="menuDestinationsDefinition">
+						<eibus:contextmenu
+							id="ctxMenuDestinations"
+							oncontext="onBeforeContextMenuOpen()"
+							automaticLoad="false"
+							xmlns:eibus="ce">
+							<eibus:menuitem
+								id="cmAddDM"
+								onclick="addDestinationManager()">Add destination manager</eibus:menuitem>
+							<eibus:menuitem
+								id="cmAddD"
+								onclick="addDestination()">Add destination</eibus:menuitem>
+							<eibus:menuitem
+								id="cmDelete"
+								onclick="deleteDestinationItem()">Delete</eibus:menuitem>
+							<eibus:menuitem
+								separator="true"
+							/>
+							<eibus:menuitem
+								id="cmGenerateMethods"
+								onclick="generateMethods()">Generate methods</eibus:menuitem>
+						</eibus:contextmenu>
+					</xml>
+					<xml
+						id="testconfig">
+						<configuration
+							implementation="com.cordys.coe.ac.jmsconnector.JMSConnector"
+							htmfile="/cordys/coe/jmsconnector/jmsconnector.htm">
+							<runWithConfigError>true</runWithConfigError>
+							<DestinationManagers>
+								<DestinationManager
+									name="QConnFact">
+									<jmsvendor>com.sun.jndi.fscontext.RefFSContextFactory</jmsvendor>
+									<providerURL>file:///C:/Cordys/JNDI</providerURL>
+									<authenticationtype>none</authenticationtype>
+									<jndiCFname>QConnFact</jndiCFname>
+									<Destination
+										name="JMS_IN">
+										<errordestination>none</errordestination>
+										<inboundmessagetrigger>testTrigger</inboundmessagetrigger>
+										<btcprotocol>none</btcprotocol>
+										<access>readwrite</access>
+										<jndiname>JMS_IN</jndiname>
+										<message-selector/>
+									</Destination>
+									<Destination
+										name="JMS_OUT">
+										<errordestination>none</errordestination>
+										<inboundmessagetrigger>none</inboundmessagetrigger>
+										<btcprotocol>none</btcprotocol>
+										<access>read</access>
+										<jndiname>JMS_OUT</jndiname>
+										<message-selector/>
+									</Destination>
+									<Destination
+										name="JMS_BLAAT">
+										<errordestination>none</errordestination>
+										<inboundmessagetrigger>none</inboundmessagetrigger>
+										<btcprotocol>none</btcprotocol>
+										<access>read</access>
+										<jndiname>JMS_BLAAT</jndiname>
+										<message-selector/>
+									</Destination>
+									<timeout>20000</timeout>
+								</DestinationManager>
+							</DestinationManagers>
+							<Triggers>
+								<Trigger
+									name="testTrigger">
+									<method>sendMessage</method>
+									<namespace>http://schemas.cordys.com/1.0/jms</namespace>
+									<parameters>
+										<destination>{$fromdestination}</destination>
+										<correlationid>{$messageid}</correlationid>
+										<properties>{$properties}</properties>
+										<message>{$inputmessage}</message>
+									</parameters>
+									<odn>o=system,cn=cordys,o=vanenburg.com</odn>
+									<udn>cn=mpoyhone,cn=organizational users,o=system,cn=cordys,o=vanenburg.com</udn>
+									<request-timeout>20000</request-timeout>
+								</Trigger>
+								<Trigger
+									name="anotherTestTrigger">
+									<method>getMessage</method>
+									<namespace>http://schemas.cordys.com/1.0/jms</namespace>
+									<parameters>
+										<destination>{$fromdestination}</destination>
+									</parameters>
+									<odn>o=jmsconnector,cn=cordys,o=vanenburg.com</odn>
+									<udn>cn=jmstest1,cn=organizational users,o=jmsconnector,cn=cordys,o=vanenburg.com</udn>
+									<request-timeout>40000</request-timeout>
+								</Trigger>
+							</Triggers>
+							<timeout>20000</timeout>
+							<jmspollinginterval>10</jmspollinginterval>
+							<binarytransformationconfig>
+								<parser>
+									<config
+										canonisleading="true"
+										store="xmlstore"
+										protocol="IBGE2">
+										<store>
+											<key>/Cordys/parserconfigurations/IBGE2</key>
+											<version>organization</version>
+											<organization>o=system,cn=cordys,o=vanenburg.com</organization>
+										</store>
+									</config>
+								</parser>
+							</binarytransformationconfig>
+						</configuration>
+					</xml>
+				</xml>
+			</xhead>
+			<xbody>
+				<xforms:group
+					wcpforms:layout="free"
+					id="xbody_group"
+					wcpforms:labelalign="left">
+					<xforms:group
+						id="groupMain"
+						model="MainConfigModel"
+						wcpforms:layout="free"
+						wcpforms:class="f_layout"
+						wcpforms:size="487 110"
+						wcpforms:anchors="0px 0px 700px null"
+						wcpforms:position="0 0"
+						wcpforms:labelalign="ontop">
+						<xforms:input
+							id="inpDefaultMessageTimeout"
+							doEBIValidate="false"
+							wcpforms:displayformat="####"
+							wcpforms:minValue="0"
+							wcpforms:required="true"
+							ref="timeout"
+							wcpforms:dataType="integer"
+							wcpforms:class="f_layout"
+							wcpforms:size="334 null"
+							wcpforms:position="10 10">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="234 null">Default message timeout (ms):</xforms:label>
+						</xforms:input>
+						<xforms:input
+							doEBIValidate="false"
+							id="inpPollingInterval"
+							ref="jmspollinginterval"
+							wcpforms:class="f_layout"
+							wcpforms:size="334 null"
+							wcpforms:position="10 30">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="234 null">JMS connections polling interval (min):</xforms:label>
+						</xforms:input>
+						<xforms:select1
+							appearance="check"
+							id="check4"
+							ref="check-connection-on-request"
+							doEBIValidate="false"
+							wcpforms:class="f_layout"
+							wcpforms:size="240 null"
+							wcpforms:position="10 50">
+							<xforms:label>Check connection on SOAP request</xforms:label>
+							<xforms:item>
+								<xforms:label>true</xforms:label>
+								<xforms:value>true</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>false</xforms:label>
+								<xforms:value>false</xforms:value>
+							</xforms:item>
+						</xforms:select1>
+						<xforms:select1
+							appearance="check"
+							id="check1"
+							doEBIValidate="false"
+							ref="runWithConfigError"
+							wcpforms:class="f_layout"
+							wcpforms:size="338 null"
+							wcpforms:position="10 70">
+							<xforms:label>Continue start if configuration errors are found</xforms:label>
+							<xforms:item>
+								<xforms:label>true</xforms:label>
+								<xforms:value>true</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>false</xforms:label>
+								<xforms:value>false</xforms:value>
+							</xforms:item>
+						</xforms:select1>
+						<xforms:select1
+							appearance="check"
+							id="check2"
+							doEBIValidate="false"
+							ref="disable-message-selectors"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="338 null"
+							wcpforms:position="10 90">
+							<xforms:label>Disable message selector</xforms:label>
+							<xforms:item>
+								<xforms:label>true</xforms:label>
+								<xforms:value>true</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>false</xforms:label>
+								<xforms:value>false</xforms:value>
+							</xforms:item>
+						</xforms:select1>
+					</xforms:group>
+					<xforms:group
+						appearance="tabgroup"
+						id="tabgroup"
+						wcpforms:class="f_layout"
+						wcpforms:size="1167 740"
+						wcpforms:anchors="10px 120px 10px 4px"
+						wcpforms:position="10 120">
+						<xforms:group
+							appearance="tabpage"
+							id="tabpageDestinations"
+							wcpforms:layout="free"
+							wcpforms:class="simplecontainer"
+							wcpforms:labelalign="ontop">
+							<xforms:label>Destinations</xforms:label>
+							<xforms:group
+								appearance="splittergroup"
+								wcpforms:class="splittercontainer">
+								<xforms:group
+									appearance="splitterpage"
+									wcpforms:layout="free"
+									wcpforms:class="split_left"
+									wcpforms:labelalign="ontop">
+									<xforms:group
+										appearance="box"
+										id="treeDestinationsContainer"
+										wcpforms:layout="free"
+										wcpforms:class="f_layout"
+										wcpforms:size="233 707"
+										wcpforms:anchors="10px 11px 14px 0px"
+										wcpforms:position="10 11"
+										wcpforms:labelalign="ontop">
+										<xforms:label
+											wcpforms:class="groupheader removed">Group1</xforms:label>
+										<xforms:group
+											id="treeDestinations"
+											wcpforms:layout="vertical"
+											wcpforms:class="f_layout"
+											wcpforms:size="231 705"
+											wcpforms:anchors="0px 0px 0px 0px"
+											wcpforms:position="0 0"
+											wcpforms:labelalign="ontop"
+										/>
+									</xforms:group>
+								</xforms:group>
+								<xforms:splitter
+									id="splitter3"
+									splitterType="verticalSplitter"
+									type="left"
+									offset="258"
+									appearance="splitter"
+								/>
+								<xforms:group
+									appearance="splitterpage"
+									wcpforms:layout="vertical"
+									wcpforms:class="split_right"
+									wcpforms:labelalign="ontop">
+									<xforms:group
+										appearance="box"
+										id="gbDestinationDetails"
+										model="DestinationConfigurationModel"
+										wcpforms:layout="vertical"
+										wcpforms:class="v_layout"
+										wcpforms:size="null null"
+										wcpforms:labelalign="left">
+										<xforms:label
+											wcpforms:class="groupheader">Destination details:</xforms:label>
+										<xforms:input
+											id="inpDestinationName"
+											ref="@name"
+											doEBIValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:legalCharacter="[a-zA-Z0-9_]"
+											wcpforms:datatype="string"
+											wcpforms:required="true"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">Name</xforms:label>
+											<xforms:action
+												ev:event="xforms-before-data-bind">
+												<xforms:inpDestinationName_BeforeBind/>
+											</xforms:action>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:inpDestinationName_Change/>
+											</xforms:action>
+											<xforms:action
+												ev:event="xforms-onvalidate">
+												<xforms:inpDestinationName_Validate/>
+											</xforms:action>
+										</xforms:input>
+										<xforms:input
+											id="inpDestJndiName"
+											ref="jndiname"
+											doEBIValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:datatype="string"
+											wcpforms:required="true"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">JNDI name</xforms:label>
+										</xforms:input>
+										<xforms:select1
+											id="selectQAccess"
+											ref="access"
+											doWsAppsValidate="false"
+											initializeChoices="false"
+											wcpforms:enumerated="false"
+											multiple="false"
+											doEBIValidate="false"
+											initializeValueSets="false"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">Access</xforms:label>
+											<xforms:item
+												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+												<xforms:label>Read/Write</xforms:label>
+												<xforms:value>readwrite</xforms:value>
+											</xforms:item>
+											<xforms:item>
+												<xforms:label>Readonly</xforms:label>
+												<xforms:value>read</xforms:value>
+											</xforms:item>
+											<xforms:item>
+												<xforms:label>Writeonly</xforms:label>
+												<xforms:value>write</xforms:value>
+											</xforms:item>
+										</xforms:select1>
+										<xforms:select1
+											id="selectErrorDestination"
+											doWsAppsValidate="false"
+											initializeChoices="false"
+											wcpforms:enumerated="false"
+											multiple="false"
+											ref="errordestination"
+											doEBIValidate="false"
+											initializeValueSets="0"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">Error destination</xforms:label>
+											<xforms:item
+												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+												<xforms:label>None</xforms:label>
+												<xforms:value>none</xforms:value>
+											</xforms:item>
+										</xforms:select1>
+										<xforms:select1
+											id="selectQInboundMsgTrigger"
+											doWsAppsValidate="false"
+											initializeChoices="false"
+											wcpforms:enumerated="false"
+											multiple="false"
+											ref="inboundmessagetrigger"
+											doEBIValidate="false"
+											initializeValueSets="0"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">Inbound message trigger</xforms:label>
+											<xforms:item
+												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+												<xforms:label>None</xforms:label>
+												<xforms:value>none</xforms:value>
+											</xforms:item>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:selectQInboundMsgTrigger_Change/>
+											</xforms:action>
+										</xforms:select1>
+										<xforms:input
+											id="inputTriggerListeners"
+											ref="num-trigger-listeners"
+											doEBIValidate="false"
+											wcpforms:displayformat="####"
+											wcpforms:minValue="1"
+											wcpforms:maxValue="100"
+											wcpforms:textalign="right_align"
+											wcpforms:dataType="integer"
+											wcpforms:required="false"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">Trigger Threads</xforms:label>
+										</xforms:input>
+										<xforms:input
+											id="inpMessageSelector"
+											ref="message-selector"
+											doEBIValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:datatype="string"
+											wcpforms:required="false"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">Trigger Message Selector</xforms:label>
+										</xforms:input>
+										<xforms:select1
+											id="selectQBTCProtocol"
+											doWsAppsValidate="false"
+											initializeChoices="false"
+											wcpforms:enumerated="false"
+											multiple="false"
+											ref="btcprotocol"
+											doEBIValidate="false"
+											initializeValueSets="false"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">BTC protocol</xforms:label>
+											<xforms:item
+												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+												<xforms:label>None</xforms:label>
+												<xforms:value>none</xforms:value>
+											</xforms:item>
+										</xforms:select1>
+										<xforms:input
+											id="inpDynamicDestinationParameters"
+											ref="dynamic-dest-parameters"
+											doEBIValidate="false"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="126 null">Dynamic Destination Parameters</xforms:label>
+										</xforms:input>
+										<xforms:select1
+											appearance="check"
+											id="chkDynamicDestination"
+											doEBIValidate="false"
+											ref="is-dynamic"
+											wcpforms:class="v_layout">
+											<xforms:label>Is Dynamic Destination</xforms:label>
+											<xforms:item>
+												<xforms:label>true</xforms:label>
+												<xforms:value>true</xforms:value>
+											</xforms:item>
+											<xforms:item>
+												<xforms:label>false</xforms:label>
+												<xforms:value>false</xforms:value>
+											</xforms:item>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:chkDynamicDestination_Change/>
+											</xforms:action>
+										</xforms:select1>
+										<xforms:select1
+											appearance="check"
+											id="chkUseAsDefaultErrorQueue"
+											doEBIValidate="false"
+											ref="is-default-error-dest"
+											wcpforms:class="v_layout">
+											<xforms:label>Use As Default Error Destination</xforms:label>
+											<xforms:item>
+												<xforms:label>true</xforms:label>
+												<xforms:value>true</xforms:value>
+											</xforms:item>
+											<xforms:item>
+												<xforms:label>false</xforms:label>
+												<xforms:value>false</xforms:value>
+											</xforms:item>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:chkUseAsDefaultErrorQueue_Change/>
+											</xforms:action>
+										</xforms:select1>
+									</xforms:group>
+									<xforms:group
+										appearance="box"
+										id="gbDestinationManagerDetails"
+										model="DestinationConfigurationModel"
+										wcpforms:layout="vertical"
+										wcpforms:class="v_layout"
+										wcpforms:size="null 465"
+										wcpforms:labelalign="left">
+										<xforms:label
+											wcpforms:class="groupheader">Destination manager details:</xforms:label>
+										<xforms:input
+											id="inpDestinationManagerName"
+											ref="@name"
+											doEBIValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:legalCharacter="[a-zA-Z0-9_]"
+											wcpforms:datatype="string"
+											wcpforms:required="true"
+											wcpforms:minLength=""
+											wcpforms:maxLength=""
+											wcpforms:illegalCharacter=""
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="156 null">Name</xforms:label>
+											<xforms:action
+												ev:event="xforms-before-data-bind">
+												<xforms:inpDestinationName_BeforeBind/>
+											</xforms:action>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:inpDestinationManagerName_Change/>
+											</xforms:action>
+											<xforms:action
+												ev:event="xforms-onvalidate">
+												<xforms:inpDestinationManagerName_Validate/>
+											</xforms:action>
+										</xforms:input>
+										<xforms:group
+											appearance="box"
+											id="grpMainConfig"
+											wcpforms:layout="vertical"
+											wcpforms:class="v_layout"
+											wcpforms:size="null 220"
+											wcpforms:labelalign="left">
+											<xforms:label
+												wcpforms:class="groupheader">JNDI configuration:</xforms:label>
+											<xforms:select1
+												id="selJMSVendor"
+												doWsAppsValidate="false"
+												initializeChoices="false"
+												wcpforms:enumerated="false"
+												multiple="false"
+												doEBIValidate="false"
+												initializeValueSets="0"
+												wcpforms:class="v_layout">
+												<xforms:label
+													wcpforms:class="h_label left_align"
+													wcpforms:size="140 null">JMS Vendor</xforms:label>
+												<xforms:action
+													ev:event="xforms-value-changed">
+													<xforms:selJMSVendor_Change/>
+												</xforms:action>
+												<xforms:item
+													xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+													<xforms:label>Websphere MQ</xforms:label>
+													<xforms:value>com.sun.jndi.fscontext.RefFSContextFactory</xforms:value>
+												</xforms:item>
+												<xforms:item>
+													<xforms:label>Active MQ</xforms:label>
+													<xforms:value>org.apache.activemq.jndi.ActiveMQInitialContextFactory</xforms:value>
+												</xforms:item>
+												<xforms:item>
+													<xforms:label>JBoss MQ</xforms:label>
+													<xforms:value>org.jnp.interfaces.NamingContextFactory</xforms:value>
+												</xforms:item>
+												<xforms:item>
+													<xforms:label>SUN J2EE</xforms:label>
+													<xforms:value>com.sun.enterprise.naming.SerialInitContextFactory</xforms:value>
+												</xforms:item>
+												<xforms:item>
+													<xforms:label>Open JMS</xforms:label>
+													<xforms:value>org.exolab.jms.jndi.InitialContextFactory</xforms:value>
+												</xforms:item>
+												<xforms:item>
+													<xforms:label>Other</xforms:label>
+													<xforms:value>other</xforms:value>
+												</xforms:item>
+											</xforms:select1>
+											<xforms:input
+												id="inpProviderClass"
+												ref="jmsvendor"
+												doWsAppsValidate="false"
+												doEBIValidate="false"
+												wcpforms:class="v_layout">
+												<xforms:label
+													wcpforms:class="h_label left_align"
+													wcpforms:size="140 null">Provider class</xforms:label>
+											</xforms:input>
+											<xforms:input
+												id="inpProviderURL"
+												ref="providerURL"
+												doWsAppsValidate="false"
+												wcpforms:displayformat="text"
+												wcpforms:datatype="string"
+												wcpforms:required="true"
+												doEBIValidate="false"
+												wcpforms:class="v_layout">
+												<xforms:label
+													wcpforms:class="h_label left_align"
+													wcpforms:size="140 null">Provider URL</xforms:label>
+											</xforms:input>
+											<xforms:select1
+												id="selectQAuthType"
+												doWsAppsValidate="false"
+												initializeChoices="false"
+												wcpforms:enumerated="false"
+												multiple="false"
+												ref="authenticationtype"
+												doEBIValidate="false"
+												initializeValueSets="0"
+												wcpforms:class="v_layout">
+												<xforms:label
+													wcpforms:class="h_label left_align"
+													wcpforms:size="140 null">Authentication type</xforms:label>
+												<xforms:item
+													xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+													<xforms:label>None</xforms:label>
+													<xforms:value>none</xforms:value>
+												</xforms:item>
+												<xforms:item>
+													<xforms:label>Simple</xforms:label>
+													<xforms:value>simple</xforms:value>
+												</xforms:item>
+												<xforms:item>
+													<xforms:label>Strong</xforms:label>
+													<xforms:value>strong</xforms:value>
+												</xforms:item>
+												<xforms:action
+													ev:event="xforms-value-changed">
+													<xforms:selectQAuthType_Change/>
+												</xforms:action>
+											</xforms:select1>
+											<xforms:input
+												id="inpQUsername"
+												doWsAppsValidate="false"
+												ref="username"
+												wcpforms:displayformat="text"
+												wcpforms:datatype="string"
+												wcpforms:required="false"
+												doEBIValidate="false"
+												wcpforms:class="v_layout">
+												<xforms:label
+													wcpforms:class="h_label left_align"
+													wcpforms:size="140 null">Username</xforms:label>
+											</xforms:input>
+											<xforms:secret
+												id="inpQPassword"
+												doWsAppsValidate="false"
+												ref="password"
+												doEBIValidate="false"
+												wcpforms:class="v_layout">
+												<xforms:label
+													wcpforms:class="h_label left_align"
+													wcpforms:size="140 null">Password</xforms:label>
+											</xforms:secret>
+										</xforms:group>
+										<xforms:input
+											id="input14"
+											ref="jndiCFname"
+											doEBIValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:datatype="string"
+											wcpforms:required="true"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="156 null">JNDI name</xforms:label>
+										</xforms:input>
+										<xforms:input
+											id="input15"
+											ref="connection-username"
+											doEBIValidate="false"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="156 null">Connection User Name</xforms:label>
+										</xforms:input>
+										<xforms:secret
+											id="inpConnPassword"
+											ref="connection-password"
+											doEBIValidate="false"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="156 null">Connection Password</xforms:label>
+										</xforms:secret>
+										<xforms:input
+											id="input10"
+											ref="timeout"
+											doWsAppsValidate="false"
+											wcpforms:minValue="0"
+											wcpforms:required="false"
+											doEBIValidate="false"
+											wcpforms:displayformat="####"
+											wcpforms:dataType="integer"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="156 null">Override message timeout:</xforms:label>
+										</xforms:input>
+										<xforms:select1
+											id="selectShutdownDestination"
+											doEBIValidate="false"
+											initializeValueSets="0"
+											wcpforms:enumerated="false"
+											multiple="false"
+											ref="shutdown-destination"
+											wcpforms:class="v_layout">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="156 null">Shutdown Destination</xforms:label>
+										</xforms:select1>
+									</xforms:group>
+								</xforms:group>
+							</xforms:group>
+						</xforms:group>
+						<xforms:group
+							appearance="tabpage"
+							id="tabpageBTC"
+							wcpforms:layout="free"
+							wcpforms:class="simplecontainer"
+							wcpforms:labelalign="ontop">
+							<xforms:label>Configure Binary Transformation Channel</xforms:label>
+							<xforms:group
+								appearance="frame"
+								id="frameConfigBTC"
+								wcpforms:class="f_layout"
+								wcpforms:size="1007 480"
+								wcpforms:anchors="0px 0px 0px 0px"
+								wcpforms:position="0 0"
+							/>
+						</xforms:group>
+						<xforms:group
+							appearance="tabpage"
+							id="tabpageMessageTriggers"
+							wcpforms:layout="free"
+							wcpforms:class="simplecontainer"
+							wcpforms:labelalign="ontop">
+							<xforms:label>Inbound Message Triggers</xforms:label>
+							<xforms:group
+								appearance="splittergroup"
+								wcpforms:class="splittercontainer">
+								<xforms:group
+									appearance="splitterpage"
+									wcpforms:layout="free"
+									wcpforms:class="split_left"
+									wcpforms:labelalign="ontop">
+									<xforms:repeat
+										id="tableTriggers"
+										model="MessageTriggerModel"
+										synchronizedDialogFrame="main"
+										fixedWidth="true"
+										wcpforms:gridtype="datagrid"
+										wcpforms:checkboxes="true"
+										wcpforms:layout="table"
+										wcpforms:class="f_layout"
+										wcpforms:size="150 450"
+										wcpforms:anchors="13px 13px 13px 17px"
+										wcpforms:position="13 13">
+										<xforms:group
+											appearance="elementbar"
+											id="_elementBar">
+											<xforms:group
+												appearance="controlbar"
+												id="_controlBar"
+												wcpforms:class="controlbar">
+												<xforms:trigger
+													id="navInsert1"
+													standardid="navInsert">
+													<xforms:label>
+														<img	src="/cordys/wcp/icons/action/add_eb.gif"	xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+														/>
+													</xforms:label>
+													<xforms:hint>Insert</xforms:hint>
+												</xforms:trigger>
+												<xforms:trigger
+													id="navTriggerDelete"
+													standardid="navDelete">
+													<xforms:label>
+														<img	src="/cordys/wcp/icons/action/delete_eb.gif"	xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+														/>
+													</xforms:label>
+													<xforms:hint>Delete</xforms:hint>
+													<xforms:action
+														ev:event="onbeforedelete">
+														<xforms:navTriggerDelete_BeforeDelete/>
+													</xforms:action>
+												</xforms:trigger>
+											</xforms:group>
+										</xforms:group>
+										<xforms:input
+											id="inpTriggerId"
+											ref="@name"
+											doWsAppsValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:datatype="string"
+											wcpforms:required="false"
+											doEBIValidate="false">
+											<xforms:label>Trigger name</xforms:label>
+											<xforms:action
+												ev:event="xforms-onvalidate">
+												<xforms:inpTriggerId_Validate/>
+											</xforms:action>
+											<xforms:action
+												ev:event="xforms-before-data-bind">
+												<xforms:inpTriggerId_BeforeBind/>
+											</xforms:action>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:inpTriggerId_Change/>
+											</xforms:action>
+										</xforms:input>
+										<xforms:action
+											ev:event="xforms-onrowselect">
+											<xforms:tableTrigger_OnSelectRow/>
+										</xforms:action>
+									</xforms:repeat>
+								</xforms:group>
+								<xforms:splitter
+									id="splitter4"
+									splitterType="verticalSplitter"
+									type="left"
+									offset="177"
+									appearance="splitter"
+								/>
+								<xforms:group
+									appearance="splitterpage"
+									wcpforms:layout="vertical"
+									wcpforms:class="split_right"
+									wcpforms:labelalign="ontop">
+									<xforms:group
+										appearance="box"
+										id="gbTriggerDetails"
+										model="MessageTriggerModel"
+										wcpforms:layout="free"
+										wcpforms:class="f_layout"
+										wcpforms:size="967 731"
+										wcpforms:anchors="13px 13px 8px 7px"
+										wcpforms:position="13 13"
+										wcpforms:labelalign="left">
+										<xforms:label
+											wcpforms:class="groupheader">Inbound Message Trigger details:</xforms:label>
+										<xforms:input
+											id="inpTriggerNamespace"
+											ref="namespace"
+											doWsAppsValidate="false"
+											doEBIValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:required="false"
+											wcpforms:dataType="string"
+											wcpforms:class="f_layout"
+											wcpforms:size="936 null"
+											wcpforms:anchors="14px 14px 15px null"
+											wcpforms:position="14 14">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="110 null">Namespace</xforms:label>
+										</xforms:input>
+										<xforms:input
+											id="inpTriggerMethodName"
+											ref="method"
+											doWsAppsValidate="false"
+											doEBIValidate="false"
+											wcpforms:displayformat="text"
+											wcpforms:required="false"
+											wcpforms:dataType="string"
+											wcpforms:class="f_layout"
+											wcpforms:size="936 null"
+											wcpforms:anchors="14px 47px 15px null"
+											wcpforms:position="14 47">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="110 null">Method name</xforms:label>
+										</xforms:input>
+										<xforms:select1
+											id="inpTriggerODN"
+											doWsAppsValidate="false"
+											ref="odn"
+											doEBIValidate="false"
+											initializeValueSets="0"
+											wcpforms:enumerated="false"
+											multiple="false"
+											wcpforms:class="f_layout"
+											wcpforms:size="936 null"
+											wcpforms:anchors="15px 81px 14px null"
+											wcpforms:position="15 81">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="110 null">Organizational DN</xforms:label>
+											<xforms:itemset
+												model="GetOrganizationsModel"
+												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+												<xforms:label
+													ref="description/string"
+												/>
+												<xforms:value
+													ref="@dn"
+												/>
+											</xforms:itemset>
+											<xforms:action
+												ev:event="xforms-before-data-bind">
+												<xforms:inpTriggerODN_BeforeBind/>
+											</xforms:action>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:inpTriggerODN_Change/>
+											</xforms:action>
+										</xforms:select1>
+										<xforms:select1
+											id="inpTriggerUDN"
+											doWsAppsValidate="false"
+											ref="udn"
+											doEBIValidate="false"
+											initializeValueSets="0"
+											wcpforms:enumerated="false"
+											multiple="false"
+											wcpforms:class="f_layout"
+											wcpforms:size="936 null"
+											wcpforms:anchors="14px 112px 15px null"
+											wcpforms:position="14 112">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="110 null">User DN</xforms:label>
+											<xforms:itemset
+												model="GetOrganizationalUsersModel"
+												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+												<xforms:label
+													ref="description/string"
+												/>
+												<xforms:value
+													ref="@dn"
+												/>
+											</xforms:itemset>
+										</xforms:select1>
+										<xforms:textarea
+											id="textareaTriggerParameters"
+											doWsAppsValidate="false"
+											doEBIValidate="false"
+											wcpforms:class="f_layout"
+											wcpforms:size="936 520"
+											wcpforms:anchors="14px 170px 15px 19px"
+											wcpforms:position="14 170">
+											<xforms:label
+												wcpforms:class="v_label">Parameter configuration XML</xforms:label>
+											<xforms:action
+												ev:event="xforms-value-changed"
+												xmlns:ev="http://www.w3.org/2001/xml-events">
+												<xforms:textareaTriggerParameters_Change/>
+											</xforms:action>
+										</xforms:textarea>
+										<xforms:group
+											appearance="controlbox"
+											id="controlbox2"
+											controltype="image"
+											wcpforms:layout="horizontal"
+											wcpforms:class="f_layout"
+											wcpforms:align="right_align"
+											wcpforms:size="41 33"
+											wcpforms:anchors="null 170px 14px null"
+											wcpforms:position="0 170"
+											wcpforms:labelalign="ontop">
+											<xforms:label
+												id="imageFormatTriggerParameters"
+												wcpforms:class="h_image">
+												<img
+													src="/cordys/wcp/images/refreshicon.gif"
+													xmlns=""
+												/>
+												<xforms:action
+													ev:event="xforms-activate">
+													<xforms:imageFormatTriggerParameters_Click/>
+												</xforms:action>
+											</xforms:label>
+											<xforms:label
+												id="imageHelpTriggerParameters"
+												wcpforms:class="h_image">
+												<img
+													src="/cordys/wcp/images/help.gif"
+													xmlns=""
+												/>
+												<xforms:hint>Click here for parameter options</xforms:hint>
+												<xforms:action
+													ev:event="xforms-activate">
+													<xforms:imageHelpTriggerParameters_Click/>
+												</xforms:action>
+											</xforms:label>
+										</xforms:group>
+										<xforms:input
+											id="inpTriggerTimeout"
+											ref="request-timeout"
+											doEBIValidate="false"
+											wcpforms:textalign="left_align"
+											wcpforms:class="f_layout"
+											wcpforms:size="934 null"
+											wcpforms:anchors="15px 140px 16px null"
+											wcpforms:position="15 140">
+											<xforms:label
+												wcpforms:class="h_label left_align"
+												wcpforms:size="110 null">Timeout (ms)</xforms:label>
+										</xforms:input>
+									</xforms:group>
+								</xforms:group>
+							</xforms:group>
+						</xforms:group>
+					</xforms:group>
+					<xforms:group
+						appearance="box"
+						id="group3"
+						wcpforms:layout="free"
+						wcpforms:class="f_layout"
+						wcpforms:size="130 90"
+						wcpforms:position="370 10"
+						wcpforms:labelalign="ontop">
+						<xforms:label
+							wcpforms:class="groupheader">Configuration</xforms:label>
+						<xforms:group
+							appearance="controlbox"
+							id="controlbox2"
+							controltype="button"
+							wcpforms:layout="vertical"
+							wcpforms:class="f_layout"
+							wcpforms:align="left_align"
+							wcpforms:size="100 60"
+							wcpforms:position="10 3"
+							wcpforms:labelalign="ontop">
+							<xforms:trigger
+								id="ExportConfigButton"
+								wcpforms:class="v_button"
+								wcpforms:size="92 23">
+								<xforms:label>Export ...</xforms:label>
+								<xforms:action
+									ev:event="xforms-activate">
+									<xforms:ExportConfigButton_Click/>
+								</xforms:action>
+							</xforms:trigger>
+							<xforms:trigger
+								id="ImportConfigButton"
+								wcpforms:class="v_button"
+								wcpforms:size="92 23">
+								<xforms:label>Import ...</xforms:label>
+								<xforms:action
+									ev:event="xforms-activate">
+									<xforms:ImportConfigButton_Click/>
+								</xforms:action>
+							</xforms:trigger>
+						</xforms:group>
+					</xforms:group>
+				</xforms:group>
+			</xbody>
+			<xformsscript
+				xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+				<![CDATA[var xmlUtil; 
+var restartRequired = false;
+
+/**
+ * Indicates if the trigger data is being put in to the trigger this disables 
+ * the organization and user select box filling.
+ */ 
+var _triggerDataLoading = false;
+var jmsVendorBindingFlag = false;
+
+function Form_Init(eventObject)
+{
+    xmlUtil = document.createElement( "EIBUS:XMLUTIL" );
+    application.addLibrary( "/cordys/wcp/library/util/xmlutil.htm", xmlUtil );
+
+  convertXMLDefinitionToCordysObject( menuTriggerParameterHelpMenu.firstChild, "/cordys/wcp/library/ui/contextmenu.htm", document.body );  
+     convertXMLDefinitionToCordysObject( menuDestinationsDefinition.firstChild, "/cordys/wcp/library/ui/contextmenu.htm", document.body );  
+
+    textareaTriggerParameters.attachEvent( "onclick", changeParameterSelection );
+ textareaTriggerParameters.attachEvent( "onkeyup", changeParameterSelection );
+    
+    treeDestinations.treeSchema = treeSchema.documentElement;
+    application.addLibrary( "/cordys/wcp/library/ui/tree.htm", treeDestinations );
+    tabgroup.addListener( "ontabfocus", onTabControlTabSelect );
+    gbDestinationManagerDetails.hide();
+    gbDestinationDetails.hide();
+    
+    // Set this here because otherwise it breaks the design time form.
+    frameConfigBTC.frameElement.src= "/cordys/cpc/parser/parserserviceproperty.htm";
+    frameConfigBTC.frameElement.style.border = "none";
+
+    // for testing purposes:
+    if( typeof( parent.initialize ) == "undefined" )
+        parent.initialize = testInit( window );
+    setTriggerDetailsEnabled( false );
+    
+    setupPasswordField(inpQPassword);
+    setupPasswordField(inpConnPassword);
+}
+
+var initDone = false;
+
+function Form_InitDone(eventObject)
+{
+    if( initDone ) return;
+   initDone = true;
+
+  parent.initialize();
+    
+    if( MainConfigModel.getData().selectSingleNode( "//tuple" ) == null )
+    {
+ //groupMain.view.createNewObjectInstance(); 
+      // nothing is added, so execute manually a fillInPropertyScreen...
+        var xml = new ActiveXObject( "Microsoft.XMLDOM" );
+ xml.loadXML( "<configuration><timeout>20000</timeout><jmspollinginterval>30</jmspollinginterval></configuration>" );
+        fillInPropertyScreen( xml.documentElement );
+ }
+}
+
+function Form_BeforeClose(eventObject)
+{
+    // memory cleanup
+  application.removeLibrary( "/cordys/wcp/library/ui/tree.htm", treeDestinations );
+    application.removeLibrary( "/cordys/wcp/library/util/xmlutil.htm", xmlUtil );
+    application.removeLibrary( "/cordys/wcp/library/ui/contextmenu.htm", menuTriggerParameterHelpMenu );
+    application.removeLibrary( "/cordys/wcp/library/ui/contextmenu.htm", menuDestinationsDefinition );
+    xmlUtil = null;
+}
+
+function isRestartRequired() {
+    // Always return true for now.
+    return true;//restartRequired;
+}
+
+function setRestartRequired(val) {
+    restartRequired = val;
+}
+
+
+/**
+ * This method creates the needed configuration for the connector
+ *
+ * @param xmlConfig The configuration-XML.
+ *
+ * @return true if the checks were successfull and the configuration is finished.
+ * false if the user still has to fill the mandatory fields.
+ */
+function createConnectorConfiguration(xmlConfig)
+{
+    var bReturn = true;
+    var xmlDoc = xmlConfig.ownerDocument;
+
+    // Save BTC configuration.
+    if (frameConfigBTC && frameConfigBTC.createConnectorConfiguration) {
+        frameConfigBTC.saveDone = true; // to prevent question boxes
+
+        var cfgnode = xmlDoc .createElement("binarytransformationconfig");
+        
+        frameConfigBTC.createConnectorConfiguration(cfgnode);
+        xmlConfig.appendChild(cfgnode);
+    }    
+
+    // do a save of the current data, if available
+    var data = DestinationConfigurationModel.getData();
+    if( previousTreeNode != null )
+    {
+        if( !validateDestinationProperties() ) 
+        {
+            alert( "Some settings are invalid, correct it and save again" );
+        }
+  
+        if( WebForm.isDataToSynchronize( data ) )
+        {
+            var bo = data.selectSingleNode( "/*/*/*/tuple/new/*" ); // PARSERBUG: */
+            // sync back with previousTreeNode
+            previousTreeNode.data.setAttribute( "name", bo.getAttribute( "name" ) );
+             
+            var i = bo.childNodes.length;
+            while( i-- )
+            {
+                if( bo.childNodes[ i ].nodeName == "Destination" ) continue;
+                var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName ) );
+   
+                ptnNode.text = bo.childNodes[ i ].text;
+            }  
+        }
+    }
+
+    var xmlMain = MainConfigModel.getData();
+
+    var mcTuple = xmlMain.selectSingleNode( "/*/*/*/tuple/new/*" ) || xmlMain.selectSingleNode( "/*/*/*/tuple/old/*" ); // PARSERBUG: */
+    
+    if (mcTuple != null)
+    {
+        for(var i = 0; i < mcTuple.childNodes.length; i++)
+      {
+     if (mcTuple.childNodes[i].nodeName.isOneOfThese("timeout", "jmspollinginterval", "runWithConfigError", "check-connection-on-request", "disable-message-selectors")) {
+                xmlConfig.appendChild(mcTuple.childNodes[i].cloneNode(true));
+            }
+        }
+    }
+
+    xmlConfig.appendChild(treeDestinations.root.data.cloneNode(true));    
+
+    // add triggers:
+    var imtTuples = MessageTriggerModel.getData().selectNodes("/*/*/*/tuple[ not( @pseudosync_id ) ]"); // PARSERBUG: */
+    var imts = xmlConfig.appendChild( xmlDoc.createElement("Triggers"));
+    
+    for (var i = 0; i < imtTuples.length; i++)
+    {
+  var bo = null;
+    var syncIdAttrib = imtTuples[i].getAttribute("sync_id") || imtTuples[i].getAttribute("clientattr:sync_id");
+
+        if (syncIdAttrib != null) {
+            bo = imtTuples[i].selectSingleNode("new/*"); // this filters automatically deleted tuples out..  // PARSERBUG: */
+        } else {
+            bo = imtTuples[i].selectSingleNode("old/*"); // PARSERBUG: */
+        }
+        
+        if (bo != null) {
+            imts.appendChild(bo.cloneNode(true));
+      }
+   }
+   
+    return bReturn;
+} 
+
+
+/**
+ * This method fills the inputfields based on the XML.
+ *
+ * @param xmlConfig The configuration-XML.
+ */
+function fillInPropertyScreen(xmlConfig)
+{
+    var xml = new ActiveXObject( "Microsoft.XMLDOM" );
+    xml.loadXML( xmlConfig.xml );
+    treeDestinations.setTreeData( xml );
+    treeDestinations.root.expand();
+    treeDestinations.root.itemType.onselect = "onTreeRootSelect";
+    treeDestinations.root.data = xml.selectSingleNode( "/configuration/DestinationManagers" ) || xml.documentElement.appendChild( xml.createElement( "DestinationManagers" ) );
+    ctxMenuDestinations.registerHTML( treeDestinations.root );
+
+    var mainConfigTuple = convertXML2TransactionalXML( xmlConfig, "/configuration" );
+    MainConfigModel.putData( mainConfigTuple, true, null, true );
+ MainConfigModel.refreshAllViews();
+    MainConfigModel.activeTuple = MainConfigModel.getData().selectSingleNode( "/*/*/*/tuple" ); // PARSERBUG: */
+    
+    setTimeout('loadBTConfigWithTimeout()' , 500); // onload not working in iframe see http://support.microsoft.com/default.aspx?scid=KB;en-us;q239638
+
+    var imtTuples = convertXML2TransactionalXML( xmlConfig, "/configuration/Triggers/Trigger" );
+    
+    //_triggerDataLoading = true;
+    MessageTriggerModel.putData( imtTuples, true, null, true);
+    //_triggerDataLoading = false;
+    
+   var imtRows = tableTriggers.getRows();
+    if( imtRows.length > 0 )
+        imtRows[ 0 ].click();
+}
+
+function loadBTConfigWithTimeout()
+{
+ var bLoaded = false;
+ 
+    try
+    {
+      if (frameConfigBTC.fillInPropertyScreen && frameConfigBTC.protocolTable) {
+        bLoaded = true;
+       }
+   }
+   catch (e)
+   {
+  }
+   
+   if (! bLoaded) {
+      // retry after 500 ms
+      setTimeout('loadBTConfigWithTimeout()' , 500);  
+   return;
+   }
+   
+ loadBTConfig();
+}
+
+function testInit( tWindow )
+{
+ return function() {
+       tWindow.fillInPropertyScreen( tWindow.testconfig );
+    }
+}
+
+function GetOrganizationsModel_OnRequest(eventObject)
+{
+   if (_triggerDataLoading) {
+        return;
+  }
+
+  // set search root:
+    WebForm.setNodeValue( eventObject.request.selectSingleNode( "//GetOrganizations" ), "dn", "cn="+system.user.defaultOrganization.split("cn=")[1], false );
+}
+
+function GetOrganizationalUsersModel_OnRequest(eventObject)
+{
+   //WebForm.setNodeValue( eventObject.request.selectSingleNode( "//GetOrganizationalUsers" ), "dn", inpTriggerODN.getValue(), false );
+}
+
+function GetOrganizationalUsersModel_OnResponse(eventObject)
+{
+  // Add a description field to the response if that is missing. Otherwise we would not have
+    // all organizational user in the list.
+    var tuples = eventObject.response.selectNodes("//tuple/old/entry[not (description/string)]");
+    
+    if (! tuples || tuples.length == 0) { 
+        return;
+  }
+    
+    for (var i = 0; i < tuples.length; i++) {
+    var t = tuples[i];
+    var sName = t.selectSingleNode("./cn/string").text;
+        
+         WebForm.setNodeValue(t, "description/string", sName);        
+    }
+}
+
+var previousTreeNode = null;
+
+function onTreeDestinationManagerSelect( selectedNode )
+{
+  if (previousTreeNode == selectedNode ) {
+        return;
+    }
+ 
+    var data = DestinationConfigurationModel.getData();
+  
+    if (previousTreeNode)
+    {
+   if (!validateDestinationProperties()) {
+            return;
+        }
+ 
+        if (WebForm.isDataToSynchronize(data))
+        {
+            var bo = data.selectSingleNode( "//tuple/new/*" ); // PARSERBUG: */
+      
+            // sync back with previousTreeNode
+             previousTreeNode.data.setAttribute( "name", bo.getAttribute( "name" ) );
+ 
+       var i = bo.childNodes.length;
+            
+            while(i--)
+            {
+                if (bo.childNodes[i].nodeName == "Destination" ) {
+         continue;
+                }
+                
+                var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName ) );
+    
+      ptnNode.text = bo.childNodes[i].text;
+   }     
+            
+            restartRequired = true; 
+        }
+   }
+    
+    var newXML = new ActiveXObject( "Microsoft.XMLDOM" );
+    
+    newXML.loadXML("<dataset><data><NodeResult><tuple><old /></tuple></NodeResult></data></dataset>" );
+    
+    var old = newXML.documentElement.selectSingleNode("//old");
+    
+    old.appendChild(selectedNode.data.cloneNode(true));
+    DestinationConfigurationModel.putData(newXML, false, null, true);
+    DestinationConfigurationModel.activeTuple = DestinationConfigurationModel.getData().selectSingleNode("//tuple/old/*"); // PARSERBUG: */
+   
+    gbDestinationDetails.hide(); 
+    previousTreeNode = selectedNode;
+    
+    fillShutdownDestinationSelect();
+    
+    gbDestinationManagerDetails.view.refreshRenderer();
+    //selJMSVendor_Change();
+    setJMSVendorByProviderClass();
+   selectQAuthType_Change();
+
+    gbDestinationManagerDetails.show();
+}
+
+function onTreeDestinationSelect( selectedNode )
+{
+    if( previousTreeNode == selectedNode ) return;
+
+ var data = DestinationConfigurationModel.getData();
+    if( previousTreeNode != null )
+    {
+ if( !validateDestinationProperties() ) return;
+    
+    if( WebForm.isDataToSynchronize( data ) )
+         {
+            var bo = data.selectSingleNode( "//tuple/new/*" ); // PARSERBUG: */
+            // sync back with previousTreeNode
+     previousTreeNode.data.setAttribute( "name", bo.getAttribute( "name" ) );
+ 
+            var i = bo.childNodes.length;
+            while( i-- )
+            {
+                if( bo.childNodes[ i ].nodeName == "Destination" ) continue;
+      var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName ) );
+                
+                 ptnNode.text = bo.childNodes[ i ].text;
+           }  
+             
+ restartRequired = true;    
+        }
+    }
+    
+    var newXML = new ActiveXObject( "Microsoft.XMLDOM" );
+    newXML.loadXML( "<dataset><data><NodeResult><tuple><old /></tuple></NodeResult></data></dataset>" );
+    var old = newXML.documentElement.selectSingleNode( "//old" );
+    old.appendChild( selectedNode.data.cloneNode( true ) );
+    DestinationConfigurationModel.putData( newXML, false, null, true );
+   
+    gbDestinationManagerDetails.hide();
+    previousTreeNode = selectedNode;
+ 
+    reFillErrorDestinationSelect();
+  reFillBTCProtocolSelect();
+    reFillMessageTriggerSelect();    
+    gbDestinationDetails.view.refreshRenderer();    
+   
+    chkDynamicDestination_Change();
+    chkUseAsDefaultErrorQueue_Change();
+  selectQInboundMsgTrigger_Change();
+    gbDestinationDetails.show();
+}
+
+function onTreeRootSelect()
+{
+ var data = DestinationConfigurationModel.getData();
+    if( previousTreeNode != null )
+    {
+     if( !validateDestinationProperties() ) return;
+ 
+      if( WebForm.isDataToSynchronize( data ) )
+      {
+       var bo = data.selectSingleNode( "//tuple/new/*" ); // PARSERBUG: */
+            // sync back with previousTreeNode
+  previousTreeNode.data.setAttribute( "name", bo.getAttribute( "name" ) );
+    
+            var i = bo.childNodes.length;
+            while( i-- )
+       {
+                 if( bo.childNodes[ i ].nodeName == "Destination" ) continue;
+                 var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName  ) );
+      
+                 ptnNode.text = bo.childNodes[ i ].text;
+             } 
+             
+    restartRequired = true;
+        }
+   }
+ previousTreeNode = null;
+    
+   var newXML = new ActiveXObject( "Microsoft.XMLDOM" );
+    newXML.loadXML( "<dataset><data><NodeResult /></data></dataset>" );
+    DestinationConfigurationModel.putData( newXML, false, null, true );
+ 
+    gbDestinationManagerDetails.hide();
+    gbDestinationDetails.hide();   
+}
+
+function validateDestinationProperties()
+{
+    if( previousTreeNode != null 
+    && ( ( previousTreeNode.data.nodeName == "DestinationManager" && !gbDestinationManagerDetails.view.validateObjectInstances() )
+            || ( previousTreeNode.data.nodeName == "Destination" && !gbDestinationDetails.view.validateObjectInstances() )
+    )
+      )
+    {
+         previousTreeNode.select( true );
+         return false;
+     }
+ return true;
+}
+
+var contextedTreeItem = null;
+function onBeforeContextMenuOpen()
+{
+    contextedTreeItem = application.event.activeElement.getTreeItem()
+    switch( contextedTreeItem.data.nodeName )
+    {
+        case "DestinationManager":
+ cmAddDM.enabled = "false";
+         cmAddD.enabled = "true";
+                cmDelete.enabled = "true";
+ cmGenerateMethods.enabled = "false";
+  break;
+   case "Destination":
+                cmAddDM.enabled = "false";
+   cmAddD.enabled = "false";
+   cmDelete.enabled = "true";
+   cmGenerateMethods.enabled = "true";
+   break;
+  default: // root
+  cmAddDM.enabled = "true";
+        cmAddD.enabled = "false";
+  cmDelete.enabled = "false";
+ cmGenerateMethods.enabled = "false";
+   break;
+    }
+}
+
+function addDestinationManager()
+{
+    if( !validateDestinationProperties() ) return;
+
+    var dmName = "";
+    do
+ {
+        dmName = prompt( "Give a name for the destination manager", dmName );
+        if( dmName == null ) break;
+    if( /[^a-zA-Z0-9_]+/g.test( dmName ) )
+        {
+      alert( "Only digits, alphabetical characters and the underscore are allowed in the name" );
+            continue;
+ }
+        
+        if( treeDestinations.root.data.selectSingleNode( "DestinationManager[ @name='"+dmName+"' ]" ) != null )
+   {
+   alert( "Name is already used. You have to define a unique name for a destination manager" );
+    continue;
+        } 
+  
+        var xml = treeDestinations.root.data.ownerDocument.createElement( "DestinationManager" );
+        xml.setAttribute( "name", dmName );
+     xml.appendChild( xml.ownerDocument.createElement( "jndiCFname" ) ).text = dmName;
+        xml.appendChild( xml.ownerDocument.createElement( "authenticationtype" ) ).text = "none";
+ var newItem = treeDestinations.root.addItem( xml );
+        treeDestinations.root.data.appendChild( xml );
+        contextedTreeItem.expand();
+        newItem.select();
+    
+        restartRequired = true;
+        break;
+ } while( true );
+}
+
+function addDestination()
+{
+    if( !validateDestinationProperties() ) return;
+
+    var dName = "";
+ do
+  {
+    dName = prompt( "Give a name for the destination", dName );
+        if( dName == null ) break;
+       if( /[^a-zA-Z0-9_.]+/g.test( dName ) )
+    {
+ alert( "Only digits, alphabetical characters and the underscores are allowed in the name" );
+ continue;
+ }
+ 
+       if( contextedTreeItem.data.selectSingleNode( "Destination[ @name='"+dName+"' ]" ) != null )
+        {
+ alert( "Name is already used. You have to define a unique name per destination manager for a destination" );
+            continue;
+        }
+  
+    var xml = treeDestinations.root.data.ownerDocument.createElement( "Destination" );
+        xml.setAttribute( "name", dName );
+  xml.appendChild( xml.ownerDocument.createElement( "jndiname" ) ).text = dName;
+    xml.appendChild( xml.ownerDocument.createElement( "message-selector" ) ).text = "";
+  //xml.appendChild( xml.ownerDocument.createElement( "authenticationtype" ) ).text = "none";
+        xml.appendChild( xml.ownerDocument.createElement( "access" ) ).text = "readwrite";
+     xml.appendChild( xml.ownerDocument.createElement( "errordestination" ) ).text = "none";
+    xml.appendChild( xml.ownerDocument.createElement( "inboundmessagetrigger" ) ).text = "none";
+        xml.appendChild( xml.ownerDocument.createElement( "btcprotocol" ) ).text = "none";
+ var newItem = contextedTreeItem.addItem( xml );
+  contextedTreeItem.data.appendChild( xml );
+  contextedTreeItem.expand();
+   newItem.select();
+       restartRequired = true;
+        break;
+       
+    } while( true );
+}
+
+function deleteDestinationItem()
+{
+    var name = "destination";
+  if( contextedTreeItem.data.nodeName == "DestinationManager" ) name += " manager";
+    if( confirm( "Are you sure you want to delete the selected "+name ) )
+    {
+     if( previousTreeNode == contextedTreeItem )
+ {
+   previousTreeNode = null;
+         onTreeRootSelect();
+        }
+ 
+        contextedTreeItem.data.parentNode.removeChild(contextedTreeItem.data);
+        contextedTreeItem.remove();
+        restartRequired = true;
+    }
+}
+
+function generateMethods()
+{
+  var data = {
+    "destination": contextedTreeItem.data.parentNode.getAttribute( "name" ) + "." + contextedTreeItem.data.getAttribute( "name" )
+    };
+    loadPage( "/cordys/GenerateMethods.caf?organization="+application.organization, "main", "GenerateMethods", "Generate Methods", "Generate Methods", data, null, false, 100, 100, 500, 500 );
+}
+
+function selectQAuthType_Change(eventObject)
+{
+    if( selectQAuthType.getValue() == "none" )
+   {
+        inpQUsername.hide();
+        inpQPassword.hide();
+  } else
+ {
+        inpQUsername.show();
+        inpQPassword.show();
+    }
+}
+
+function setJMSVendorByProviderClass()
+{
+    var providerValue  = inpProviderClass.getValue();
+    if (providerValue == "")
+    {
+        inpProviderClass.show();
+      selJMSVendor.value = "com.sun.jndi.fscontext.RefFSContextFactory";
+        jmsVendorBindingFlag = true;
+        selJMSVendor.setValue("com.sun.jndi.fscontext.RefFSContextFactory");
+        jmsVendorBindingFlag = false;
+       return;
+ }
+    
+    var options = selJMSVendor.getAllOptions();
+    var i = options.length;
+    while( i-- )
+  {
+       if(providerValue == options[ i ].value)
+ {
+           inpProviderClass.show();
+           selJMSVendor.value = "com.sun.jndi.fscontext.RefFSContextFactory";
+   jmsVendorBindingFlag = true;
+  selJMSVendor.setValue(providerValue);
+  jmsVendorBindingFlag = false;
+           return;       
+    }
+    }
+  
+    inpProviderClass.show();
+    selJMSVendor.setValue("other");
+}
+
+function selJMSVendor_Change(eventObject)
+{
+    if( selJMSVendor.getValue() == "other" )
+    {
+        inpProviderClass.show();
+        
+        var value = inpProviderClass.getValue();
+        var options = selJMSVendor.getAllOptions();
+        var i = options.length;
+       
+       // only clear if the selected value was one of the available options
+        while( i-- )
+        {
+            if( value == options[ i ].value )
+            {
+                inpProviderClass.setValue( "" );
+                break;
+            }
+        }
+    } else {
+        inpProviderClass.hide();
+         inpProviderClass.setValue( selJMSVendor.getValue() );
+   
+        if (! jmsVendorBindingFlag) {
+            var sUrl = "";
+       
+            // Set the default URL.
+            switch (inpProviderClass.getValue()) 
+            {
+                // WebSphere MQ (and other fscontext factories).
+                case "com.sun.jndi.fscontext.RefFSContextFactory" : sUrl = "file:/c:/jndipath"; break;
+     // JBoss MQ
+                case "org.jnp.interfaces.NamingContextFactory" : sUrl = "localhost:1099"; break;
+     // Sun J2EE
+                case "com.sun.enterprise.naming.SerialInitContextFactory" : sUrl = "localhost:1099"; break;
+                // OpenJMS
+       case "org.exolab.jms.jndi.InitialContextFactory" : sUrl = "tcp://localhost:3035"; break;
+                // ActiveMQ
+                case "org.apache.activemq.jndi.ActiveMQInitialContextFactory" : sUrl = "tcp://localhost:61616"; break;
+            }
+        }
+      
+        if (sUrl) {
+            inpProviderURL.setValue(sUrl);
+        }
+    }
+}
+
+function getBTConfigNode()
+{
+    var activeTuple = MainConfigModel.getData().selectSingleNode( "//tuple" );
+    if( activeTuple != null )
+  {
+    var bo = activeTuple.selectSingleNode( "new/*" ) || activeTuple.selectSingleNode( "old/*" ) // PARSERBUG: */
+ var node =  bo.selectSingleNode( "binarytransformationconfig" );
+         if( node == null )
+ {
+ bo = MainConfigModel.edit();
+ node = bo.appendChild( bo.ownerDocument.createElement( "binarytransformationconfig" ) );
+         }
+         if( node.selectSingleNode( "parser" ) == null )
+    node.appendChild( node.ownerDocument.createElement( "parser" ) );
+
+         return node;
+    }
+    return null;    
+}
+
+function loadBTConfig()
+{
+    textareaBTConfigLoading = true;
+    
+    var btcConfig = getBTConfigNode();
+
+    if (btcConfig) {
+        frameConfigBTC.fillInPropertyScreen(btcConfig);
+        reFillBTCProtocolSelect();
+    }
+    
+    textareaBTConfigLoading = false;
+}
+
+function reFillErrorDestinationSelect()
+{
+    if (previousTreeNode && previousTreeNode.data.nodeName != "Destination") {
+        return;
+    }
+    
+    // remove all options:
+    selectErrorDestination.removeAll();
+    selectErrorDestination.addOption( { "value": "none", "description": " " }, false );
+    
+    var dManagers = treeDestinations.root.data.selectNodes( "DestinationManager" );
+     
+    for (var i=0; i < dManagers.length; i++)
+    {
+        var tId = dManagers[ i ].getAttribute("name");
+       
+        if (! tId) {
+       continue;
+        }
+        
+        var destinations = dManagers[i].selectNodes("Destination");
+        
+        for (var j=0; j < destinations.length; j++)
+        {
+             if ( previousTreeNode && destinations[j] == previousTreeNode.data) {
+                continue;
+            }
+            
+   if (getNodeValue( destinations[j], "access", "" ).indexOf("write") == -1) {
+                continue; // skip this one.., because it is not writable
+     }
+         
+    var name = tId + ": " + destinations[j].getAttribute("name");
+            var value = tId + "." + destinations[j].getAttribute("name");
+ 
+ selectErrorDestination.addOption( { "value": value, "description": name }, false );
+        }
+    } 
+    
+    var value = "none";
+ 
+ if (previousTreeNode) {
+   value = getNodeValue( previousTreeNode.data, "errordestination", "none" );
+    }
+ 
+     if (selectErrorDestination.model && selectErrorDestination.model.activeTuple) {
+         selectErrorDestination.setValue(value);
+     }
+}
+
+function fillShutdownDestinationSelect()
+{
+    if (previousTreeNode && previousTreeNode.data.nodeName != "DestinationManager") {
+      return;
+    }
+    
+    // remove all options:
+    selectShutdownDestination.removeAll();
+    selectShutdownDestination.addOption( { "value": "", "description": " " }, false );
+    selectShutdownDestination.addOption( { "value": "...tempqueue", "description": "Temporary Queue" }, false );
+  
+    var destinations = previousTreeNode.data.selectNodes("Destination");
+    
+    for (var j=0; j<destinations.length; j++)
+    {
+        if (previousTreeNode && destinations[ j ] == previousTreeNode.data) {
+            continue;
+        }
+        
+        if (getNodeValue( destinations[ j ], "access", "" ).indexOf("read") == -1 ) {
+          continue; // skip this one.., because it is not readable
+       }
+      
+        if (getNodeValue(destinations[ j ], "is-dynamic", "").indexOf("true") != -1) {
+            continue; // skip dynamic destinations.
+     }
+
+        var name =  destinations[ j ].getAttribute("name");
+        var value = destinations[ j ].getAttribute("name");
+ 
+        selectShutdownDestination.addOption( { "value": value, "description": name }, false );
+    } 
+ 
+    var value = "";
+ 
+    if (previousTreeNode) {
+        value = getNodeValue(previousTreeNode.data, "errordestination", "");
+    }
+ 
+    if (selectShutdownDestination.model && selectShutdownDestination.model.activeTuple) {
+     selectShutdownDestination.setValue(value);
+    }
+}
+
+function inpDestinationName_BeforeBind(eventObject)
+{
+    eventObject.srcElement.previousValue = eventObject.dataNode != null ? eventObject.dataNode.text : "";
+} 
+
+function inpDestinationName_Change(eventObject)
+{
+    var newValue = eventObject.srcElement.getValue();
+
+    // check where used and change to the new value...
+  var oldRef = previousTreeNode.data.parentNode.getAttribute( "name" ) + eventObject.srcElement.previousValue;
+    var newRef = previousTreeNode.data.parentNode.getAttribute( "name" ) + newValue;
+
+    var destinations = treeDestinations.root.data.selectNodes( ".//Destination[ errordestination='"+oldRef+"' ]" );
+    var i = destinations.length;
+    while( i-- )
+       destinations[ i ].selectSingleNode( "errordestination" ).text = newRef;
+
+ eventObject.srcElement.previousValue = newValue;
+    previousTreeNode.getLabel().innerText = newValue;
+}
+
+function inpDestinationName_Validate(eventObject)
+{
+    var destinations = previousTreeNode.data.parentNode.selectNodes( "Destination[ @name='"+eventObject.srcElement.getValue()+"' ]" );
+    var i = destinations.length;
+    while( i-- )
+    {
+ if( destinations[ i ] == previousTreeNode.data ) continue;
+        
+    // if execution get here, it already exists...
+  alert( "Name already exists, choose a different name!" );
+        eventObject.valid = false;
+        break;
+   }
+}
+
+function inpDestinationManagerName_Change(eventObject)
+{
+    var newValue = eventObject.srcElement.getValue();
+    // check where used and change to the new value...
+    var oldRef = previousTreeNode.data.getAttribute( "name" );
+
+    var destinations = treeDestinations.root.data.selectNodes( ".//Destination" );
+    var i = destinations.length;
+ while( i-- )
+    {
+   var tRef = ( destinations[ i ].selectSingleNode( "errordestination" ) || destinations[ i ].appendChild( destinations[ i ].ownerDocument.createElement( "errordestination" ) ) ).text;
+ 
+   var parts = tRef.split( "." );
+    if( parts[ 0 ] != oldRef ) continue;
+ 
+    parts[ 0 ] = newValue;
+     destinations[ i ].selectSingleNode( "errordestination" ).text = parts.join( "." );
+ }
+    eventObject.srcElement.previousValue = newValue;
+    previousTreeNode.getLabel().innerText = newValue;
+}
+
+function inpDestinationManagerName_Validate(eventObject)
+{
+    var destinationManagers = previousTreeNode.data.parentNode.selectNodes( "DestinationManager[ @name='"+eventObject.srcElement.getValue()+"' ]" );
+    var i = destinationManagers.length;
+ while( i-- )
+    {
+        if( destinationManagers[ i ] == previousTreeNode.data ) continue;
+      
+        // if execution get here, it already exists...
+     alert( "Name already exists, choose a different name!" );
+       eventObject.valid = false;
+   break;
+    }
+}
+
+function reFillBTCProtocolSelect()
+{
+    if (previousTreeNode && previousTreeNode.data.nodeName != "Destination") {
+        return;
+    }
+ 
+    // remove all options:
+    selectQBTCProtocol.removeAll();
+  selectQBTCProtocol.addOption( { "value": "none", "description": " " }, false );
+    
+    var tuple = MainConfigModel.getData().selectSingleNode( "//tuple" );
+    
+    if (! tuple) {
+        return;
+    }
+    
+    var bo = tuple.selectSingleNode( "new/*" ) || tuple.selectSingleNode( "old/*" ); // PARSERBUG: */
+    
+    if (! bo) {
+        return;
+    }
+    
+    var btcConfigProtocols = bo.selectNodes( "binarytransformationconfig/parser/config" );
+
+   for (var i=0; i < btcConfigProtocols.length; i++)
+    {
+       selectQBTCProtocol.addOption( { value: btcConfigProtocols[ i ].getAttribute( "protocol" ), description: btcConfigProtocols[ i ].getAttribute( "protocol" ) }, false );    
+    }
+    
+    var value = "none";
+ 
+    if (previousTreeNode) {
+        value = getNodeValue( previousTreeNode.data, "btcprotocol", "none" );
+    }
+  
+    if (selectQBTCProtocol.model && selectQBTCProtocol.model.activeTuple) {
+ selectQBTCProtocol.setValue(value);
+    }
+}
+
+function reFillMessageTriggerSelect()
+{
+    if (previousTreeNode && previousTreeNode.data.nodeName != "Destination") {
+        return;
+    }
+    
+   // remove all options:
+    selectQInboundMsgTrigger.removeAll();
+    selectQInboundMsgTrigger.addOption( { "value": "none", "description": " " }, false );
+ 
+    var tuples = MessageTriggerModel.getData().selectNodes( "//tuple" );
+    
+    for (var i=0; i < tuples.length; i++)
+    {
+        var bo = tuples[ i ].selectSingleNode( "new/*" ) || tuples[ i ].selectSingleNode( "old/*" ); // PARSERBUG: */
+        var tId = getNodeValue( bo, "@name" );
+        
+         if (! tId) {
+         continue;
+         }
+        
+        selectQInboundMsgTrigger.addOption( { value: tId, description: tId }, false );   
+    } 
+
+    var value = "none";
+ 
+    if (previousTreeNode) {
+        value = getNodeValue( previousTreeNode.data, "inboundmessagetrigger", "none" );
+    }
+    
+    if (selectQInboundMsgTrigger.model && selectQInboundMsgTrigger.model.activeTuple) {
+        selectQInboundMsgTrigger.setValue(value);
+    }
+}
+
+var previousTabId = "tabpageDestinations"; // first tab
+function onTabControlTabSelect()
+{
+ if( application.event.tabId == previousTabId ) return;
+   
+    if( previousTabId.indexOf( "tabpageDestinations" ) > -1 )
+    {
+        frameConfigBTC.saveDone = true; // to prevent question boxes
+        var btcConfig = getBTConfigNode();
+        
+        if (btcConfig) {
+            frameConfigBTC.createConnectorConfiguration(btcConfig);
+        }
+    }    
+    
+   if( application.event.tabId.indexOf( "tabpageDestinations" ) > -1 )
+    {
+         reFillMessageTriggerSelect();
+         reFillBTCProtocolSelect();
+   } else if( application.event.tabId.indexOf( "tabpageBTC" ) > -1 )
+    {
+   //WebForm.applyAnchors( frameConfigBTC );
+   } else
+    {
+  //splitter2.parentResized();
+ }
+   previousTabId = application.event.tabId;
+}
+//------------------ inbound message trigger stuff ------------
+
+var textareaTriggerParametersLoading = false;
+function textareaTriggerParameters_Change(eventObject)
+{
+    if( textareaTriggerParametersLoading == true ) return;
+    
+    var xml = new ActiveXObject( "Microsoft.XMLDOM" );
+  xml.loadXML( textareaTriggerParameters.getValue() );
+ 
+    if( xml.parseError.errorCode != 0 )
+    {
+       alert("Unable to parse the XML:\r\n" +
+ "Line: " + xml.parseError.line + ", Column: " + xml.parseError.linepos + "\r\n" +
+    "Reason: " + xml.parseError.reason + "\r\n" +
+                "Error text: " + xml.parseError.srcText + "\r\n");
+ return;
+    }
+    
+   if( xml.documentElement.nodeName != "parameters" )
+ {
+        alert( "Root node must have the name 'parameters'" );
+        return;
+    }
+    
+    var nbo;
+ 
+    if( MessageTriggerModel.activeTuple.selectSingleNode( "old" ) == null )
+        nbo = MessageTriggerModel.activeTuple.selectSingleNode( "new/*" ); // PARSERBUG: */
+    else 
+        nbo = MessageTriggerModel.edit();
+     
+    var tpNode = nbo.selectSingleNode( "parameters" );
+
+    if ( tpNode != null ) nbo.removeChild( tpNode );
+       
+    tpNode = xml.createElement("parameters");
+    tpNode.appendChild(xml.createTextNode(xml.documentElement.xml));
+    
+  
+    nbo.appendChild(tpNode);   
+    xml = null;
+}
+
+function imageFormatTriggerParameters_Click(eventObject) 
+{
+    // Pretty print the XML.
+    var xml = new ActiveXObject( "Microsoft.XMLDOM" );
+    var node;
+
+ if (! xml.loadXML(textareaTriggerParameters.getValue())) {
+      return;
+    }
+    
+  node = xml.documentElement;
+    textareaTriggerParameters.setValue(xmlUtil.xml2nicestring(node, 0, null));
+}
+
+function loadTriggerParameterConfig()
+{
+   textareaTriggerParametersLoading = true;
+    try
+    {
+        var activeTuple = MessageTriggerModel.activeTuple;
+        if( activeTuple != null )
+        {
+     var node = ( activeTuple.selectSingleNode( "new" ) || activeTuple.selectSingleNode( "old" ) ).selectSingleNode( "*/parameters" );
+      if( node != null && node.hasChildNodes() )
+      {
+          if (node.firstChild.nodeType == 3 || node.firstChild.nodeType == 4) {
+             // TEXT or CDATA. This is the new format.
+              textareaTriggerParameters.setValue(node.text);
+        imageFormatTriggerParameters_Click();
+      } else {
+   // Element. This is the old format.
+           textareaTriggerParameters.setValue( xmlUtil.xml2nicestring( node, 0, null ) );
+   }
+ return;
+      }  
+    }
+   
+     textareaTriggerParameters.setValue( "<parameters>\n</parameters>" );
+ } finally
+    {
+       textareaTriggerParametersLoading = false;
+    }
+}
+
+var currentTriggerDetailsStateEnabled = true; // by default enabled;
+function setTriggerDetailsEnabled( enabled )
+{
+    if( enabled == currentTriggerDetailsStateEnabled ) return; // nothing to do
+    if( enabled == true )
+ gbTriggerDetails.enable();
+    else
+    gbTriggerDetails.disable();
+ currentTriggerDetailsStateEnabled = enabled;
+}
+
+var inTableTriggerOnSelectRow = false;
+function tableTrigger_OnSelectRow(eventObject)
+{
+    if( MessageTriggerModel.previousActiveTuple == MessageTriggerModel.activeTuple ) return;
+
+    if( inTableTriggerOnSelectRow ) return;
+    inTableTriggerOnSelectRow = true;
+   
+    if( MessageTriggerModel.previousActiveTuple != null )
+    {
+  var newIndex = tableTriggers.getIndex();
+ 
+ _triggerDataLoading = true; // Disable re-filling of the user DN select.
+  tableTriggers.setIndex( tableTriggers.previousIndex );
+        
+ if( !gbTriggerDetails.view.validateObjectInstances() )
+ { 
+       _triggerDataLoading = false;
+   window.setTimeout( selectRow( tableTriggers.tBodies[ 0 ].rows[ tableTriggers.previousIndex ] ), 0 );
+            return false;
+        }
+     
+      tableTriggers.setIndex( newIndex );
+        
+        _triggerDataLoading = false;
+ }
+    
+   MessageTriggerModel.previousActiveTuple = MessageTriggerModel.activeTuple;
+    tableTriggers.previousIndex = tableTriggers.getIndex();
+    
+    setTriggerDetailsEnabled( true );
+    loadTriggerParameterConfig();
+
+   inTableTriggerOnSelectRow = false;
+}
+
+function selectRow( row2select )
+{
+ return function()
+    {
+      row2select.table.selectRow( row2select, true );
+        inTableTriggerOnSelectRow = false;
+    }
+}
+
+
+function inpTriggerId_Validate(eventObject)
+{
+    var tuples = MessageTriggerModel.getData().selectNodes( "//tuple" );
+    var newValue = eventObject.srcElement.getValue();
+    for( var i=0; i<tuples.length; i++ )
+    {
+  if( tuples[ i ] == MessageTriggerModel.activeTuple ) continue;
+     
+  var bo = tuples[ i ].selectSingleNode("new/*") || tuples[ i ].selectSingleNode("old/*"); // PARSERBUG: */
+  var tId = getNodeValue( bo, "id" );
+    
+  if(! tId) {
+   continue;
+  }
+       
+        if(newValue == tId)
+        {
+   alert( "Identifier already exists!" );
+   eventObject.valid = false;
+   return;
+        }
+    }    
+}
+
+
+function navTriggerDelete_BeforeDelete(eventObject)
+{
+    // disable default delete implementation
+    eventObject.returnValue = false;
+
+    // do our own..
+    var cRows = tableTriggers.getCheckedRows();
+    
+    for (var i = 0; i < cRows.length; i++) {
+        var bo = cRows[i].businessObject.parentNode.parentNode; // Get the tuple node
+
+        bo.parentNode.removeChild(bo);
+    }
+   
+    MessageTriggerModel.putData( MessageTriggerModel.getData(), true, null, true);
+}
+
+function inpTriggerId_BeforeBind(eventObject)
+{
+    eventObject.srcElement.previousValue = eventObject.dataNode != null ? eventObject.dataNode.text : "";
+}
+
+function inpTriggerId_Change(eventObject)
+{
+   // you can do this first, because it isn't allowed to select itself
+ var newValue = eventObject.srcElement.getValue();
+
+   // check where used and change to the new value...
+    var destinations = treeDestinations.root.data.selectNodes( ".//Destination[ inboundmessagetrigger='"+eventObject.srcElement.previousValue+"' ]" );
+    var i = destinations.length;
+ while( i-- )
+        destinations[ i ].selectSingleNode( "inboundmessagetrigger" ).text = newValue;
+   
+    eventObject.srcElement.previousValue = newValue;    
+}
+
+
+// dummy function to prevent autoloading of the BTC configuration
+function getConfigurationNode() { 
+    return null; 
+}
+
+function imageHelpTriggerParameters_Click(eventObject)
+{
+    ctxMenuTPHelp.show( window.event );
+}
+
+function changeParameterSelection()
+{
+    textareaTriggerParameters.selectedText = document.selection.createRange().duplicate();
+}
+
+function insertParameter( parameter )
+{
+    if( textareaTriggerParameters.selectedText == null ) {
+   textareaTriggerParameters.setValue( textareaTriggerParameters.value + parameter ); 
+    } else {
+        textareaTriggerParameters.selectedText.text = parameter;
+        textareaTriggerParameters.fireEvent( "onchange" );
+    }
+}
+
+function inpTriggerODN_BeforeBind(eventObject)
+{
+ if (_triggerDataLoading) {
+       return;
+ }
+    
+    var sNewODN = eventObject.dataNode ? eventObject.dataNode.text : null;
+  
+     // MP (2006/9/25) The UDN value is apparently set to SYSTEM by the model reset, so we set the old value back after it.
+     var sOldUDN = inpTriggerUDN.getValue();
+
+    // KE (2006/8/4): at bind, the OrganizationalUsersModel assocation to OrganizationsModel is not triggered, so refresh the users over here:
+   if (sNewODN)
+    {
+        WebForm.setNodeValue( GetOrganizationalUsersModel.getMethodRequest().selectSingleNode( "//GetOrganizationalUsers" ), "dn", sNewODN, false );
+        GetOrganizationalUsersModel.reset();
+
+        // Only replace the old if it belongs to the new organization. Otherwise the new UDN is already set.
+         if (sOldUDN && sOldUDN.lastIndexOf("," + sNewODN) == sOldUDN.length - sNewODN.length) {
+              inpTriggerUDN.setValue(sOldUDN);
+         }
+     }
+}
+
+function inpTriggerODN_Change(eventObject)
+{
+    if (_triggerDataLoading) {
+        return;
+    }
+  
+    // Also at change, the OrganizationalUsersModel assocation to OrganizationsModel is not always triggered, so refresh the users over here:
+    WebForm.setNodeValue( GetOrganizationalUsersModel.getMethodRequest().selectSingleNode( "//GetOrganizationalUsers" ), "dn", eventObject.srcElement.value, false );
+    GetOrganizationalUsersModel.reset();    
+}
+
+function ImportConfigButton_Click(eventObject)
+{
+    var appData = new Object();
+    
+   appData.isSaveDialog = false;
+    appData.dataToSave = null;
+  appData.loadDataXPath = "configuration[@type='JMSConnector']";
+    appData.onok = LoadDialog_OnOk;
+    appData.oncancel = function() { };
+    
+    openLoadSaveDialog(appData);
+}
+
+function LoadDialog_OnOk(appData) {
+    if (! appData || ! appData.loadedData) {
+   alert("Dialog didn't return any data.");
+    return;
+    }
+    
+   // Create the 'configuration' root element needed by this connector.
+    var nRoot = appData.loadedData;
+  
+   // BTC configuration screen needs to be re-loaded.
+    frameConfigBTC.frameElement.src= "/cordys/cpc/parser/parserserviceproperty.htm";
+    
+    setTriggerDetailsEnabled(false);
+  
+    // Re-initialize the page.
+    fillInPropertyScreen(nRoot);
+    restartRequired = true;
+}
+
+function ExportConfigButton_Click(eventObject)
+{
+    // Create the 'configuration' root element needed by this connector.
+    var xml = new ActiveXObject( "Microsoft.XMLDOM" );
+  var nRoot = xml.createElement("configuration");
+    
+  nRoot.setAttribute("type", "JMSConnector");
+    
+    // Write the configuration under the root element.
+    createConnectorConfiguration(nRoot);
+   
+    if (! nRoot.firstChild) {
+       alert("No data to be saved.");
+       return;
+  }
+ 
+    var appData = new Object();
+    
+    appData.isSaveDialog = true;
+  appData.dataToSave = nRoot;
+    appData.onok = function() { };
+    appData.oncancel = function() { };
+    
+  openLoadSaveDialog(appData);
+}
+/**
+ * Opens the load/save dialog with the given data.
+ */
+function openLoadSaveDialog(appData) 
+{ 
+ var sDlgId = "LoadSaveDialog";
+    var sDlgCaption = "Load/Save Dialog";
+
+    if (! appData.currentFolder) {
+        appData.currentFolder = "/Cordys/JMSConnector/config";
+   }
+    
+    loadPage("/JC_ConfigLoadDialog.caf", "main", sDlgId, sDlgCaption, sDlgCaption, 
+       appData, null, false, null, null, 520, 360);
+}
+function chkDynamicDestination_Change(eventObject)
+{
+    if (chkDynamicDestination.getValue() == "true") {
+        inpDestJndiName.hide();
+        selectQInboundMsgTrigger.hide();
+        chkUseAsDefaultErrorQueue.hide();
+ chkUseAsDefaultErrorQueue.setValue("false");
+     inpDynamicDestinationParameters.show();
+    } else {
+  inpDestJndiName.show();
+    selectQInboundMsgTrigger.show();
+        chkUseAsDefaultErrorQueue.show();
+ inpDynamicDestinationParameters.hide();
+   }
+}
+function chkUseAsDefaultErrorQueue_Change(eventObject)
+{
+    if (chkUseAsDefaultErrorQueue.getValue() == "true") {
+        selectErrorDestination.hide();
+        chkDynamicDestination.hide();
+   chkDynamicDestination.setValue("false");
+ } else {
+   selectErrorDestination.show();
+        chkDynamicDestination.show();
+    }
+}
+
+function selectQInboundMsgTrigger_Change(eventObject)
+{
+    var value = selectQInboundMsgTrigger.getValue();
+    
+    if (value && value != "none") {
+        if (! inputTriggerListeners.getValue()) {
+            inputTriggerListeners.setValue("1");
+        }
+    
+   inputTriggerListeners.show();
+   inpMessageSelector.show();
+    } else {
+        inputTriggerListeners.hide();
+        inpMessageSelector.hide();
+    }
+}
+
+
+
+function GetOrganizationsModel_OnResponse(eventObject)
+{
+ 
+}]]>
+			</xformsscript>
+			<xforms:action
+				ev:event="xforms-init">
+				<xforms:Form_Init/>
+			</xforms:action>
+			<xforms:action
+				ev:event="xforms-initialize-done">
+				<xforms:Form_InitDone/>
+			</xforms:action>
+			<xforms:action
+				ev:event="xforms-before-close">
+				<xforms:Form_BeforeClose/>
+			</xforms:action>
+		</xformhtml>
+	</content>
+</caf>
