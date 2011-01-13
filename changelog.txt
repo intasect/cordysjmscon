@@ -1,136 +1,128 @@
-Version 1.1.37 (released 2010-11-08)
-- Moved JMS Connector source code base to opensource model. The project is hosted @ code.google and changes are made in build scripts, svn:exteranal to point to opensourced Build Framework binaries etc.
+version 1.1.38 (released 2011-01-13)
+-fix: Organization DN and User DN does not get listed down in Processor properties.This is fixed now
 
-Version 1.1.36 (released 2010-06-03) Downloads
-- Change: The JMS message selector can be disabled at connector level. When configuring the JMS connector you can check the 'Disable message selector' checkbox to disable the usage of the 'JMSXDeliveryCount = 1' message selector.
+version 1.1.37 (released 2010-11-09)
+-change: Migration of code base to opensource model
 
-Version 1.1.34 (released 2010-03-04) Downloads
-- Change: Default character set for incoming messages is now UTF-8. This can be changed with <charset%gt; element on DestinationManager, Destination and Trigger elements. Currently this is not available in the configuration page.
+version 1.1.36 (released 2010-06-03)
+-change: The JMS message selector can be disabled at connector level. When configuring the JMS connector you can check the 'Disable message selector' checkbox to disable the usage of the 'JMSXDeliveryCount = 1' message selector.
 
-Version 1.1.33 (released 2009-06-29) Downloads
-- Change: Added trigger timeout parameter to the configuration page.
+version 1.1.34 (released 2010-03-04)
+-change: Default character set for incoming messages is now UTF-8. This can be changed with <charset%gt; element on 
+   DestinationManager, Destination and Trigger elements. Currently this is not available in the configuration page.
 
-Version 1.1.32 (released 2009-06-23) Downloads
-- Change: Triggers do not use message selector "JMSXDeliveryCount = 1" when JBoss MQ is configured as the destination manager.
-- Add: Triggers support now MapMessages. The values are returned as an XML structure.
-- Add: Message selector field is added to destination when a trigger is selected. This can be used to define a custor message selector. If left empty, the default selector is used.
-- Add: Added trigger SOAP request timeout parameter (request-timeout in the XML). Default value is 30 seconds
-- Fix: Log messages created by JMS Connector escape CDATA section end marker properly.
-- Fix: Shutdown JMS message consumer is closed before shutdown JMS session. This fixes hanging problems with multiple WebSphere MQ destination managers.
-- Change: Dots are now allowed in destination names.
+version 1.1.33 (released 2009-06-29)
+-change: Added trigger timeout parameter to the configuration page.
 
-Version 1.1.31 (released 2008-04-10) Downloads
-- Unknown Fixed binary message handling when messagetype was set to base64.
-- Add: Added 'timeout' parameter for requestMessage and getMessage methods. This timeout is in milliseconds.
-- Fix: Fixed a synchronization problem with getMessage and requestMessage when a queue read operation with a large timeout would block other read operations.
-- Fix: Trigger SOAP request contained a wrong fromdestination after queue manager restart.
-- Change: Trigger SOAP message parameter fromdestination now uses the trigger destination name if the destination physical name cannot be read from the message (WebSphere MQ does not return it).
+version 1.1.32 (released 2009-06-23)
+-change: Triggers do not use message selector "JMSXDeliveryCount = 1" when JBoss MQ is configured as the destination manager.
+-add: Triggers support now MapMessages. The values are returned as an XML structure.
+-add: Message selector field is added to destination when a trigger is selected. This can be used to define a custor message selector. If left empty, the default selector is used.
+-add: Added trigger SOAP request timeout parameter (request-timeout in the XML). Default value is 30 seconds
+-fix: Log messages created by JMS Connector escape CDATA section end marker properly.
+-fix: Shutdown JMS message consumer is closed before shutdown JMS session. This fixes hanging problems with multiple WebSphere MQ destination managers.
+-change: Dots are now allowed in destination names.
 
-Version 1.1.30 (released 2008-01-17) Downloads
-- Change: WebSphere MQ message ID extension now installs itself event if an existing MQ sendExit was installed. Previously the extension sendExit was not installed and the extension would not work. An error will be put in the log file when an existing sendExit was set.
-- Fix: In C3 the whitespaces are preserved. This gives problems when sending a message to a queue. This is now fixed.
+version 1.1.31 (released 2008-04-10)
+-unknown: Fixed binary message handling when messagetype was set to base64.
+-add: Added 'timeout' parameter for requestMessage and getMessage methods. This timeout is in milliseconds.
+-fix: Fixed a synchronization problem with getMessage and requestMessage when a queue read operation with a large timeout would block other read operations.
+-fix: Trigger SOAP request contained a wrong fromdestination after queue manager restart.
+-change: Trigger SOAP message parameter fromdestination now uses the trigger destination name if the destination physical name cannot be read from the message (WebSphere MQ does not return it).
 
-Version 1.1.29 (released 2007-10-26) Downloads
-- Fix: Small configuration page fixes for C3 release
+version 1.1.30 (released 2008-01-17)
+-change: WebSphere MQ message ID extension now installs itself event if an existing MQ sendExit was installed. Previously the extension sendExit was not installed and the extension would not work. An error will be put in the log file when an existing sendExit was set.
+-fix: In C3 the whitespaces are preserved. This gives problems when sending a message to a queue. This is now fixed.
 
-Version 1.1.28 (released 2007-09-18) Downloads
-- Fix: Sometimes JMX components were not properly cleaned up when the queue manager was shutting down, so the reconnecting didn't work anymore.
+version 1.1.29 (released 2007-10-26)
+-fix: Small configuration page fixes for C3 release
 
-Version 1.1.27 (released 2007-09-04) Downloads
-- Fix: Trigger 'fromdestination' was picked up incorrectly if dynamic destinations were used.
+version 1.1.28 (released 2007-09-18)
+-fix: Sometimes JMX components were not properly cleaned up when the
+queue manager was shutting down, so the reconnecting didn't work anymore.
 
-Version 1.1.26 (released 2007-08-15) Downloads
-- Fix: Connector page layout now fits better in the new SOAP processor wizard page
+version 1.1.27 (released 2007-09-04)
+-fix: Trigger 'fromdestination'  was picked up incorrectly if dynamic destinations were used.
 
-- Fix: The current organization determination works now for the new SOAP processor wizard.
+version 1.1.26 (released 2007-08-15)
+-fix: Connector page layout now fits better in the new SOAP processor wizard page
+-fix: The current organization determination works now for the new SOAP processor wizard.
+-fix: The default behavior of requestMessage is fixed. 
+  The message ID of the message sent by requestMessage 
+  was not used as the correlation ID when reading the reply message. 
+  Any message was returned regardless of the correlation ID.
 
-- Fix: The default behavior of requestMessage is fixed. The message ID of the message sent by requestMessage was not used as the correlation ID when reading the reply message. Any message was returned regardless of the correlation ID.
+version 1.1.25 (released 2007-07-11)
+-fix: Fixed the BTC configuration page. If all settings were removed, those were not removed from LDAP.
+-fix: Removed the extra classpath entry generation to the connector configuration
 
-Version 1.1.25 (released 2007-07-11) Downloads
-- Fix: Fixed the BTC configuration page. If all settings were removed, those were not removed from LDAP.
+version 1.1.24 (released 2007-05-23)
+-fix: C3 fixes for the user drop down. Also trigger deletion is fixed.
+-change: Paramters that are as attributes in the method element can be left as empty strings.
 
-- Fix: Removed the extra classpath entry generation to the connector configuration
+version 1.1.23 (released 2007-05-21)
+-fix: UI fixes for C2 fix pack 3
 
-Version 1.1.24 (released 2007-05-23) Downloads
-- Fix: C3 fixes for the user drop down. Also trigger deletion is fixed.
+version 1.1.22 (released 2007-03-30)
+-update: Project site update release.
 
-- Change: Paramters that are as attributes in the method element can be left as empty strings.
+version 1.1.21 (released 2007-03-23)
+-add: New build for the project site.
 
-Version 1.1.23 (released 2007-05-21) Downloads
-- Fix: UI fixes for C2 fix pack 3
+version 1.1.20 (released 2007-02-14)
+-fix: Fixed the organization problem in new SOAP node wizard page. Previously
+a Studio role was required in the system organization.
 
-Version 1.1.22 (released 2007-03-30) Downloads
-- Update: Project site update release.
+version 1.1.19 (released 2007-02-06)
+-fix: Configuration page fixes for Cordys BCP C2.002
 
-Version 1.1.21 (released 2007-03-23) Downloads
-- Add: New build for the project site.
+version 1.1.18 (released 2007-02-06)
+-change: When a trigger fails, the message is put into the error queue within
+that same session. This helps a lot if triggers fail at the same time
+and saves queue manager connection creation.
+-change: Trigger thread count parameter is no longer required in the XForm page. 
+This caused some weird problems when a trigger was not selected.
 
-Version 1.1.20 (released 2007-02-14) Downloads
-- Fix: Fixed the organization problem in new SOAP node wizard page. Previously a Studio role was required in the system organization.
+version 1.1.17 (released 2007-01-31)
+-add: Trigger listener threads added.
 
-Version 1.1.19 (released 2007-02-06) Downloads
-- Fix: Configuration page fixes for Cordys BCP C2.002
+version 1.1.16 (released 2007-01-29)
+-fix: Fixed bug in shutdown queue 'none' setting.
+-fix: Fixed a bug in trigger XML messages when no BTC was used.
 
-Version 1.1.18 (released 2007-02-06) Downloads
-- Change: When a trigger fails, the message is put into the error queue within that same session. This helps a lot if triggers fail at the same time and saves queue manager connection creation.
+version 1.1.15 (released 2007-01-19)
+-add: Added possiblility to use a defined queue for a shutdown destination (also listening for shutdowns can be disabled).
+-add: Added a parameter for checking the connection on a SOAP request (default is off).
 
-- Change: Trigger thread count parameter is no longer required in the XForm page. This caused some weird problems when a trigger was not selected.
+version 1.1.14 (released 2007-01-18)
+-change: Passwords are now base64 encoded
+-add: Added connection authentication properties
+-fix: Fixed a null pointer exception when messageid was not set.
+-fix: Saving the SOAP processor configuragion now gives the restart message.
 
-Version 1.1.17 (released 2007-01-31) Downloads
-- Add: Trigger listener threads added.
+version 1.1.13 (released 2006-10-27)
+-add: Added support for dynamic queues.
+-add: Added ActiveMQ to the provider select.
 
-Version 1.1.16 (released 2007-01-29) Downloads
-- Fix: Fixed bug in shutdown queue 'none' setting.
+version 1.1.12 (released 2006-10-16)
+-none: Internal release
 
-- Fix: Fixed a bug in trigger XML messages when no BTC was used.
+version 1.1.11 (released 2006-10-16)
+-fix: Removed an alert box from generate method sets
 
-Version 1.1.15 (released 2007-01-19) Downloads
-- Add: Added possiblility to use a defined queue for a shutdown destination (also listening for shutdowns can be disabled).
+version 1.1.10 (released 2006-10-16)
+-fix: If a tuple XML element was present in trigger parameters, the XForm didn't work properly. This is now fixed.
+-add: Import/export dialog added to the configuration page.
+-fix: Fixed a problem with destination manager restart. Restart did't work
+if the connection close() method threw an exception.
+-change: Moved log messages to the resource bundle.
+-fix: Fixed trigger user DN was not filled when a user didn't have description field in LDAP.
+-fix: JMS vendor field was not shown correctly.
 
-- Add: Added a parameter for checking the connection on a SOAP request (default is off).
+version 1.1.9 (released 2006-09-20)
+-add: Added WebSphere MQ specific message ID passing feature.
+-add: Added return type 'xmlMessage' to getMessage method.
 
-Version 1.1.14 (released 2007-01-18) Downloads
-- Change: Passwords are now base64 encoded
-
-- Add: Added connection authentication properties
-
-- Fix: Fixed a null pointer exception when messageid was not set.
-
-- Fix: Saving the SOAP processor configuragion now gives the restart message.
-
-Version 1.1.13 (released 2006-10-27) Downloads
-- Add: Added support for dynamic queues.
-
-- Add: Added ActiveMQ to the provider select.
-
-Version 1.1.12 (released 2006-10-16) Downloads
-None
-
-Internal release
-
-Version 1.1.11 (released 2006-10-16) Downloads
-- Fix: Removed an alert box from generate method sets
-
-Version 1.1.10 (released 2006-10-16) Downloads
-- Fix: If a tuple XML element was present in trigger parameters, the XForm didn't work properly. This is now fixed.
-
-- Add: Import/export dialog added to the configuration page.
-
-- Fix: Fixed a problem with destination manager restart. Restart did't work if the connection close() method threw an exception.
-
-- Change: Moved log messages to the resource bundle.
-
-- Fix: Fixed trigger user DN was not filled when a user didn't have description field in LDAP.
-
-- Fix: JMS vendor field was not shown correctly.
-
-Version 1.1.9 (released 2006-09-20) Downloads
-- Add: Added WebSphere MQ specific message ID passing feature.
-
-- Add: Added return type 'xmlMessage' to getMessage method.
-
-Version 1.1.8 (released 2006-09-05) Downloads
-None
-
-Internal release
+version 1.1.8 (released 2006-09-05)
+-none: Internal release
 

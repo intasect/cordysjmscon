@@ -1531,7 +1531,7 @@ function GetOrganizationsModel_OnRequest(eventObject)
   }
 
   // set search root:
-    WebForm.setNodeValue( eventObject.request.selectSingleNode( "//GetOrganizations" ), "dn", "cn="+system.user.defaultOrganization.split("cn=")[1], false );
+    WebForm.setNodeValue( eventObject.request.selectSingleNode( "//GetOrganizations" ), "dn", system.user.defaultOrganization.substring(system.user.defaultOrganization.indexOf(",")+1), false );
 }
 
 function GetOrganizationalUsersModel_OnRequest(eventObject)
