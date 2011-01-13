@@ -1,0 +1,1882 @@
+
+<caf>
+	<documentProperties>
+		<name>GenerateMethods</name>
+		<description>GenerateMethods</description>
+		<caption/>
+		<mimeType>caf</mimeType>
+		<notes/>
+		<version>vcmdemo10</version>
+		<revision/>
+		<createdBy></createdBy>
+		<creationDate></creationDate>
+		<lastModifiedBy></lastModifiedBy>
+		<lastModificationDate></lastModificationDate>
+	</documentProperties>
+	<content>
+		<xformhtml
+			xmlns=""
+			xformsversion="1"
+			xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+			xmlns:ev="http://www.w3.org/2001/xml-events"
+			xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+			xmlns:eibus="http://schemas.cordys.com/wcp/webframework"
+			key="/GenerateMethods_vcmdemo10.caf"
+			focusatstartup="true"
+			wcpforms:vcmVersion="vcmdemo10">
+			<xhead
+				xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+				<script
+					src="/cordys/coe/jmsconnector/coelib.js"
+				/>
+				<xforms:model
+					id="GetMethodSetsModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="true"
+					wcpforms:businessElement="entry"
+					promptToSave="true"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+					xmlns:ev="http://www.w3.org/2001/xml-events"
+					xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+						<wcpforms:dataset
+							src="http://schemas.cordys.com/1.0/ldap/GetMethodSets"
+							type="get"
+							xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						/>
+					</xforms:instance>
+					<xforms:action
+						ev:event="xforms-onrequest">
+						<xforms:GetMethodSetsModel_OnRequest/>
+					</xforms:action>
+				</xforms:model>
+				<xforms:model
+					id="GetSOAPProcessorModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="true"
+					wcpforms:businessElement="entry"
+					promptToSave="true"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+					xmlns:ev="http://www.w3.org/2001/xml-events"
+					xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+						<wcpforms:dataset
+							src="http://schemas.cordys.com/1.0/ldap/GetSoapProcessors"
+							type="get"
+							xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						/>
+					</xforms:instance>
+					<xforms:action
+						ev:event="xforms-onrequest">
+						<xforms:GetSOAPProcessorModel_OnRequest/>
+					</xforms:action>
+				</xforms:model>
+				<xforms:model
+					id="PropertiesModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="false"
+					wcpforms:businessElement="property"
+					promptToSave="false"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+					/>
+				</xforms:model>
+				<xml
+					xmlns="">
+  <xml id="xmlImplementationDefinitionForGet">
+    <implementation type="JMSCONNECTOR">
+      <action>get</action>
+      <parameters>
+        <destination />
+        <waitformessage overridable="false" />
+        <responsemessageformat overridable="false" />
+        <inputmessageselector overridable="false" />
+      </parameters>
+    </implementation>
+  </xml>
+  <xml id="xmlImplementationDefinitionForSend">
+    <implementation type="JMSCONNECTOR">
+      <action>send</action>
+      <parameters>
+        <destination />
+        <reply2destination overridable="false" />
+        <messagetype overridable="false" />
+        <jmstype overridable="false" />
+        <persistentdelivery overridable="false" />
+        <expiration overridable="false" />
+        <priority overridable="false" />
+        <messageformat overridable="false" />
+        <properties override="none" />
+      </parameters>
+    </implementation>
+  </xml>
+  <xml id="xmlImplementationDefinitionForRequest">
+    <implementation type="JMSCONNECTOR">
+      <action>request</action>
+      <parameters>
+        <destination />
+        <reply2destination overridable="false" />
+        <messagetype overridable="false" />
+        <jmstype overridable="false" />
+        <persistentdelivery overridable="false" />
+        <expiration overridable="false" />
+        <priority overridable="false" />
+        <messageformat overridable="false" />
+        <properties override="none" />
+        <waitformessage overridable="false" />
+        <responsemessageformat overridable="false" />
+        <usecorrelation />
+      </parameters>
+    </implementation>
+  </xml>
+  <xml id="xmlDefaultInterfaceDefinition">
+    <definitions name="getMessage" targetNamespace="http://schemas.cordys.com/1.0/jms" xmlns:tns="http://schemas.cordys.com/1.0/jms" xmlns="http://schemas.xmlsoap.org/wsdl/">
+      <types />
+      <message name="messageInput">
+        <part name="body" element="tns:message" />
+      </message>
+      <message name="messageOutput">
+        <part name="body" element="tns:messageResponse" />
+      </message>
+      <portType name="Method Set JMS Connection PortType">
+        <operation name="message">
+          <input message="tns:messageInput" />
+          <output message="tns:messageOutput" />
+        </operation>
+      </portType>
+    </definitions>
+  </xml>
+  <xml id="xmlXSDGetDefinition">
+    <schema targetNamespace="http://schemas.cordys.com/1.0/jms" xmlns:wcp="http://schemas.cordys.com/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <element name="message">
+        <complexType>
+          <sequence>
+            <element name="correlationid" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="messageselector" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="messageformat" type="xsd:string" minOccurs="0" maxOccurs="1" />
+          </sequence>
+          <attribute name="waitformessage" type="xsd:boolean" />
+        </complexType>
+      </element>
+      <element name="messageResponse">
+        <complexType>
+          <sequence>
+            <element name="message" minOccurs="1" maxOccurs="1" />
+            <element name="messageid" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <element name="correlationid" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <element name="reply2destination" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <element name="jmstype" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <element name="properties" minOccurs="1" maxOccurs="1">
+              <complexType>
+                <sequence>
+                  <element name="property" minOccurs="0" maxOccurs="1">
+                    <complexType>
+                      <simpleContent>
+                        <extension base="xsd:string">
+                          <attribute name="name" type="xsd:string" />
+                          <attribute name="type" type="xsd:string" />
+                        </extension>
+                      </simpleContent>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </xml>
+  <xml id="xmlXSDSendDefinition">
+    <schema targetNamespace="http://schemas.cordys.com/1.0/jms" xmlns:wcp="http://schemas.cordys.com/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <element name="message">
+        <complexType>
+          <sequence>
+            <element name="reply2destination" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="correlationid" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="jmstype" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="properties" minOccurs="0" maxOccurs="1">
+              <complexType>
+                <sequence>
+                  <element name="property" minOccurs="0" maxOccurs="1">
+                    <complexType>
+                      <simpleContent>
+                        <extension base="xsd:string">
+                          <attribute name="name" type="xsd:string" />
+                          <attribute name="type" type="xsd:string" />
+                        </extension>
+                      </simpleContent>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="messageformat" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="message" minOccurs="1" maxOccurs="1" />
+          </sequence>
+          <attribute name="persistentdelivery" type="xsd:boolean" />
+          <attribute name="expiration" type="xsd:long" />
+        </complexType>
+      </element>
+      <element name="messageResponse">
+        <complexType>
+          <sequence>
+            <element name="messageid" type="xsd:string" minOccurs="1" maxOccurs="1" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </xml>
+  <xml id="xmlXSDRequestDefinition">
+    <schema targetNamespace="http://schemas.cordys.com/1.0/jms" xmlns:wcp="http://schemas.cordys.com/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <element name="message">
+        <complexType>
+          <sequence>
+            <element name="reply2destination" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="jmstype" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="properties" minOccurs="0" maxOccurs="1">
+              <complexType>
+                <sequence>
+                  <element name="property" minOccurs="0" maxOccurs="1">
+                    <complexType>
+                      <simpleContent>
+                        <extension base="xsd:string">
+                          <attribute name="name" type="xsd:string" />
+                          <attribute name="type" type="xsd:string" />
+                        </extension>
+                      </simpleContent>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="messageformat" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="responsemessageformat" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="message" minOccurs="1" maxOccurs="1" type="xsd:string" />
+          </sequence>
+          <attribute name="persistentdelivery" type="xsd:boolean" />
+          <attribute name="expiration" type="xsd:long" />
+          <attribute name="skipencoding" type="xsd:boolean" />
+          <attribute name="usecorrelation" type="xsd:boolean" />
+        </complexType>
+      </element>
+      <element name="messageResponse">
+        <complexType>
+          <sequence>
+            <element name="message" minOccurs="1" maxOccurs="1" />
+            <element name="messageid" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <element name="jmstype" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <element name="properties" minOccurs="1" maxOccurs="1">
+              <complexType>
+                <sequence>
+                  <element name="property" minOccurs="0" maxOccurs="1">
+                    <complexType>
+                      <simpleContent>
+                        <extension base="xsd:string">
+                          <attribute name="name" type="xsd:string" />
+                          <attribute name="type" type="xsd:string" />
+                        </extension>
+                      </simpleContent>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </xml>
+  <xml id="xmlCreateMethodSetDefinition">
+    <tuple>
+      <new>
+        <entry dn="">
+          <labeleduri>
+            <string />
+          </labeleduri>
+          <objectclass>
+            <string>top</string>
+            <string>busmethodset</string>
+          </objectclass>
+          <cn>
+            <string />
+          </cn>
+          <implementationclass>
+            <string>com.cordys.coe.ac.jmsconnector.JMSConnector</string>
+          </implementationclass>
+        </entry>
+      </new>
+    </tuple>
+  </xml>
+  <xml id="xmlCreateMethodDefinition">
+    <tuple>
+      <new>
+        <entry dn="">
+          <objectclass>
+            <string>top</string>
+            <string>busmethod</string>
+          </objectclass>
+          <cn>
+            <string />
+          </cn>
+          <busmethodimplementation>
+            <string />
+          </busmethodimplementation>
+          <busmethodwsdl>
+            <string />
+          </busmethodwsdl>
+        </entry>
+      </new>
+    </tuple>
+  </xml>
+				</xml>
+			</xhead>
+			<xbody>
+				<xforms:group
+					appearance="toolbar"
+					id="toolbar">
+					<xforms:trigger
+						id="tbBtnGenerate">
+						<xforms:label>
+							<img
+								xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+								src="/cordys/wcp/images/uddi/methodgenerator.gif"
+							/>
+						</xforms:label>
+						<xforms:hint>Generate methods</xforms:hint>
+						<xforms:action
+							ev:event="xforms-activate">
+							<xforms:generateMethod/>
+						</xforms:action>
+					</xforms:trigger>
+				</xforms:group>
+				<xforms:group
+					wcpforms:layout="vertical"
+					id="xbody_group"
+					wcpforms:labelalign="ontop">
+					<xforms:select1
+						id="selectSOAPProcessor"
+						doEBIValidate="false"
+						initializeValueSets="0"
+						wcpforms:enumerated="false"
+						multiple="false"
+						wcpforms:class="v_layout"
+						sync_id="2">
+						<xforms:label
+							wcpforms:class="h_label left_align"
+							wcpforms:size="175 null">Select JMS SOAP Processor:</xforms:label>
+						<xforms:action
+							ev:event="xforms-select-before-data-fill">
+							<xforms:selectSOAPProcessor_BeforeFill/>
+						</xforms:action>
+						<xforms:itemset
+							model="GetSOAPProcessorModel"
+							xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+							<xforms:label
+								ref="cn/string"
+							/>
+							<xforms:value
+								ref="@dn"
+							/>
+						</xforms:itemset>
+						<xforms:action
+							ev:event="xforms-value-changed">
+							<xforms:selectSOAPProcessor_Change/>
+						</xforms:action>
+					</xforms:select1>
+					<xforms:group
+						appearance="box"
+						id="groupbox2"
+						wcpforms:collapsible="true"
+						wcpforms:expanded="true"
+						wcpforms:layout="vertical"
+						wcpforms:class="v_layout"
+						wcpforms:size="null null"
+						wcpforms:labelalign="left">
+						<xforms:label
+							wcpforms:class="groupheader collapse">Methodset generation details:</xforms:label>
+						<xforms:select1
+							id="selectMethodSet"
+							doEBIValidate="false"
+							initializeValueSets="0"
+							wcpforms:enumerated="false"
+							multiple="false"
+							wcpforms:class="v_layout"
+							sync_id="4">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="160 null">Select methodset:</xforms:label>
+							<xforms:itemset
+								model="GetMethodSetsModel"
+								xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+								<xforms:label
+									ref="cn/string"
+								/>
+								<xforms:value
+									ref="@dn"
+								/>
+							</xforms:itemset>
+							<xforms:action
+								ev:event="xforms-value-changed">
+								<xforms:selectMethodSet_Change/>
+							</xforms:action>
+							<xforms:action
+								ev:event="xforms-select-before-data-fill">
+								<xforms:selectMethodSet_BeforeFill/>
+							</xforms:action>
+						</xforms:select1>
+						<xforms:group
+							appearance="box"
+							id="groupbox4"
+							wcpforms:layout="vertical"
+							wcpforms:class="v_layout"
+							wcpforms:size="null 120"
+							wcpforms:labelalign="left">
+							<xforms:label
+								wcpforms:class="groupheader removed">Group4</xforms:label>
+							<xforms:input
+								id="inpMethodsetName"
+								doEBIValidate="false"
+								wcpforms:class="v_layout">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="147 null">New method set name:</xforms:label>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:inpMethodsetName_Change/>
+								</xforms:action>
+							</xforms:input>
+							<xforms:input
+								id="inpNamespace"
+								doEBIValidate="false"
+								wcpforms:class="v_layout">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="147 null">Namespace:</xforms:label>
+							</xforms:input>
+							<xforms:select1
+								appearance="check"
+								id="checkAttachToSOAPNode"
+								doEBIValidate="false"
+								wcpforms:class="v_layout">
+								<xforms:label>Attach method set to SOAP Node</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+						</xforms:group>
+					</xforms:group>
+					<xforms:group
+						appearance="box"
+						id="groupbox3"
+						wcpforms:collapsible="true"
+						wcpforms:expanded="true"
+						wcpforms:layout="vertical"
+						wcpforms:class="v_layout"
+						wcpforms:size="null 180"
+						wcpforms:labelalign="ontop">
+						<xforms:label
+							wcpforms:class="groupheader collapse">Method generation details:</xforms:label>
+						<xforms:input
+							id="inpMethodName"
+							doEBIValidate="false"
+							wcpforms:class="v_layout">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="160 null">Method name:</xforms:label>
+							<xforms:action
+								ev:event="xforms-value-changed">
+								<xforms:inpMethodName_Change/>
+							</xforms:action>
+						</xforms:input>
+						<xforms:select1
+							appearance="check"
+							id="checkSendMessage"
+							doEBIValidate="false"
+							wcpforms:class="f_layout"
+							wcpforms:size="144 null"
+							wcpforms:position="14 47">
+							<xforms:label>Send message</xforms:label>
+							<xforms:item>
+								<xforms:label>true</xforms:label>
+								<xforms:value>true</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>false</xforms:label>
+								<xforms:value>false</xforms:value>
+							</xforms:item>
+							<xforms:action
+								ev:event="xforms-value-changed">
+								<xforms:checkSendMessage_Change/>
+							</xforms:action>
+						</xforms:select1>
+						<xforms:input
+							id="inpGetMessageName"
+							doEBIValidate="false"
+							wcpforms:class="f_layout"
+							wcpforms:size="703 null"
+							wcpforms:position="266 78"
+							wcpforms:anchors="266px 78px 13px null">
+							<xforms:label
+								wcpforms:class="v_label removed">Input10</xforms:label>
+						</xforms:input>
+						<xforms:select1
+							appearance="check"
+							id="checkGetMessage"
+							doEBIValidate="false"
+							wcpforms:class="f_layout"
+							wcpforms:size="144 null"
+							wcpforms:position="14 80">
+							<xforms:label>Get message</xforms:label>
+							<xforms:item>
+								<xforms:label>true</xforms:label>
+								<xforms:value>true</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>false</xforms:label>
+								<xforms:value>false</xforms:value>
+							</xforms:item>
+							<xforms:action
+								ev:event="xforms-value-changed">
+								<xforms:checkGetMessage_Change/>
+							</xforms:action>
+						</xforms:select1>
+						<xforms:input
+							id="inpRequestMessageName"
+							doEBIValidate="false"
+							wcpforms:class="f_layout"
+							wcpforms:size="703 null"
+							wcpforms:position="266 110"
+							wcpforms:anchors="266px 110px 13px null">
+							<xforms:label
+								wcpforms:class="v_label removed">Input11</xforms:label>
+						</xforms:input>
+						<xforms:select1
+							appearance="check"
+							id="checkRequestMessage"
+							doEBIValidate="false"
+							wcpforms:class="f_layout"
+							wcpforms:size="240 null"
+							wcpforms:position="14 113">
+							<xforms:label>Request message (request/reply)</xforms:label>
+							<xforms:item>
+								<xforms:label>true</xforms:label>
+								<xforms:value>true</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>false</xforms:label>
+								<xforms:value>false</xforms:value>
+							</xforms:item>
+							<xforms:action
+								ev:event="xforms-value-changed">
+								<xforms:checkRequestMessage_Change/>
+							</xforms:action>
+						</xforms:select1>
+						<xforms:input
+							id="inpSendMessageName"
+							doEBIValidate="false"
+							wcpforms:class="f_layout"
+							wcpforms:size="703 null"
+							wcpforms:position="266 45"
+							wcpforms:anchors="266px 45px 13px null">
+							<xforms:label
+								wcpforms:class="v_label removed">Input9</xforms:label>
+						</xforms:input>
+					</xforms:group>
+					<xforms:group
+						appearance="tabgroup"
+						id="groupbox1"
+						wcpforms:class="v_layout"
+						wcpforms:size="null 470">
+						<xforms:group
+							appearance="tabpage"
+							id="tabpage1"
+							wcpforms:layout="free"
+							wcpforms:labelalign="ontop"
+							wcpforms:class="simplecontainer">
+							<xforms:label>Send method options</xforms:label>
+							<xforms:repeat
+								id="tableProperties"
+								synchronizedDialogFrame="main"
+								wcpforms:gridtype="datagrid"
+								wcpforms:checkboxes="true"
+								wcpforms:layout="table"
+								wcpforms:class="f_layout"
+								wcpforms:size="927 148"
+								wcpforms:position="10 300"
+								model="PropertiesModel"
+								fixedWidth="true"
+								wcpforms:anchors="10px 300px 45px null">
+								<xforms:group
+									appearance="elementbar"
+									id="_elementBar">
+									<xforms:group
+										appearance="controlbar"
+										id="_controlBar"
+										wcpforms:class="controlbar">
+										<xforms:trigger
+											id="navInsert1"
+											standardid="navInsert">
+											<xforms:label>
+												<img
+													xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+													src="/cordys/wcp/icons/action/add_eb.gif"
+												/>
+											</xforms:label>
+											<xforms:hint>Insert</xforms:hint>
+										</xforms:trigger>
+										<xforms:trigger
+											id="navDelete1"
+											standardid="navDelete">
+											<xforms:label>
+												<img
+													xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+													src="/cordys/wcp/icons/action/delete_eb.gif"
+												/>
+											</xforms:label>
+											<xforms:hint>Delete</xforms:hint>
+										</xforms:trigger>
+									</xforms:group>
+								</xforms:group>
+								<xforms:input
+									id="inpPropertyName"
+									wcpforms:size="144 null"
+									doEBIValidate="false"
+									ref="property/@name"
+									wcpforms:displayformat="text"
+									wcpforms:datatype="string"
+									wcpforms:required="true">
+									<xforms:label>Name</xforms:label>
+								</xforms:input>
+								<xforms:select1
+									id="selectPropertyType"
+									doEBIValidate="false"
+									initializeValueSets="false"
+									wcpforms:enumerated="false"
+									multiple="false"
+									wcpforms:size="144 null"
+									ref="property/@type">
+									<xforms:label>Type</xforms:label>
+									<xforms:item
+										xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+										<xforms:label>String</xforms:label>
+										<xforms:value>String</xforms:value>
+									</xforms:item>
+									<xforms:item>
+										<xforms:label>Short</xforms:label>
+										<xforms:value>Short</xforms:value>
+									</xforms:item>
+									<xforms:item>
+										<xforms:label>Byte</xforms:label>
+										<xforms:value>Byte</xforms:value>
+									</xforms:item>
+									<xforms:item>
+										<xforms:label>Integer</xforms:label>
+										<xforms:value>Integer</xforms:value>
+									</xforms:item>
+									<xforms:item>
+										<xforms:label>Long</xforms:label>
+										<xforms:value>Long</xforms:value>
+									</xforms:item>
+									<xforms:item>
+										<xforms:label>Float</xforms:label>
+										<xforms:value>Float</xforms:value>
+									</xforms:item>
+									<xforms:item>
+										<xforms:label>Double</xforms:label>
+										<xforms:value>Double</xforms:value>
+									</xforms:item>
+									<xforms:item>
+										<xforms:label>Boolean</xforms:label>
+										<xforms:value>Boolean</xforms:value>
+									</xforms:item>
+								</xforms:select1>
+								<xforms:input
+									id="inpPropertyValue"
+									doEBIValidate="false"
+									ref="property"
+									wcpforms:displayformat="text"
+									wcpforms:datatype="string"
+									wcpforms:required="true">
+									<xforms:label>Value</xforms:label>
+								</xforms:input>
+							</xforms:repeat>
+							<xforms:select1
+								id="selectMessageType"
+								doEBIValidate="false"
+								initializeValueSets="false"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="358 null"
+								wcpforms:position="10 80">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">Message type:</xforms:label>
+								<xforms:item
+									xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+									<xforms:label>Not set</xforms:label>
+									<xforms:value>none</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>BytesMessage</xforms:label>
+									<xforms:value>bytes</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>TextMessage</xforms:label>
+									<xforms:value>text</xforms:value>
+								</xforms:item>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:enableDisableOverridable/>
+								</xforms:action>
+							</xforms:select1>
+							<xforms:input
+								id="inpJMSType"
+								wcpforms:class="f_layout"
+								wcpforms:size="358 null"
+								wcpforms:position="10 110"
+								doEBIValidate="false">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">JMS Type:</xforms:label>
+							</xforms:input>
+							<xforms:select1
+								id="selectPersistentDelivery"
+								doEBIValidate="false"
+								initializeValueSets="false"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:size="358 null"
+								wcpforms:position="10 140"
+								wcpforms:class="f_layout">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">Persistent delivery:</xforms:label>
+								<xforms:item
+									xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+									<xforms:label>Not set</xforms:label>
+									<xforms:value>none</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>On</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>Off</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:enableDisableOverridable/>
+								</xforms:action>
+							</xforms:select1>
+							<xforms:input
+								id="inpExpiration"
+								wcpforms:displayformat="####"
+								wcpforms:minValue="0"
+								wcpforms:textalign="right_align"
+								wcpforms:datatype="i4"
+								wcpforms:required="false"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="358 null"
+								wcpforms:position="10 170">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">Expiration (s):</xforms:label>
+							</xforms:input>
+							<xforms:select1
+								id="selectMessageFormatForSend"
+								doEBIValidate="false"
+								initializeValueSets="false"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="358 null"
+								wcpforms:position="10 230">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">Input message format:</xforms:label>
+								<xforms:item
+									xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+									<xforms:label>Not defined</xforms:label>
+									<xforms:value>none</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>Base64 encoded</xforms:label>
+									<xforms:value>base64encoded</xforms:value>
+								</xforms:item>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:enableDisableOverridable/>
+								</xforms:action>
+							</xforms:select1>
+							<xforms:label
+								id="text2"
+								wcpforms:class="f_layout"
+								wcpforms:size="148 29"
+								wcpforms:position="380 20">Runtime settings:</xforms:label>
+							<xforms:select1
+								appearance="check"
+								id="checkMessageType"
+								wcpforms:class="f_layout"
+								wcpforms:size="152 null"
+								wcpforms:position="380 80"
+								doEBIValidate="false">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkJMSType"
+								wcpforms:class="f_layout"
+								wcpforms:size="152 null"
+								wcpforms:position="380 110"
+								doEBIValidate="false">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkPersistentDeliveryOverride"
+								wcpforms:class="f_layout"
+								wcpforms:size="152 null"
+								wcpforms:position="380 140"
+								doEBIValidate="false">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkExpiration"
+								wcpforms:class="f_layout"
+								wcpforms:size="152 null"
+								wcpforms:position="380 170"
+								doEBIValidate="false">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkMessageFormatForSend"
+								wcpforms:class="f_layout"
+								wcpforms:size="152 null"
+								wcpforms:position="380 230"
+								doEBIValidate="false">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								id="selectProperties"
+								doEBIValidate="false"
+								initializeValueSets="false"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="528 null"
+								wcpforms:position="10 260">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="378 null">Properties:</xforms:label>
+								<xforms:item
+									xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+									<xforms:label>Not overridable</xforms:label>
+									<xforms:value>none</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>Appendable</xforms:label>
+									<xforms:value>append</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>Changeable</xforms:label>
+									<xforms:value>change</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>Rewritable</xforms:label>
+									<xforms:value>rewrite</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								id="selectReply2Destination"
+								doEBIValidate="false"
+								initializeValueSets="0"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="358 null"
+								wcpforms:position="10 50"
+								sync_id="1">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">Reply to destination:</xforms:label>
+								<xforms:item
+									xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+									<xforms:label>None</xforms:label>
+									<xforms:value>none</xforms:value>
+								</xforms:item>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:selectDestination_Change/>
+								</xforms:action>
+							</xforms:select1>
+							<xforms:select1
+								id="selectDestinationForSend"
+								doEBIValidate="false"
+								initializeValueSets="0"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="358 null"
+								wcpforms:position="10 20"
+								sync_id="2">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">Destination:</xforms:label>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:selectDestination_Change/>
+								</xforms:action>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkReply2Destination"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="148 null"
+								wcpforms:position="380 50">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								id="selectPriority"
+								doEBIValidate="false"
+								initializeValueSets="false"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="358 null"
+								wcpforms:position="10 200">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="158 null">Priority</xforms:label>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:enableDisableOverridable/>
+								</xforms:action>
+								<xforms:item
+									xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+									<xforms:label>Not set</xforms:label>
+									<xforms:value>none</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>0</xforms:label>
+									<xforms:value>0</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>1</xforms:label>
+									<xforms:value>1</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>2</xforms:label>
+									<xforms:value>2</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>3</xforms:label>
+									<xforms:value>3</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>4</xforms:label>
+									<xforms:value>4</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>5</xforms:label>
+									<xforms:value>5</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>6</xforms:label>
+									<xforms:value>6</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>7</xforms:label>
+									<xforms:value>7</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>8</xforms:label>
+									<xforms:value>8</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>9</xforms:label>
+									<xforms:value>9</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkPriority"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="152 null"
+								wcpforms:position="380 200">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+						</xforms:group>
+						<xforms:group
+							appearance="tabpage"
+							id="tabpage2"
+							wcpforms:layout="free"
+							wcpforms:class="simplecontainer"
+							wcpforms:labelalign="left">
+							<xforms:label>Get message options</xforms:label>
+							<xforms:select1
+								id="selectDestinationForGet"
+								doEBIValidate="false"
+								initializeValueSets="0"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="342 null"
+								wcpforms:position="10 20"
+								sync_id="1">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="152 null">Destination:</xforms:label>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:selectDestination_Change/>
+								</xforms:action>
+							</xforms:select1>
+							<xforms:select1
+								id="selectWaitForMessage"
+								doEBIValidate="false"
+								wcpforms:size="342 null"
+								wcpforms:position="10 50"
+								initializeValueSets="false"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="152 null">Block till message arrives:</xforms:label>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:enableDisableOverridable/>
+								</xforms:action>
+								<xforms:item
+									xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+									<xforms:label>Not set</xforms:label>
+									<xforms:value>none</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>On</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>Off</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:label
+								id="text3"
+								wcpforms:class="f_layout"
+								wcpforms:size="148 25"
+								wcpforms:position="370 10">Runtime settings:</xforms:label>
+							<xforms:select1
+								appearance="check"
+								id="checkWaitForMessageOverridable"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="148 null"
+								wcpforms:position="370 50">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								id="selectMessageFormatForGet"
+								doEBIValidate="false"
+								initializeValueSets="false"
+								wcpforms:enumerated="false"
+								multiple="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="342 null"
+								wcpforms:position="10 80">
+								<xforms:label
+									wcpforms:class="h_label left_align"
+									wcpforms:size="152 null">Message format:</xforms:label>
+								<xforms:action
+									ev:event="xforms-value-changed">
+									<xforms:enableDisableOverridable/>
+								</xforms:action>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkMessageFormatForGet"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="148 null"
+								wcpforms:position="370 80">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:textarea
+								id="textareaInputMessageSelector"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="342 40"
+								wcpforms:position="10 110">
+								<xforms:label
+									wcpforms:class="v_label">Input message selector:</xforms:label>
+							</xforms:textarea>
+							<xforms:select1
+								appearance="check"
+								id="checkUseCorrelation"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="334 null"
+								wcpforms:position="10 180">
+								<xforms:label>Use correlation ID in request - reply</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+							<xforms:select1
+								appearance="check"
+								id="checkInputMessageSelector"
+								doEBIValidate="false"
+								wcpforms:class="f_layout"
+								wcpforms:size="146 null"
+								wcpforms:position="370 120">
+								<xforms:label>Overridable</xforms:label>
+								<xforms:item>
+									<xforms:label>true</xforms:label>
+									<xforms:value>true</xforms:value>
+								</xforms:item>
+								<xforms:item>
+									<xforms:label>false</xforms:label>
+									<xforms:value>false</xforms:value>
+								</xforms:item>
+							</xforms:select1>
+						</xforms:group>
+					</xforms:group>
+				</xforms:group>
+			</xbody>
+			<xformsscript
+				xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+				<![CDATA[function Form_Init(eventObject)
+{
+  inpMethodsetName.hide();
+    checkSendMessage.setValue( "true" );
+    checkGetMessage.setValue( "true" );
+    checkRequestMessage.setValue( "true" );
+
+    checkAttachToSOAPNode.setValue( "true" );
+    inpMethodName.setValue( "Message" );
+
+    checkReply2Destination.setValue( "true" );
+    checkMessageType.setValue( "true" );
+    checkJMSType.setValue( "true" );
+    checkPersistentDeliveryOverride.setValue( "true" );
+    checkExpiration.setValue( "true" );
+    checkPriority.setValue( "true" );
+    checkMessageFormatForSend.setValue( "true" );
+    selectProperties.setValue( "change" );
+    checkWaitForMessageOverridable.setValue( "true" );
+    checkMessageFormatForGet.setValue( "true" );
+    checkInputMessageSelector.setValue( "true" );
+    checkUseCorrelation.setValue( "true" );
+}
+function Form_InitDone(eventObject)
+{
+
+    if( application.event.data != null )
+    {
+        var appData = application.event.data;
+        selectDestinationForGet.setValue( appData.destination );
+        selectDestinationForSend.setValue( appData.destination );
+    }
+
+    selectSOAPProcessor_Change();
+    selectMethodSet_Change( { "srcElement": selectMethodSet } );
+    addCreateMethodSetSelection();
+    
+/*    selectSOAPProcessor.fireEvent( "onchange" );
+    selectMethodSet.fireEvent( "onchange" );
+    selectReply2Destination.fireEvent( "onchange" );
+    selectMessageType.fireEvent( "onchange" );
+    selectPersistentDelivery.fireEvent( "onchange" );
+    selectMessageFormatForSend.fireEvent( "onchange" );
+    selectMessageFormatForGet.fireEvent( "onchange" );
+    selectWaitForMessage.fireEvent( "onchange" );
+    selectPriority.fireEvent( "onchange" );*/
+}
+
+function selectMethodSet_Change(eventObject)
+{
+    var value = eventObject.srcElement.getValue();
+    
+    if(! value || value == "create")
+    {
+        inpMethodsetName.show();
+        checkAttachToSOAPNode.show();
+        inpNamespace.setValue( "http://schemas.cordys.com/jms/" );
+        inpNamespace.enable();
+    } else
+    {
+        inpMethodsetName.hide();
+        checkAttachToSOAPNode.hide();
+        inpNamespace.setValue( getNodeValue( GetMethodSetsModel.getData(), "//tuple/old/entry[ @dn='"+eventObject.srcElement.getValue()+"' ]/labeleduri/string", "" ) );
+    inpNamespace.disable();
+    }
+}
+
+function inpMethodName_Change(eventObject)
+{
+    if( eventObject.srcElement.previousValue == null || inpSendMessageName.getValue() == "Send"+eventObject.srcElement.previousValue )
+        inpSendMessageName.setValue( "Send"+eventObject.srcElement.getValue() );
+    if( eventObject.srcElement.previousValue == null || inpGetMessageName.getValue() == "Get"+eventObject.srcElement.previousValue )
+        inpGetMessageName.setValue( "Get"+eventObject.srcElement.getValue() );
+    if( eventObject.srcElement.previousValue == null || inpRequestMessageName.getValue() == "Request"+eventObject.srcElement.previousValue )
+        inpRequestMessageName.setValue( "Request"+eventObject.srcElement.getValue() );
+
+    eventObject.srcElement.previousValue = eventObject.srcElement.getValue();
+}
+
+function GetMethodSetsModel_OnRequest(eventObject)
+{
+    var method = eventObject.request.selectSingleNode( ".//GetMethodSets" );
+    WebForm.setNodeValue( method , "dn", "cn=method sets,"+application.organization, false );
+    WebForm.setNodeValue( method , "labeleduri", "*", false );
+}
+
+function GetSOAPProcessorModel_OnRequest(eventObject)
+{
+    var method = eventObject.request.selectSingleNode( ".//GetSoapProcessors" );
+    WebForm.setNodeValue( method , "dn", application.organization, false );
+}
+
+function selectMethodSet_BeforeFill(eventObject)
+{
+    if( eventObject.inputOption.value != "create" && getNodeValue( eventObject.xml, "implementationclass/string", "" ) != "com.cordys.coe.ac.jmsconnector.JMSConnector" )
+        eventObject.returnValue = false;
+
+ addCreateMethodSetSelection();
+}
+
+/**
+ * Needed as a separate function as the event handlers are not called when there is no method sets in the organizations.
+ */
+function addCreateMethodSetSelection() {
+ if (selectMethodSet.getAllOptions().length == 0) {
+     selectMethodSet.addOption( { "description": "Create new method set", "value": "create" }, false );
+ }
+}
+
+
+function checkSendMessage_Change(eventObject)
+{
+    if( eventObject.srcElement.checked )
+        inpSendMessageName.enable();
+  else
+        inpSendMessageName.disable();
+}
+
+
+function checkGetMessage_Change(eventObject)
+{
+    if( eventObject.srcElement.checked )
+        inpGetMessageName.enable();
+    else
+        inpGetMessageName.disable();    
+}
+
+function checkRequestMessage_Change(eventObject)
+{
+    if( eventObject.srcElement.checked )
+        inpRequestMessageName.enable();
+    else
+        inpRequestMessageName.disable();        
+}
+
+var soapProcessorFillXML = new ActiveXObject( "Microsoft.XMLDOM" );
+function selectSOAPProcessor_BeforeFill(eventObject)
+{
+    soapProcessorFillXML.loadXML( getNodeValue( eventObject.xml, "bussoapprocessorconfiguration/string", "" ) );
+    if( getNodeValue( soapProcessorFillXML, "//configuration/@implementation", "" ) != "com.cordys.coe.ac.jmsconnector.JMSConnector" )
+        eventObject.returnValue = false; // don't show
+}
+
+var soapProcessorConfigXML = new ActiveXObject( "Microsoft.XMLDOM" );
+function selectSOAPProcessor_Change(eventObject)
+{
+    soapProcessorConfigXML.loadXML( getNodeValue( GetSOAPProcessorModel.activeTuple, "bussoapprocessorconfiguration/string", "" ) );
+    var configuration = soapProcessorConfigXML.documentElement.selectSingleNode( "configuration" );
+
+    // now repopulate all related selects
+    populateWithDestinations( selectDestinationForSend, configuration, false, false );
+    populateWithDestinations( selectDestinationForGet, configuration, false, true );
+    populateWithDestinations( selectReply2Destination, configuration, true, null );
+
+    populateWithMessageFormats( selectMessageFormatForGet, configuration );
+    populateWithMessageFormats( selectMessageFormatForSend, configuration );
+}
+
+function populateWithDestinations( select, config, addNone, isForRead )
+{
+    //select.innerHTML = "";
+    select.removeAll();
+    var firstValue = null;
+    if( addNone )
+    {
+        //option = document.createElement( "option" );
+        //option.value = "none";
+        //option.innerText = "Not set";
+        //select.insertAdjacentElement( "AfterBegin", option );
+        select.addOption( { "value": "none", "description": "Not set" }, false );
+        firstValue = "none";
+    }      
+            
+    var dms = config.selectNodes( "//DestinationManagers/DestinationManager" );
+    var i = dms.length;
+    //var ogroup;
+    var destinations;
+    var j;
+    var option;
+    while( i-- )
+    {
+         //ogroup = document.createElement( "optgroup" );
+         //ogroup.label = dms[ i ].getAttribute( "name" );
+         select.addOption( { "value": "", "description": dms[ i ].getAttribute( "name" ) }, false );
+         
+         destinations = dms[ i ].selectNodes( "Destination" );
+         j = destinations.length;
+         while( j-- )
+         {
+             if( isForRead != null )
+             {
+                 if( isForRead && getNodeValue( destinations[ j ], "access", "" ).indexOf( "read" ) == -1 ) continue;
+                 if( !isForRead && getNodeValue( destinations[ j ], "access", "" ).indexOf( "write" ) == -1 ) continue;
+             }
+             //option = document.createElement( "option" );
+             //option.value = dms[ i ].getAttribute( "name" )+"."+destinations[ j ].getAttribute( "name" );
+    //option.innerText = destinations[ j ].getAttribute( "name" );
+             //ogroup.insertAdjacentElement( "AfterBegin", option );
+             select.addOption( { "value": dms[ i ].getAttribute( "name" )+"."+destinations[ j ].getAttribute( "name" )
+                                      , "description": "   " +destinations[ j ].getAttribute( "name" ) }, false );
+             if( firstValue == null )
+                 firstValue = dms[ i ].getAttribute( "name" )+"."+destinations[ j ].getAttribute( "name" );                                
+
+         }
+         //select.insertAdjacentElement( "AfterBegin", ogroup );
+    }
+    
+    if( firstValue != null )
+        select.setValue( firstValue );
+}
+
+function populateWithMessageFormats( select, config )
+{
+    //select.innerHTML = ""; // clear
+    select.removeAll();
+    
+    var protocols = config.selectNodes( "//binarytransformationconfig/parser/config/@protocol" );
+    var i = protocols.length;
+
+    /*var option = document.createElement( "option" );
+    option.value = "none";
+    option.innerText = "Not set";
+    select.appendChild( option );
+    
+    option = document.createElement( "option" );
+    option.value = "base64encoded";
+    option.innerText = "Base64 Encoded";
+    select.appendChild( option );
+    */
+    select.addOption( { "value": "none", "description": "Not set" }, false );
+    select.addOption( { "value": "base64encoded", "description": "Base64 Encoded" }, false );
+    
+    if( i == 0 ) return;
+    
+    //var ogroup = document.createElement( "optgroup" );
+    //ogroup.label = "Binary Transformation Protocols";
+    //select.appendChild( ogroup );
+    
+    while( i-- )
+    {
+         /*option = document.createElement( "option" );
+         option.value = protocols[ i ].text;
+         option.innerText = protocols[ i ].text;
+         ogroup.insertAdjacentElement( "AfterBegin", option );*/
+         select.addOption( { "value": protocols[ i ].text, "description": protocols[ i ].text }, false );
+    }
+}
+
+function enableDisableOverridable( eventObject )
+{
+  return; // disable this behaviour for now
+    var list = {
+        "selectReply2Destination": checkReply2Destination,
+   "selectMessageType": checkMessageType,
+        "selectPersistentDelivery": checkPersistentDeliveryOverride,
+        "selectMessageFormatForSend": checkMessageFormatForSend,
+       "selectMessageFormatForGet": checkMessageFormatForGet,
+        "selectWaitForMessage": checkWaitForMessageOverridable,
+        "selectPriority": checkPriority
+    }
+    
+    if( eventObject.srcElement.getValue() == "none" )
+    {
+        list[ eventObject.srcElement.id ].disable();
+        list[ eventObject.srcElement.id ].prevValue = list[ eventObject.srcElement.id ].getValue();
+        list[ eventObject.srcElement.id ].setValue( "true" );
+    } else
+    {
+        list[ eventObject.srcElement.id ].setValue( list[ eventObject.srcElement.id ].prevValue );
+        list[ eventObject.srcElement.id ].enable();
+    }
+}
+
+function generateMethod()
+{
+    var updateRequest = createSOAPRequest( "http://schemas.cordys.com/1.0/ldap", "Update" );
+    var updateMethod = updateRequest.documentElement.selectSingleNode( "//Update" );
+    var orgDN = application.organization;
+    var methodSetDN;
+    
+    if( selectMethodSet.getValue() == "create" )
+    {
+        // check if it not already exists
+        if( GetMethodSetsModel.getData().selectSingleNode( "//entry[ cn/string = '"+inpMethodsetName.getValue()+"' ]" ) != null
+        || GetMethodSetsModel.getData().selectSingleNode( "//entry[ labeleduri/string = '"+inpNamespace.getValue()+"' ]" ) != null )
+        {
+            alert( "Method set name or namespace already exists. Choose different names" );
+            return;
+        }
+
+        methodSetDN = "cn="+inpMethodsetName.getValue()+",cn=method sets,"+orgDN;
+    
+        var createMethodSet = xmlCreateMethodSetDefinition.documentElement.cloneNode( true );
+        WebForm.setNodeValue( createMethodSet, "new/entry/@dn", "cn="+inpMethodsetName.getValue()+",cn=method sets,"+orgDN, false );
+        WebForm.setNodeValue( createMethodSet, "new/entry/labeleduri/string", inpNamespace.getValue(), false );
+        WebForm.setNodeValue( createMethodSet, "new/entry/cn/string", inpMethodsetName.getValue(), false );
+
+        updateMethod.appendChild( createMethodSet );
+    } else
+        methodSetDN = selectMethodSet.getValue();
+
+    if( checkSendMessage.getValue() == "true" )
+    {
+        var sendInterface = getXMLAndReplaceNamespace( getSendInterface(), "xmlns:tns=\"http://schemas.cordys.com/1.0/jms\"", "xmlns:tns=\""+inpNamespace.getValue()+"\"" );
+        var sendImplementation = getSendImplementation();
+        
+        var createMethod = xmlCreateMethodDefinition.documentElement.cloneNode( true );
+        WebForm.setNodeValue( createMethod, "new/entry/@dn", "cn="+inpSendMessageName.getValue()+","+methodSetDN, false );
+        WebForm.setNodeValue( createMethod, "new/entry/cn/string", inpSendMessageName.getValue(), false );
+   WebForm.setNodeValue( createMethod, "new/entry/busmethodimplementation/string", sendImplementation.xml, false );
+        WebForm.setNodeValue( createMethod, "new/entry/busmethodwsdl/string", sendInterface, false );
+        
+        updateMethod.appendChild( createMethod );
+    }
+
+    if( checkGetMessage.getValue() == "true" )
+    {
+        var getInterface = getXMLAndReplaceNamespace( getGetInterface(), "xmlns:tns=\"http://schemas.cordys.com/1.0/jms\"", "xmlns:tns=\""+inpNamespace.getValue()+"\"" );
+        var getImplementation = getGetImplementation();
+        
+        var createMethod = xmlCreateMethodDefinition.documentElement.cloneNode( true );
+        WebForm.setNodeValue( createMethod, "new/entry/@dn", "cn="+inpGetMessageName.getValue()+","+methodSetDN, false );
+        WebForm.setNodeValue( createMethod, "new/entry/cn/string", inpGetMessageName.getValue(), false );
+        WebForm.setNodeValue( createMethod, "new/entry/busmethodimplementation/string", getImplementation.xml, false );
+        WebForm.setNodeValue( createMethod, "new/entry/busmethodwsdl/string", getInterface, false );
+
+        updateMethod.appendChild( createMethod );
+    }
+    if( checkRequestMessage.getValue() == "true" )
+    {
+        var requestInterface = getXMLAndReplaceNamespace( getRequestInterface(), "xmlns:tns=\"http://schemas.cordys.com/1.0/jms\"", "xmlns:tns=\""+inpNamespace.getValue()+"\"");
+        var requestImplementation = getRequestImplementation();
+
+        var createMethod = xmlCreateMethodDefinition.documentElement.cloneNode( true );
+        WebForm.setNodeValue( createMethod, "new/entry/@dn", "cn="+inpRequestMessageName.getValue()+","+methodSetDN, false );
+        WebForm.setNodeValue( createMethod, "new/entry/cn/string", inpRequestMessageName.getValue(), false );
+        WebForm.setNodeValue( createMethod, "new/entry/busmethodimplementation/string", requestImplementation.xml, false );
+        WebForm.setNodeValue( createMethod, "new/entry/busmethodwsdl/string", requestInterface, false );
+        
+        updateMethod.appendChild( createMethod );
+    }
+    
+    // attach to soap node (do this @ the end)
+    if( selectMethodSet.getValue() == "create" && checkAttachToSOAPNode.getValue() == "true" )
+    {
+        var soapNodeDN = selectSOAPProcessor.getValue();
+        soapNodeDN = soapNodeDN.substr( soapNodeDN.indexOf( ",cn=" )+1 ); // makes it skip the first cn defintion, resulting in the soap node dn
+   var data = getDataForRequest( "http://schemas.cordys.com/1.0/ldap", "GetLDAPObject", { "dn": soapNodeDN } );
+        var tuple = data.selectSingleNode( "//tuple" );
+     
+        if( tuple == null )
+        {
+            alert( "SOAP Node not found... Cannot create the methods!" );
+            return;
+        }
+        
+        var newTuple = tuple.appendChild( tuple.ownerDocument.createElement( "new" ) );
+        newTuple.appendChild( tuple.selectSingleNode( "old/*" ).cloneNode( true ) );
+        var labeleduri = newTuple.selectSingleNode( "*/labeleduri" );
+        labeleduri.appendChild( labeleduri.ownerDocument.createElement( "string" ) ).text = inpNamespace.getValue();
+  var busmethodsets = newTuple.selectSingleNode( "*/busmethodsets" );
+        busmethodsets.appendChild( busmethodsets.ownerDocument.createElement( "string" ) ).text = methodSetDN ;
+        
+        updateMethod.appendChild( tuple.cloneNode( true ) );
+    }
+    
+    var result = executeRequest( updateRequest );
+    if( result.selectSingleNode( "//SOAP:Fault" ) == null ) alert( "Succesfully created the methods" );    
+}
+
+function removeIfComponentHasValue( component, value, schema, elementName )
+{
+    if( component.getValue() == value )
+    {
+        var node = schema.selectSingleNode( ".//element[ @name='"+elementName +"' ]"  );
+        if( node == null )
+            node = schema.selectSingleNode( ".//attribute[ @name='"+elementName +"' ]"  );
+
+  if (node != null) {
+   node.parentNode.removeChild( node );
+  }
+    }
+}
+
+function getSendInterface()
+{
+    var xml = xmlDefaultInterfaceDefinition.documentElement.cloneNode( true );
+    var schema = xml.selectSingleNode( ".//types" );
+    schema.appendChild( xmlXSDSendDefinition.documentElement.cloneNode( true ) );
+    
+    removeIfComponentHasValue( checkReply2Destination, "false", schema, "reply2destination" );
+    removeIfComponentHasValue( checkMessageFormatForSend, "false", schema, "messageformat" );
+    removeIfComponentHasValue( checkMessageType, "false", schema, "messagetype" );
+    removeIfComponentHasValue( checkJMSType, "false", schema, "jmstype" );
+    removeIfComponentHasValue( checkPersistentDeliveryOverride, "false", schema, "persistentdelivery" );
+    removeIfComponentHasValue( checkExpiration, "false", schema, "expiration" );
+    removeIfComponentHasValue( checkPriority, "false", schema, "priority" );
+    removeIfComponentHasValue( selectProperties, "none", schema, "properties" );
+    
+    return getDefaultInterfaceDefinition( xml, inpSendMessageName.getValue() );
+}
+function getGetInterface()
+{
+    var xml = xmlDefaultInterfaceDefinition.documentElement.cloneNode( true );
+ var schema = xml.selectSingleNode( ".//types" );
+    schema.appendChild( xmlXSDGetDefinition.documentElement.cloneNode( true ) );
+
+    removeIfComponentHasValue( checkWaitForMessageOverridable, "false", schema, "waitformessage" );
+    removeIfComponentHasValue( checkMessageFormatForGet, "false", schema, "responsemessageformat" );
+    removeIfComponentHasValue( checkInputMessageSelector, "false", schema, "messageselector" );
+
+    return getDefaultInterfaceDefinition( xml, inpGetMessageName.getValue() );
+}
+function getRequestInterface()
+{
+    var xml = xmlDefaultInterfaceDefinition.documentElement.cloneNode( true );
+    var schema = xml.selectSingleNode( ".//types" );
+    schema.appendChild( xmlXSDRequestDefinition.documentElement.cloneNode( true ) );
+
+    removeIfComponentHasValue( checkReply2Destination, "false", schema, "reply2destination" );
+    removeIfComponentHasValue( checkMessageFormatForSend, "false", schema, "messageformat" );
+    removeIfComponentHasValue( checkMessageType, "false", schema, "messagetype" );
+    removeIfComponentHasValue( checkJMSType, "false", schema, "jmstype" );
+    removeIfComponentHasValue( checkPersistentDeliveryOverride, "false", schema, "persistentdelivery" );
+    removeIfComponentHasValue( checkExpiration, "false", schema, "expiration" );
+    removeIfComponentHasValue( checkPriority, "false", schema, "priority" );
+    removeIfComponentHasValue( selectProperties, "none", schema, "properties" );
+
+
+    return getDefaultInterfaceDefinition( xml, inpRequestMessageName.getValue() );
+}
+
+function getXMLAndReplaceNamespace( xml, curStr, newStr )
+{
+    // this function changes a namespace definition on the xml string representing the official xml..
+    return xml.xml.replace( curStr, newStr );
+} 
+
+function getDefaultInterfaceDefinition( xml, forMethodName )
+{
+    var methodSetName = inpMethodName.getValue();
+    if( selectMethodSet.getValue() != "create" )
+        methodSetName = selectMethodSet.getSelectedOptions()[ 0 ].description;
+
+    var namespace = inpNamespace.getValue();
+    
+ // set the method set name in the right places:
+    WebForm.setNodeValue( xml, "portType/@name", methodSetName + " PortType", false );
+    
+    // set the namespace in the right places:
+    WebForm.setNodeValue( xml, "@targetNamespace", namespace, false );
+    WebForm.setNodeValue( xml, "types/schema/@targetNamespace", namespace, false );
+    
+    // set the name in the right places:
+    WebForm.setNodeValue( xml, "portType/operation/@name", forMethodName, false );
+    WebForm.setNodeValue( xml, "portType/operation/input/@message", "tns:"+forMethodName+"Input", false );
+    WebForm.setNodeValue( xml, "portType/operation/output/@message", "tns:"+forMethodName+"Output", false );
+    WebForm.setNodeValue( xml, "message[ @name='messageInput' ]/part/@element", "tns:"+forMethodName, false );
+    WebForm.setNodeValue( xml, "message[ @name='messageInput' ]/@name", forMethodName+"Input", false );
+    WebForm.setNodeValue( xml, "message[ @name='messageOutput' ]/part/@element", "tns:"+forMethodName+"Response", false );
+    WebForm.setNodeValue( xml, "message[ @name='messageOutput' ]/@name", forMethodName+"Output", false );
+    WebForm.setNodeValue( xml, "types/schema/element[ @name='message' ]/@name", forMethodName, false );
+    WebForm.setNodeValue( xml, "types/schema/element[ @name='messageResponse' ]/@name", forMethodName+"Response", false );
+    
+   return xml;
+}
+
+function getSendImplementation( xml )
+{
+    if( xml == null )
+        xml = xmlImplementationDefinitionForSend.documentElement.cloneNode( true );
+    var parameters = xml.selectSingleNode( "parameters" );
+    
+    var node = parameters.selectSingleNode( "destination" );
+    if( selectDestinationForSend.getValue() != "none" )
+        node.text = selectDestinationForSend.getValue();
+    
+    node = parameters.selectSingleNode( "reply2destination" );
+    if( selectReply2Destination.getValue() != "none" )
+        node.text = selectReply2Destination.getValue();
+    node.setAttribute( "overridable", checkReply2Destination.getValue() );
+
+    node = parameters.selectSingleNode( "messagetype" );
+ if( selectMessageType.getValue() != "none" )
+ node.text = selectMessageType.getValue();
+    node.setAttribute( "overridable", checkMessageType.getValue() );
+
+    node = parameters.selectSingleNode( "jmstype" );
+    if( inpJMSType.getValue() != "" )
+        node.text = inpJMSType.getValue();
+    node.setAttribute( "overridable", checkJMSType.getValue() );
+
+    node = parameters.selectSingleNode( "persistentdelivery" );
+  if( selectPersistentDelivery.getValue() != "none" )
+        node.text = selectPersistentDelivery.getValue();
+    node.setAttribute( "overridable", checkPersistentDeliveryOverride.getValue() );
+
+    node = parameters.selectSingleNode( "expiration" );
+    if( selectPriority.getValue() != "" )
+        node.text = inpExpiration.getValue();
+    node.setAttribute( "overridable", inpExpiration.getValue() );
+
+    node = parameters.selectSingleNode( "priority" );
+    if( selectPriority.getValue() != "none" )
+        node.text = selectPriority.getValue();
+    node.setAttribute( "overridable", checkPriority.getValue() );
+
+    node = parameters.selectSingleNode( "messageformat" );
+    if( selectMessageFormatForSend.getValue() != "none" )
+        node.text = selectMessageFormatForSend.getValue();
+    node.setAttribute( "overridable", checkMessageFormatForSend.getValue() );
+
+    node = parameters.selectSingleNode( "properties" );
+    var pTuples = PropertiesModel.getData().selectNodes( "//tuple[ not( @pseudosync_id ) ]" );
+    var i = pTuples.length;
+    node.setAttribute( "override", selectProperties.getValue() );
+    while( i-- )
+    {
+        var p = pTuples[ i ].selectSingleNode( "new/*/property" ) || pTuples[ i ].selectSingleNode( "old/*/property" );
+  node.appendChild( p.cloneNode( true ) );
+    }
+    
+    return xml;
+}
+
+function getGetImplementation( xml )
+{
+    var forRequest = false;
+    if( xml == null )
+        xml = xmlImplementationDefinitionForGet.documentElement.cloneNode( true );
+    else
+        forRequest = true;
+    var parameters = xml.selectSingleNode( "parameters" );
+    
+    var node;
+   
+    if( !forRequest )
+    {
+        node = parameters.selectSingleNode( "destination" );
+        node.text = selectDestinationForSend.getValue();
+
+        node = parameters.selectSingleNode( "inputmessageselector" );
+        if( textareaInputMessageSelector.getValue() != "" )
+            node.text = textareaInputMessageSelector.getValue();
+        node.setAttribute( "overridable", checkInputMessageSelector.getValue() );
+    } 
+    
+    node = parameters.selectSingleNode( "waitformessage" );
+    if( selectWaitForMessage.getValue() != "none" )
+        node.text = selectWaitForMessage.getValue();
+    node.setAttribute( "overridable", selectWaitForMessage.getValue() );
+
+    node = parameters.selectSingleNode( "responsemessageformat" );
+    if( selectMessageFormatForGet.getValue() != "none" )
+        node.text = selectMessageFormatForGet.getValue();
+    node.setAttribute( "overridable", checkMessageFormatForGet.getValue() );
+    
+ return xml;
+}
+
+function getRequestImplementation()
+{
+    var xml = xmlImplementationDefinitionForRequest.documentElement.cloneNode( true );
+    var parameters = xml.selectSingleNode( "parameters" );
+    
+    getSendImplementation( xml );
+    getGetImplementation( xml );
+    
+    node = parameters.selectSingleNode( "usecorrelation" );
+    node.text = checkUseCorrelation.getValue();
+    
+    return xml;
+}
+function inpMethodsetName_Change(eventObject)
+{
+    if( typeof( inpMethodsetName.prevValue ) == "undefined" || inpMethodsetName.prevValue == null )
+        inpMethodsetName.prevValue = "";
+    
+    if( inpNamespace.getValue() == "http://schemas.cordys.com/jms/"+inpMethodsetName.prevValue )
+        inpNamespace.setValue( "http://schemas.cordys.com/jms/"+inpMethodsetName.getValue() );
+        
+    inpMethodsetName.prevValue = inpMethodsetName.getValue();
+}
+function selectDestination_Change(eventObject)
+{
+    if( eventObject.srcElement.getValue() == "" )
+    {
+        var startIndex = eventObject.srcElement.getSelectedIndex();
+        var currentIndex = startIndex + 1;
+        var options = eventObject.srcElement.getOptions();
+        while( true )
+        {
+   if (options.length == 0) {
+    break;
+   }
+    
+            if( options[ currentIndex ].value != "" )
+            {
+                eventObject.srcElement.setSelectedIndex( currentIndex  );
+                break;
+   }
+            currentIndex++;
+            if( currentIndex == options.length )
+                currentIndex = 0;
+                
+            if( currentIndex == startIndex )
+            {
+                alert( "You can't select a destination manager here" );
+                break;
+            }
+        }        
+    }
+}]]>
+			</xformsscript>
+			<xforms:action
+				ev:event="xforms-init">
+				<xforms:Form_Init/>
+			</xforms:action>
+			<xforms:action
+				ev:event="xforms-initialize-done">
+				<xforms:Form_InitDone/>
+			</xforms:action>
+		</xformhtml>
+	</content>
+</caf>
