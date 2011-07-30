@@ -1,0 +1,7 @@
+<!--
+	This buildfile should be used to customize the default behavior of the build tasks.
+	All targets can be overridden in this file.
+-->
+<project>
+
+</project>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>JMS Connector Project Changelog</title>
+        <author email="mpoyhonen@cordys.com">Mikko Poyhonen</author>
+    </properties>
+    <template>
+        <release date="YYYY-MM-DD" description="OPTIONAL DESCRIPTION" version="x.y.z">
+            <action dev="USER" type="add|fix|update|change">
+				Description about the action.
+			</action>
+        </release>
+    </template>
+    <body>
+        <release description="Development release" version="@NEXT@">
+				</release>
+			<release date="2011-01-13" description="Developement release" version="1.1.38">
+				<action dev="srkrishnan" type="fix">Organization DN and User DN does not get listed down in Processor properties.This is fixed now</action>
+			</release>
+<release date="2010-11-09" description="Migration release" version="1.1.37">
+        <action dev="rbiju" type="change">Migration of code base to opensource model</action>
+				</release>
+<release date="2010-06-03" description="Development release" version="1.1.36">
+            <action dev="0" type="change">The JMS message selector can be disabled at connector level. When configuring the JMS connector you can check the 'Disable message selector' checkbox to disable the usage of the 'JMSXDeliveryCount = 1' message selector.</action>
+        </release>
+        <release date="2010-03-04" description="Development release" version="1.1.34">
+            <action dev="mpoyhone" type="change">Default character set for incoming messages is now UTF-8. This can be changed with &lt;charset%gt; element on 
+   DestinationManager, Destination and Trigger elements. Currently this is not available in the configuration page.</action>
+        </release>
+        <release date="2009-06-29" description="Development release" version="1.1.33">
+            <action dev="mpoyhone" type="change">Added trigger timeout parameter to the configuration page.</action>
+        </release>
+        <release date="2009-06-23" description="Development release" version="1.1.32">
+            <action dev="mpoyhone" type="change">Triggers do not use message selector "JMSXDeliveryCount = 1" when JBoss MQ is configured as the destination manager.</action>
+            <action dev="mpoyhone" type="add">Triggers support now MapMessages. The values are returned as an XML structure.</action>
+            <action dev="mpoyhone" type="add">Message selector field is added to destination when a trigger is selected. This can be used to define a custor message selector. If left empty, the default selector is used.</action>
+            <action dev="mpoyhone" type="add">Added trigger SOAP request timeout parameter (request-timeout in the XML). Default value is 30 seconds</action>
+            <action dev="mpoyhone" type="fix">Log messages created by JMS Connector escape CDATA section end marker properly.</action>
+            <action dev="mpoyhone" type="fix">Shutdown JMS message consumer is closed before shutdown JMS session. This fixes hanging problems with multiple WebSphere MQ destination managers.</action>
+            <action dev="mpoyhone" type="change">Dots are now allowed in destination names.</action>
+        </release>
+        <release date="2008-04-10" description="Development release" version="1.1.31">
+            <action dev="mpoyhone" type="unknown">Fixed binary message handling when messagetype was set to base64.</action>
+            <action dev="mpoyhone" type="add">Added 'timeout' parameter for requestMessage and getMessage methods. This timeout is in milliseconds.</action>
+            <action dev="mpoyhone" type="fix">Fixed a synchronization problem with getMessage and requestMessage when a queue read operation with a large timeout would block other read operations.</action>
+            <action dev="mpoyhone" type="fix">Trigger SOAP request contained a wrong fromdestination after queue manager restart.</action>
+            <action dev="mpoyhone" type="change">Trigger SOAP message parameter fromdestination now uses the trigger destination name if the destination physical name cannot be read from the message (WebSphere MQ does not return it).</action>
+        </release>
+        <release date="2008-01-17" description="Development release" version="1.1.30">
+            <action dev="mpoyhone" type="change">WebSphere MQ message ID extension now installs itself event if an existing MQ sendExit was installed. Previously the extension sendExit was not installed and the extension would not work. An error will be put in the log file when an existing sendExit was set.</action>
+            <action dev="pgussow" type="fix">In C3 the whitespaces are preserved. This gives problems when sending a message to a queue. This is now fixed.</action>
+        </release>
+        <release date="2007-10-26" description="Development release" version="1.1.29">
+            <action dev="mpoyhone" type="fix">Small configuration page fixes for C3 release</action>
+        </release>
+        <release date="2007-09-18" description="Development release" version="1.1.28">
+            <action dev="mpoyhone" type="fix">Sometimes JMX components were not properly cleaned up when the
+queue manager was shutting down, so the reconnecting didn't work anymore.</action>
+        </release>
+        <release date="2007-09-04" description="Development release" version="1.1.27">
+            <action dev="mpoyhone" type="fix">Trigger 'fromdestination'  was picked up incorrectly if dynamic destinations were used.</action>
+        </release>
+        <release date="2007-08-15" description="Maintenance release" version="1.1.26">
+            <action dev="mpoyhone" type="fix">Connector page layout now fits better in the new SOAP processor wizard page</action>
+            <action dev="mpoyhone" type="fix">The current organization determination works now for the new SOAP processor wizard.</action>
+            <action dev="mpoyhone" type="fix">The default behavior of requestMessage is fixed. 
+  The message ID of the message sent by requestMessage 
+  was not used as the correlation ID when reading the reply message. 
+  Any message was returned regardless of the correlation ID.</action>
+        </release>
+        <release date="2007-07-11" description="Development release" version="1.1.25">
+            <action dev="mpoyhone" type="fix">Fixed the BTC configuration page. If all settings were removed, those were not removed from LDAP.</action>
+            <action dev="mpoyhone" type="fix">Removed the extra classpath entry generation to the connector configuration</action>
+        </release>
+        <release date="2007-05-23" description="Development release" version="1.1.24">
+            <action dev="mpoyhone" type="fix">C3 fixes for the user drop down. Also trigger deletion is fixed.</action>
+            <action dev="mpoyhone" type="change">Paramters that are as attributes in the method element can be left as empty strings.</action>
+        </release>
+        <release date="2007-05-21" description="Development release" version="1.1.23">
+            <action dev="mpoyhone" type="fix">UI fixes for C2 fix pack 3</action>
+        </release>
+        <release date="2007-03-30" description="Development release" version="1.1.22">
+            <action dev="mpoyhone" type="update">Project site update release.</action>
+        </release>
+        <release date="2007-03-23" description="Development release" version="1.1.21">
+            <action dev="mpoyhone" type="add">New build for the project site.</action>
+        </release>
+        <release date="2007-02-14" description="Maintenance release" version="1.1.20">
+            <action dev="mpoyhone" type="fix">Fixed the organization problem in new SOAP node wizard page. Previously
+a Studio role was required in the system organization.</action>
+        </release>
+        <release date="2007-02-06" description="Maintenance release" version="1.1.19">
+            <action dev="mpoyhone" type="fix">Configuration page fixes for Cordys BCP C2.002</action>
+        </release>
+        <release date="2007-02-06" description="Maintenance release" version="1.1.18">
+            <action dev="mpoyhone" type="change">When a trigger fails, the message is put into the error queue within
+that same session. This helps a lot if triggers fail at the same time
+and saves queue manager connection creation.</action>
+            <action dev="mpoyhone" type="change">Trigger thread count parameter is no longer required in the XForm page. 
+This caused some weird problems when a trigger was not selected.</action>
+        </release>
+        <release date="2007-01-31" description="Maintenance release" version="1.1.17">
+            <action dev="mpoyhone" type="add">Trigger listener threads added.</action>
+        </release>
+        <release date="2007-01-29" description="Maintenance release" version="1.1.16">
+            <action dev="mpoyhone" type="fix">Fixed bug in shutdown queue 'none' setting.</action>
+            <action dev="mpoyhone" type="fix">Fixed a bug in trigger XML messages when no BTC was used.</action>
+        </release>
+        <release date="2007-01-19" description="Maintenance release" version="1.1.15">
+            <action dev="mpoyhone" type="add">Added possiblility to use a defined queue for a shutdown destination (also listening for shutdowns can be disabled).</action>
+            <action dev="mpoyhone" type="add">Added a parameter for checking the connection on a SOAP request (default is off).</action>
+        </release>
+        <release date="2007-01-18" description="Maintenance release" version="1.1.14">
+            <action dev="mpoyhone" type="change">Passwords are now base64 encoded</action>
+            <action dev="mpoyhone" type="add">Added connection authentication properties</action>
+            <action dev="mpoyhone" type="fix">Fixed a null pointer exception when messageid was not set.</action>
+            <action dev="mpoyhone" type="fix">Saving the SOAP processor configuragion now gives the restart message.</action>
+        </release>
+        <release date="2006-10-27" description="Maintenance release" version="1.1.13">
+            <action dev="mpoyhone" type="add">Added support for dynamic queues.</action>
+            <action dev="mpoyhone" type="add">Added ActiveMQ to the provider select.</action>
+        </release>
+        <release date="2006-10-16" description="Development release" version="1.1.12">
+            <action dev="mpoyhone" type="none">Internal release</action>
+        </release>
+        <release date="2006-10-16" description="Development release" version="1.1.11">
+            <action dev="mpoyhone" type="fix">Removed an alert box from generate method sets</action>
+        </release>
+        <release date="2006-10-16" description="Development release" version="1.1.10">
+            <action dev="mpoyhone" type="fix">If a tuple XML element was present in trigger parameters, the XForm didn't work properly. This is now fixed.</action>
+            <action dev="mpoyhone" type="add">Import/export dialog added to the configuration page.</action>
+            <action dev="mpoyhone" type="fix">Fixed a problem with destination manager restart. Restart did't work
+if the connection close() method threw an exception.</action>
+            <action dev="mpoyhone" type="change">Moved log messages to the resource bundle.</action>
+            <action dev="mpoyhone" type="fix">Fixed trigger user DN was not filled when a user didn't have description field in LDAP.</action>
+            <action dev="hvdvlier" type="fix">JMS vendor field was not shown correctly.</action>
+        </release>
+        <release date="2006-09-20" description="Development release" version="1.1.9">
+            <action dev="mpoyhone" type="add">Added WebSphere MQ specific message ID passing feature.</action>
+            <action dev="gsmits" type="add">Added return type 'xmlMessage' to getMessage method.</action>
+        </release>
+        <release date="2006-09-05" description="Development release" version="1.1.8">
+            <action dev="mpoyhone" type="none">Internal release</action>
+        </release>
+    </body>
+</document>
