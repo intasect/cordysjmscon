@@ -697,7 +697,7 @@
 											doEBIValidate="false"
 											wcpforms:textalign="left_align"
 											wcpforms:class="v_layout">
-											<xforms:label>Enable Durable Subscription</xforms:label>
+											<xforms:label>Is Durable Subscriber</xforms:label>
 											<xforms:item>
 												<xforms:label>true</xforms:label>
 												<xforms:value>true</xforms:value>
@@ -1437,7 +1437,7 @@ function createConnectorConfiguration(xmlConfig)
              
       var i = bo.childNodes.length;
             while( i-- )
-            {
+        {
                 if( bo.childNodes[ i ].nodeName == "Destination" ) continue;
     var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName ) );
    
@@ -1737,7 +1737,7 @@ function validateDestinationProperties()
       )
     {
          previousTreeNode.select( true );
-     return false;
+         return false;
      }
  return true;
 }
@@ -1859,7 +1859,7 @@ function deleteDestinationItem()
         contextedTreeItem.data.parentNode.removeChild(contextedTreeItem.data);
         contextedTreeItem.remove();
       restartRequired = true;
- }
+    }
 }
 
 function generateMethods()
@@ -1895,8 +1895,8 @@ function setJMSVendorByProviderClass()
         jmsVendorBindingFlag = false;
        return;
  }
-  
-    var options = selJMSVendor.getAllOptions();
+    
+ var options = selJMSVendor.getAllOptions();
     var i = options.length;
     while( i-- )
   {
@@ -1935,7 +1935,7 @@ function selJMSVendor_Change(eventObject)
          }
         }
     } else {
-      inpProviderClass.hide();
+        inpProviderClass.hide();
          inpProviderClass.setValue( selJMSVendor.getValue() );
    
         if (! jmsVendorBindingFlag) {
@@ -2551,7 +2551,7 @@ function ImportConfigButton_Click(eventObject)
 function LoadDialog_OnOk(appData) {
     if (! appData || ! appData.loadedData) {
    alert("Dialog didn't return any data.");
-    return;
+  return;
     }
     
    // Create the 'configuration' root element needed by this connector.
