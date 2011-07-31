@@ -53,6 +53,7 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.jms.Topic;
 
 /**
  * This class contains the trigger definition.
@@ -839,8 +840,24 @@ public class Trigger
                                          this.messageSelector);
         }
 
-        m_consumer = session.createConsumer(m_destination.getInnerDestination(),
+        // Durable subscription can be created for Topic only. The subscriber name is set to Trigger name
+        if (m_destination.isDurableSubscriber())
+        {
+        	if (m_destination instanceof Topic)
+        	{
+        		m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),this.getName());
+        		
+        	}
+        	else
+        	{
+        		throw new JMSException(this.m_destination.getName() + " is not a Topic. Durable subscriber can be created for Topic only.");
+        	}        	 
+        }
+        else
+        {        
+        	m_consumer = session.createConsumer(m_destination.getInnerDestination(),
                                             this.messageSelector);
+        }
         m_consumer.setMessageListener(this);
     }
 

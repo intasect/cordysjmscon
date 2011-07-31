@@ -150,6 +150,14 @@ public class Destination
      * Holds the timeout for actions on the JMS queue.
      */
     private int timeout;
+    /**
+     * Indicates whether or not this is a dynamic destination.
+     */
+    private boolean bIsDurableSubscriber;
+    /**
+     * Indicates whether or not this is a dynamic destination.
+     */
+    private String clientID;
 
     /**
      * Creates a destination and registers it.
@@ -763,6 +771,16 @@ public class Destination
     public boolean isDynamic()
     {
         return bIsDynamic;
+    }
+    
+    /**
+     * Returns the isDynamic.
+     *
+     * @return  Returns the isDynamic.
+     */
+    public boolean isDurableSubscriber()
+    {
+        return bIsDurableSubscriber;
     }
 
     /**
@@ -1399,6 +1417,7 @@ public class Destination
         this.canWrite = config.getDestinationHasWriteAccess(destinationManager.getName(), name);
         this.btcProtocol = config.getDestinationBTProtocol(destinationManager.getName(), name);
         this.bIsDynamic = config.isDestinationDynamic(destinationManager.getName(), name);
+        this.bIsDurableSubscriber = config.isDurableSubscriber(destinationManager.getName(), name);
 
         if (!bIsDynamic)
         {

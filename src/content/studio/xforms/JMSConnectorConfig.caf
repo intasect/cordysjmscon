@@ -1,9 +1,8 @@
 
-<caf
-	xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"
-	xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+<caf>
 	<documentProperties>
-		<name>JMSConnectorConfig</name>
+		<name
+			label="">/XForms/JMSConnectorConfig</name>
 		<description>JMSConnectorConfig</description>
 		<caption/>
 		<mimeType>caf</mimeType>
@@ -21,17 +20,18 @@
 			<publishPath>/cordys/XForms/JMSConnectorConfig.caf</publishPath>
 		</customProperties>
 	</documentProperties>
-	<content>
+	<content
+		xmlns="http://schemas.cordys.com/1.0/cas-vcm">
 		<xformhtml
 			xformsversion="1"
 			key="/JMSConnectorConfig_vcmdemo10.caf"
 			focusatstartup="true"
-			wcpforms:vcmVersion="vcmdemo10"
 			xmlns:eibus="http://schemas.cordys.com/wcp/webframework"
 			xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
 			xmlns:ev="http://www.w3.org/2001/xml-events"
 			xmlns:xforms="http://www.w3.org/2002/xforms/cr"
-			xmlns="http://schemas.cordys.com/1.0/xform">
+			xmlns="http://schemas.cordys.com/1.0/xform"
+			wcpforms:vcmVersion="vcmdemo10">
 			<xhead
 				xmlns="http://schemas.cordys.com/1.0/cas-vcm">
 				<script
@@ -377,7 +377,7 @@
 						model="MainConfigModel"
 						wcpforms:layout="free"
 						wcpforms:class="f_layout"
-						wcpforms:size="487 110"
+						wcpforms:size="354 110"
 						wcpforms:anchors="0px 0px 700px null"
 						wcpforms:position="0 0"
 						wcpforms:labelalign="ontop">
@@ -467,7 +467,7 @@
 						appearance="tabgroup"
 						id="tabgroup"
 						wcpforms:class="f_layout"
-						wcpforms:size="1167 740"
+						wcpforms:size="1034 436"
 						wcpforms:anchors="10px 120px 10px 4px"
 						wcpforms:position="10 120">
 						<xforms:group
@@ -490,7 +490,7 @@
 										id="treeDestinationsContainer"
 										wcpforms:layout="free"
 										wcpforms:class="f_layout"
-										wcpforms:size="233 707"
+										wcpforms:size="233 403"
 										wcpforms:anchors="10px 11px 14px 0px"
 										wcpforms:position="10 11"
 										wcpforms:labelalign="ontop">
@@ -500,7 +500,7 @@
 											id="treeDestinations"
 											wcpforms:layout="vertical"
 											wcpforms:class="f_layout"
-											wcpforms:size="231 705"
+											wcpforms:size="231 401"
 											wcpforms:anchors="0px 0px 0px 0px"
 											wcpforms:position="0 0"
 											wcpforms:labelalign="ontop"
@@ -540,7 +540,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">Name</xforms:label>
+												wcpforms:size="130 null">Name</xforms:label>
 											<xforms:action
 												ev:event="xforms-before-data-bind">
 												<xforms:inpDestinationName_BeforeBind/>
@@ -564,7 +564,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">JNDI name</xforms:label>
+												wcpforms:size="130 null">JNDI name</xforms:label>
 										</xforms:input>
 										<xforms:select1
 											id="selectQAccess"
@@ -578,7 +578,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">Access</xforms:label>
+												wcpforms:size="130 null">Access</xforms:label>
 											<xforms:item
 												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
 												<xforms:label>Read/Write</xforms:label>
@@ -605,7 +605,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">Error destination</xforms:label>
+												wcpforms:size="130 null">Error destination</xforms:label>
 											<xforms:item
 												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
 												<xforms:label>None</xforms:label>
@@ -624,7 +624,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">Inbound message trigger</xforms:label>
+												wcpforms:size="130 null">Inbound message trigger</xforms:label>
 											<xforms:item
 												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
 												<xforms:label>None</xforms:label>
@@ -648,7 +648,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">Trigger Threads</xforms:label>
+												wcpforms:size="130 null">Trigger Threads</xforms:label>
 										</xforms:input>
 										<xforms:input
 											id="inpMessageSelector"
@@ -660,7 +660,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">Trigger Message Selector</xforms:label>
+												wcpforms:size="130 null">Trigger Message Selector</xforms:label>
 										</xforms:input>
 										<xforms:select1
 											id="selectQBTCProtocol"
@@ -674,7 +674,7 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">BTC protocol</xforms:label>
+												wcpforms:size="130 null">BTC protocol</xforms:label>
 											<xforms:item
 												xmlns:xforms="http://www.w3.org/2002/xforms/cr">
 												<xforms:label>None</xforms:label>
@@ -688,8 +688,29 @@
 											wcpforms:class="v_layout">
 											<xforms:label
 												wcpforms:class="h_label left_align"
-												wcpforms:size="126 null">Dynamic Destination Parameters</xforms:label>
+												wcpforms:size="130 null">Dynamic Destination Parameters</xforms:label>
 										</xforms:input>
+										<xforms:select1
+											appearance="check"
+											id="chkDurableSubscription"
+											ref="is-durable-subscriber"
+											doEBIValidate="false"
+											wcpforms:textalign="left_align"
+											wcpforms:class="v_layout">
+											<xforms:label>Enable Durable Subscription</xforms:label>
+											<xforms:item>
+												<xforms:label>true</xforms:label>
+												<xforms:value>true</xforms:value>
+											</xforms:item>
+											<xforms:item>
+												<xforms:label>false</xforms:label>
+												<xforms:value>false</xforms:value>
+											</xforms:item>
+											<xforms:action
+												ev:event="xforms-value-changed">
+												<xforms:chkDurableSubscription_Change/>
+											</xforms:action>
+										</xforms:select1>
 										<xforms:select1
 											appearance="check"
 											id="chkDynamicDestination"
@@ -1319,7 +1340,11 @@ function Form_Init(eventObject)
     tabgroup.addListener( "ontabfocus", onTabControlTabSelect );
     gbDestinationManagerDetails.hide();
     gbDestinationDetails.hide();
-    
+    //hide durable subscription related fields
+    chkDurableSubscription.hide();
+
+
+      
     // Set this here because otherwise it breaks the design time form.
     frameConfigBTC.frameElement.src= "/cordys/cpc/parser/parserserviceproperty.htm";
     frameConfigBTC.frameElement.style.border = "none";
@@ -1410,11 +1435,11 @@ function createConnectorConfiguration(xmlConfig)
             // sync back with previousTreeNode
             previousTreeNode.data.setAttribute( "name", bo.getAttribute( "name" ) );
              
-            var i = bo.childNodes.length;
+      var i = bo.childNodes.length;
             while( i-- )
             {
                 if( bo.childNodes[ i ].nodeName == "Destination" ) continue;
-                var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName ) );
+    var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName ) );
    
                 ptnNode.text = bo.childNodes[ i ].text;
             }  
@@ -1577,7 +1602,7 @@ function onTreeDestinationManagerSelect( selectedNode )
         {
             var bo = data.selectSingleNode( "//tuple/new/*" ); // PARSERBUG: */
       
-            // sync back with previousTreeNode
+         // sync back with previousTreeNode
              previousTreeNode.data.setAttribute( "name", bo.getAttribute( "name" ) );
  
        var i = bo.childNodes.length;
@@ -1592,10 +1617,10 @@ function onTreeDestinationManagerSelect( selectedNode )
     
       ptnNode.text = bo.childNodes[i].text;
    }     
-            
+  
             restartRequired = true; 
         }
-   }
+ }
     
     var newXML = new ActiveXObject( "Microsoft.XMLDOM" );
     
@@ -1603,7 +1628,7 @@ function onTreeDestinationManagerSelect( selectedNode )
     
     var old = newXML.documentElement.selectSingleNode("//old");
     
-    old.appendChild(selectedNode.data.cloneNode(true));
+   old.appendChild(selectedNode.data.cloneNode(true));
     DestinationConfigurationModel.putData(newXML, false, null, true);
     DestinationConfigurationModel.activeTuple = DestinationConfigurationModel.getData().selectSingleNode("//tuple/old/*"); // PARSERBUG: */
    
@@ -1626,7 +1651,7 @@ function onTreeDestinationSelect( selectedNode )
 
  var data = DestinationConfigurationModel.getData();
     if( previousTreeNode != null )
-    {
+ {
  if( !validateDestinationProperties() ) return;
     
     if( WebForm.isDataToSynchronize( data ) )
@@ -1678,14 +1703,14 @@ function onTreeRootSelect()
       if( WebForm.isDataToSynchronize( data ) )
       {
        var bo = data.selectSingleNode( "//tuple/new/*" ); // PARSERBUG: */
-            // sync back with previousTreeNode
+    // sync back with previousTreeNode
   previousTreeNode.data.setAttribute( "name", bo.getAttribute( "name" ) );
     
             var i = bo.childNodes.length;
             while( i-- )
        {
                  if( bo.childNodes[ i ].nodeName == "Destination" ) continue;
-                 var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName  ) );
+     var ptnNode = previousTreeNode.data.selectSingleNode( bo.childNodes[ i ].nodeName ) || previousTreeNode.data.appendChild( previousTreeNode.data.ownerDocument.createElement( bo.childNodes[ i ].nodeName  ) );
       
                  ptnNode.text = bo.childNodes[ i ].text;
              } 
@@ -1707,12 +1732,12 @@ function validateDestinationProperties()
 {
     if( previousTreeNode != null 
     && ( ( previousTreeNode.data.nodeName == "DestinationManager" && !gbDestinationManagerDetails.view.validateObjectInstances() )
-            || ( previousTreeNode.data.nodeName == "Destination" && !gbDestinationDetails.view.validateObjectInstances() )
+        || ( previousTreeNode.data.nodeName == "Destination" && !gbDestinationDetails.view.validateObjectInstances() )
     )
       )
     {
          previousTreeNode.select( true );
-         return false;
+     return false;
      }
  return true;
 }
@@ -1828,13 +1853,13 @@ function deleteDestinationItem()
      if( previousTreeNode == contextedTreeItem )
  {
    previousTreeNode = null;
-         onTreeRootSelect();
+       onTreeRootSelect();
         }
  
         contextedTreeItem.data.parentNode.removeChild(contextedTreeItem.data);
         contextedTreeItem.remove();
-        restartRequired = true;
-    }
+      restartRequired = true;
+ }
 }
 
 function generateMethods()
@@ -1864,13 +1889,13 @@ function setJMSVendorByProviderClass()
     if (providerValue == "")
     {
         inpProviderClass.show();
-      selJMSVendor.value = "com.sun.jndi.fscontext.RefFSContextFactory";
+    selJMSVendor.value = "com.sun.jndi.fscontext.RefFSContextFactory";
         jmsVendorBindingFlag = true;
         selJMSVendor.setValue("com.sun.jndi.fscontext.RefFSContextFactory");
         jmsVendorBindingFlag = false;
        return;
  }
-    
+  
     var options = selJMSVendor.getAllOptions();
     var i = options.length;
     while( i-- )
@@ -1899,18 +1924,18 @@ function selJMSVendor_Change(eventObject)
         var value = inpProviderClass.getValue();
         var options = selJMSVendor.getAllOptions();
         var i = options.length;
-       
+     
        // only clear if the selected value was one of the available options
-        while( i-- )
+    while( i-- )
         {
             if( value == options[ i ].value )
             {
                 inpProviderClass.setValue( "" );
                 break;
-            }
+         }
         }
     } else {
-        inpProviderClass.hide();
+      inpProviderClass.hide();
          inpProviderClass.setValue( selJMSVendor.getValue() );
    
         if (! jmsVendorBindingFlag) {
@@ -1969,7 +1994,7 @@ function loadBTConfig()
         reFillBTCProtocolSelect();
     }
     
-    textareaBTConfigLoading = false;
+ textareaBTConfigLoading = false;
 }
 
 function reFillErrorDestinationSelect()
@@ -1978,7 +2003,7 @@ function reFillErrorDestinationSelect()
         return;
     }
     
-    // remove all options:
+   // remove all options:
     selectErrorDestination.removeAll();
     selectErrorDestination.addOption( { "value": "none", "description": " " }, false );
     
@@ -1997,18 +2022,18 @@ function reFillErrorDestinationSelect()
         for (var j=0; j < destinations.length; j++)
         {
              if ( previousTreeNode && destinations[j] == previousTreeNode.data) {
-                continue;
-            }
+      continue;
+  }
             
    if (getNodeValue( destinations[j], "access", "" ).indexOf("write") == -1) {
                 continue; // skip this one.., because it is not writable
-     }
+   }
          
     var name = tId + ": " + destinations[j].getAttribute("name");
             var value = tId + "." + destinations[j].getAttribute("name");
  
  selectErrorDestination.addOption( { "value": value, "description": name }, false );
-        }
+      }
     } 
     
     var value = "none";
@@ -2041,7 +2066,7 @@ function fillShutdownDestinationSelect()
             continue;
         }
         
-        if (getNodeValue( destinations[ j ], "access", "" ).indexOf("read") == -1 ) {
+     if (getNodeValue( destinations[ j ], "access", "" ).indexOf("read") == -1 ) {
           continue; // skip this one.., because it is not readable
        }
       
@@ -2058,7 +2083,7 @@ function fillShutdownDestinationSelect()
     var value = "";
  
     if (previousTreeNode) {
-        value = getNodeValue(previousTreeNode.data, "errordestination", "");
+   value = getNodeValue(previousTreeNode.data, "errordestination", "");
     }
  
     if (selectShutdownDestination.model && selectShutdownDestination.model.activeTuple) {
@@ -2280,8 +2305,8 @@ function textareaTriggerParameters_Change(eventObject)
     if ( tpNode != null ) nbo.removeChild( tpNode );
        
     tpNode = xml.createElement("parameters");
-    tpNode.appendChild(xml.createTextNode(xml.documentElement.xml));
-    
+ tpNode.appendChild(xml.createTextNode(xml.documentElement.xml));
+ 
   
     nbo.appendChild(tpNode);   
     xml = null;
@@ -2321,7 +2346,7 @@ function loadTriggerParameterConfig()
            textareaTriggerParameters.setValue( xmlUtil.xml2nicestring( node, 0, null ) );
    }
  return;
-      }  
+  }  
     }
    
      textareaTriggerParameters.setValue( "<parameters>\n</parameters>" );
@@ -2349,7 +2374,7 @@ function tableTrigger_OnSelectRow(eventObject)
 
     if( inTableTriggerOnSelectRow ) return;
     inTableTriggerOnSelectRow = true;
-   
+  
     if( MessageTriggerModel.previousActiveTuple != null )
     {
   var newIndex = tableTriggers.getIndex();
@@ -2493,7 +2518,7 @@ function inpTriggerODN_BeforeBind(eventObject)
         GetOrganizationalUsersModel.reset();
 
         // Only replace the old if it belongs to the new organization. Otherwise the new UDN is already set.
-         if (sOldUDN && sOldUDN.lastIndexOf("," + sNewODN) == sOldUDN.length - sNewODN.length) {
+      if (sOldUDN && sOldUDN.lastIndexOf("," + sNewODN) == sOldUDN.length - sNewODN.length) {
               inpTriggerUDN.setValue(sOldUDN);
          }
      }
@@ -2588,13 +2613,13 @@ function chkDynamicDestination_Change(eventObject)
         inpDestJndiName.hide();
         selectQInboundMsgTrigger.hide();
         chkUseAsDefaultErrorQueue.hide();
- chkUseAsDefaultErrorQueue.setValue("false");
-     inpDynamicDestinationParameters.show();
+        chkUseAsDefaultErrorQueue.setValue("false");
+        inpDynamicDestinationParameters.show();
     } else {
-  inpDestJndiName.show();
-    selectQInboundMsgTrigger.show();
+        inpDestJndiName.show();
+        selectQInboundMsgTrigger.show();
         chkUseAsDefaultErrorQueue.show();
- inpDynamicDestinationParameters.hide();
+        inpDynamicDestinationParameters.hide();
    }
 }
 function chkUseAsDefaultErrorQueue_Change(eventObject)
@@ -2602,9 +2627,28 @@ function chkUseAsDefaultErrorQueue_Change(eventObject)
     if (chkUseAsDefaultErrorQueue.getValue() == "true") {
         selectErrorDestination.hide();
         chkDynamicDestination.hide();
-   chkDynamicDestination.setValue("false");
+        chkDynamicDestination.setValue("false");
  } else {
-   selectErrorDestination.show();
+        selectErrorDestination.show();
+        chkDynamicDestination.show();
+    }
+}
+
+
+/*********************************
+1. By Default this field and ClientID field will be hidden
+2. Enable Durable Subscription field is visible only on selection of Inbound Trigger
+3. On Check of Enable Durable Subscription, the Client ID feild will be visible, by setting the default blank
+
+
+*********************************/
+
+function chkDurableSubscription_Change(eventObject)
+{
+   if (chkDurableSubscription.getValue() == "true") {
+        chkDynamicDestination.hide();
+        chkDynamicDestination.setValue("false");
+   } else {
         chkDynamicDestination.show();
     }
 }
@@ -2620,9 +2664,12 @@ function selectQInboundMsgTrigger_Change(eventObject)
     
    inputTriggerListeners.show();
    inpMessageSelector.show();
+   chkDurableSubscription.show();
     } else {
         inputTriggerListeners.hide();
         inpMessageSelector.hide();
+        chkDurableSubscription.setValue("false");        
+        chkDurableSubscription.hide();
     }
 }
 
@@ -2631,7 +2678,9 @@ function selectQInboundMsgTrigger_Change(eventObject)
 function GetOrganizationsModel_OnResponse(eventObject)
 {
  
-}]]>
+}
+ 
+    ]]>
 			</xformsscript>
 			<xforms:action
 				ev:event="xforms-init">
@@ -2646,5 +2695,12 @@ function GetOrganizationsModel_OnResponse(eventObject)
 				<xforms:Form_BeforeClose/>
 			</xforms:action>
 		</xformhtml>
+		<modelProperties
+			xmlns="">
+			<dataObject>
+				<uniquenamemodel>Yes</uniquenamemodel>
+				<migratetouniquename>true</migratetouniquename>
+			</dataObject>
+		</modelProperties>
 	</content>
 </caf>
