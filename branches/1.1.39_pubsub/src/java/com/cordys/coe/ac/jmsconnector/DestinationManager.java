@@ -714,15 +714,20 @@ public class DestinationManager
     private Connection createConnection()
                                  throws JMSException
     {
+    	Connection connection = null;
         if ((sConnectionUsername != null) && (sConnectionUsername.length() > 0) &&
                 (sConnectionPassword != null))
         {
-            return cFactory.createConnection(sConnectionUsername, sConnectionPassword);
+        	connection = cFactory.createConnection(sConnectionUsername, sConnectionPassword);
         }
         else
         {
-            return cFactory.createConnection();
+        	connection = cFactory.createConnection();
         }
+        //set clientID for publish subscriber. It will be set to the Destination Manager name
+        connection.setClientID(this.getName());
+
+        return connection;
     }
 
     /**
