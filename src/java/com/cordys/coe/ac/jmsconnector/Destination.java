@@ -1281,7 +1281,7 @@ public class Destination
         	// Fix if Triggers are not created at the start. E.g If Durable subscribes are not created
             for (Trigger tTrigger : lTriggers)
             {	
-            	tTrigger.close(true);                
+            	tTrigger.close(false);                
             }
             // TODO: Do we need to make it Thread Safe?
             lTriggers.clear();			
