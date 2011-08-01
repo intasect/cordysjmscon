@@ -122,6 +122,11 @@ public class Trigger
      * The JMS session for this trigger.
      */
     private Session session;
+    /**
+     * This is used for creating Durable subscriber
+     */
+    private String m_subscriptionName;
+    
 
     /**
      * Constructor which initializes this trigger. This will activate as soon as the destination
@@ -155,6 +160,7 @@ public class Trigger
         this.m_triggerName = triggerName;
         this.m_config = config;
         this.m_destination = destination;
+        this.m_subscriptionName = sJmxId;
         this.m_btcProtocol = config.getDestinationBTProtocol(manager.getName(),
                                                              destination.getName());
         this.messageSelector = config.getDestinationMessageSelector(manager.getName(),
@@ -843,15 +849,19 @@ public class Trigger
         // Durable subscription can be created for Topic only. The subscriber name is set to Trigger name
         if (m_destination.isDurableSubscriber())
         {
-        	if (m_destination instanceof Topic)
-        	{
-        		m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),this.getName());
-        		
-        	}
-        	else
-        	{
-        		throw new JMSException(this.m_destination.getName() + " is not a Topic. Durable subscriber can be created for Topic only.");
-        	}        	 
+			if (JMSConnector.jmsLogger.isDebugEnabled())
+			{
+			   JMSConnector.jmsLogger.debug("Creating Durable subscriber with Subscription Name :"+this.m_subscriptionName);
+			}
+			        	
+			try
+			{
+				m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),this.m_subscriptionName);
+				
+			}catch (ClassCastException e)
+			{
+					throw new JMSException(this.m_destination.getName() + " is not a Topic. Durable subscriber can be created for Topic only.");
+			}        	 
         }
         else
         {        

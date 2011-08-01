@@ -835,7 +835,7 @@ public class JMSConnectorConfiguration
     public boolean isDurableSubscriber(String managerName, String destinationName)
                                  throws GeneralException
     {
-        return "true".equals(getDestinationProperties(managerName, destinationName).getStringValue("is-durbale-subscriber"));
+        return "true".equals(getDestinationProperties(managerName, destinationName).getStringValue("is-durable-subscriber"));
     }
 
     /**
