@@ -782,6 +782,11 @@ public class Destination
     {
         return bIsDurableSubscriber;
     }
+    
+    public boolean isInitializedCorrectly()
+    {
+    	return initializedCorrectly;
+    }
 
     /**
      * DOCUMENTME.
@@ -1189,6 +1194,7 @@ public class Destination
     void createAnyTrigger()
                    throws GeneralException, JMSException
     {
+    	 
         // create trigger session if configured
         if (canRead && config.getDestinationHasTrigger(destinationManager.getName(), name))
         {
@@ -1208,10 +1214,20 @@ public class Destination
             {
                 String sTriggerJmxId = triggerName + ((i > 0) ? ("-" + (i + 1)) : "");
 
-                lTriggers.add(new Trigger(connector, destinationManager, config, this, triggerName,
-                                          managedComponent, sTriggerJmxId));
-            }
-        }
+                try 
+                {
+                	 lTriggers.add(new Trigger(connector, destinationManager, config, this, triggerName,
+                             		managedComponent, sTriggerJmxId));	
+				}
+                catch (GeneralException e) 
+		    	{
+                	initializedCorrectly = false;
+		    		JMSConnector.jmsLogger.error("Failed to Create Trigger "+triggerName,e);
+		    		throw new GeneralException(e);
+		    		 
+				}
+            }        
+    	}
     }
 
     /**
@@ -1262,12 +1278,15 @@ public class Destination
     {
         if (lTriggers != null)
         {
+        	// Fix if Triggers are not created at the start. E.g If Durable subscribes are not created
             for (Trigger tTrigger : lTriggers)
-            {
-                tTrigger.createConsumer();
+            {	
+            	tTrigger.close(true);                
             }
+            // TODO: Do we need to make it Thread Safe?
+            lTriggers.clear();			
+            createAnyTrigger();
         }
-
         if (!bIsDynamic)
         {
             // re-register it:

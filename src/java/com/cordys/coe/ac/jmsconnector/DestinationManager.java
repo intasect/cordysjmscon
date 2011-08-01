@@ -269,6 +269,30 @@ public class DestinationManager
                 }
             }
         }
+        else
+        {
+        	// This is a fix for configuring JMS Connector in failover mode. 
+        	// JMS Connector needs to be configured in failover mode if the destinations or topics
+        	
+        	// restart all destinations
+            Enumeration<com.cordys.coe.ac.jmsconnector.Destination> enumDestinations = destinations.elements();
+            while (enumDestinations.hasMoreElements())
+            {
+            	Destination destination = enumDestinations.nextElement();
+            	if (!destination.isInitializedCorrectly())
+            	{
+            		try 
+            		{
+						destination.restart();
+					}catch (Exception e) 
+					{
+						int i =1;
+						//Ignore
+					}
+            	}
+            }
+        	 
+        }
     }
 
     /**
