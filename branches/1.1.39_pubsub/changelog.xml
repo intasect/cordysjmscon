@@ -14,6 +14,9 @@
     <body>
         <release description="Development release" version="@NEXT@">
 				</release>
+			<release date="2011-08-05" description="Developement release" version="1.1.39">
+				<action dev="psrinivas2" type="add">Enable durbale subscription on a Topic destination.This can be enabled by checking Is Durable Subscription on Destination</action>
+			</release>
 			<release date="2011-01-13" description="Developement release" version="1.1.38">
 				<action dev="srkrishnan" type="fix">Organization DN and User DN does not get listed down in Processor properties.This is fixed now</action>
 			</release>
