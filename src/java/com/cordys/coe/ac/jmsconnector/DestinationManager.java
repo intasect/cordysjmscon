@@ -269,6 +269,29 @@ public class DestinationManager
                 }
             }
         }
+        else
+        {
+        	// This is a fix for configuring JMS Connector in failover mode. 
+        	// JMS Connector needs to be configured in failover mode if the destinations or topics
+        	
+        	// restart all destinations
+            Enumeration<com.cordys.coe.ac.jmsconnector.Destination> enumDestinations = destinations.elements();
+            while (enumDestinations.hasMoreElements())
+            {
+            	Destination destination = enumDestinations.nextElement();
+            	if (!destination.isInitializedCorrectly())
+            	{
+            		try 
+            		{
+            			destination.restart();
+					}catch (Exception e) 
+					{
+						JMSConnector.jmsLogger.warn("Unable to restart the destination "+destination.getName(),e);												
+					}
+            	}
+            }
+        	 
+        }
     }
 
     /**
@@ -714,15 +737,20 @@ public class DestinationManager
     private Connection createConnection()
                                  throws JMSException
     {
+    	Connection connection = null;
         if ((sConnectionUsername != null) && (sConnectionUsername.length() > 0) &&
                 (sConnectionPassword != null))
         {
-            return cFactory.createConnection(sConnectionUsername, sConnectionPassword);
+        	connection = cFactory.createConnection(sConnectionUsername, sConnectionPassword);
         }
         else
         {
-            return cFactory.createConnection();
+        	connection = cFactory.createConnection();
         }
+        //set clientID for publish subscriber. It will be set to the Destination Manager name
+        connection.setClientID(this.getName());
+
+        return connection;
     }
 
     /**

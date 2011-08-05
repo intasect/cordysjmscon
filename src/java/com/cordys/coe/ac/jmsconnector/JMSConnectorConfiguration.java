@@ -821,6 +821,22 @@ public class JMSConnectorConfiguration
     {
         return "true".equals(getDestinationProperties(managerName, destinationName).getStringValue("is-dynamic"));
     }
+    
+    /**
+     * DOCUMENTME.
+     *
+     * @param   managerName      DOCUMENTME
+     * @param   destinationName  DOCUMENTME
+     *
+     * @return  DOCUMENTME
+     *
+     * @throws  GeneralException  DOCUMENTME
+     */
+    public boolean isDurableSubscriber(String managerName, String destinationName)
+                                 throws GeneralException
+    {
+        return "true".equals(getDestinationProperties(managerName, destinationName).getStringValue("is-durable-subscriber"));
+    }
 
     /**
      * DOCUMENTME.
