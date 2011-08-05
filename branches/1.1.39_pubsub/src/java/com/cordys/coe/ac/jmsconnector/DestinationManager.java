@@ -283,11 +283,10 @@ public class DestinationManager
             	{
             		try 
             		{
-						destination.restart();
+            			destination.restart();
 					}catch (Exception e) 
 					{
-						int i =1;
-						//Ignore
+						JMSConnector.jmsLogger.warn("Unable to restart the destination "+destination.getName(),e);												
 					}
             	}
             }

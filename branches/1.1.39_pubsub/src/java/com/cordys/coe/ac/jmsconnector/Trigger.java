@@ -856,8 +856,14 @@ public class Trigger
 				{
 				   JMSConnector.jmsLogger.debug("Creating Durable subscriber with Subscription Name :"+this.m_subscriptionName);
 				}
-				
-				m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),this.m_subscriptionName);				
+				if (m_destination.getInnerDestination() instanceof Topic)
+				{
+					m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),this.m_subscriptionName);
+				}
+				else
+				{
+					throw new GeneralException(this.m_destination.getName() + " is not a Topic. Durable subscriber can be created for Topic only.");
+				}
 	        }
 	        else
 	        {        
@@ -866,9 +872,6 @@ public class Trigger
 	        }
 	        m_consumer.setMessageListener(this);
 	        created = true;	        
-		}catch (ClassCastException e)
-		{
-			throw new JMSException(this.m_destination.getName() + " is not a Topic. Durable subscriber can be created for Topic only.");
 		}catch (JMSException e)
 		{
 			throw e;
