@@ -150,6 +150,14 @@ public class Destination
      * Holds the timeout for actions on the JMS queue.
      */
     private int timeout;
+    /**
+     * Indicates whether or not this is a dynamic destination.
+     */
+    private boolean bIsDurableSubscriber;
+    /**
+     * Indicates whether or not this is a dynamic destination.
+     */
+    private String clientID;
 
     /**
      * Creates a destination and registers it.
@@ -764,6 +772,21 @@ public class Destination
     {
         return bIsDynamic;
     }
+    
+    /**
+     * Returns the isDynamic.
+     *
+     * @return  Returns the isDynamic.
+     */
+    public boolean isDurableSubscriber()
+    {
+        return bIsDurableSubscriber;
+    }
+    
+    public boolean isInitializedCorrectly()
+    {
+    	return initializedCorrectly;
+    }
 
     /**
      * DOCUMENTME.
@@ -1171,6 +1194,7 @@ public class Destination
     void createAnyTrigger()
                    throws GeneralException, JMSException
     {
+    	 
         // create trigger session if configured
         if (canRead && config.getDestinationHasTrigger(destinationManager.getName(), name))
         {
@@ -1190,10 +1214,20 @@ public class Destination
             {
                 String sTriggerJmxId = triggerName + ((i > 0) ? ("-" + (i + 1)) : "");
 
-                lTriggers.add(new Trigger(connector, destinationManager, config, this, triggerName,
-                                          managedComponent, sTriggerJmxId));
-            }
-        }
+                try 
+                {
+                	 lTriggers.add(new Trigger(connector, destinationManager, config, this, triggerName,
+                             		managedComponent, sTriggerJmxId));	
+				}
+                catch (GeneralException e) 
+		    	{
+                	initializedCorrectly = false;
+		    		JMSConnector.jmsLogger.error("Failed to Create Trigger "+triggerName,e);
+		    		throw new GeneralException(e);
+		    		 
+				}
+            }        
+    	}
     }
 
     /**
@@ -1244,12 +1278,15 @@ public class Destination
     {
         if (lTriggers != null)
         {
+        	// Fix if Triggers are not created at the start. E.g If Durable subscribes are not created
             for (Trigger tTrigger : lTriggers)
-            {
-                tTrigger.createConsumer();
+            {	
+            	tTrigger.close(false);                
             }
+            // TODO: Do we need to make it Thread Safe?
+            lTriggers.clear();			
+            createAnyTrigger();
         }
-
         if (!bIsDynamic)
         {
             // re-register it:
@@ -1399,6 +1436,7 @@ public class Destination
         this.canWrite = config.getDestinationHasWriteAccess(destinationManager.getName(), name);
         this.btcProtocol = config.getDestinationBTProtocol(destinationManager.getName(), name);
         this.bIsDynamic = config.isDestinationDynamic(destinationManager.getName(), name);
+        this.bIsDurableSubscriber = config.isDurableSubscriber(destinationManager.getName(), name);
 
         if (!bIsDynamic)
         {

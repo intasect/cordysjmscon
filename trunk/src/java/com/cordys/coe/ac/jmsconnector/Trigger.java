@@ -53,6 +53,7 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.jms.Topic;
 
 /**
  * This class contains the trigger definition.
@@ -121,6 +122,11 @@ public class Trigger
      * The JMS session for this trigger.
      */
     private Session session;
+    /**
+     * This is used for creating Durable subscriber
+     */
+    private String m_subscriptionName;
+    
 
     /**
      * Constructor which initializes this trigger. This will activate as soon as the destination
@@ -154,6 +160,7 @@ public class Trigger
         this.m_triggerName = triggerName;
         this.m_config = config;
         this.m_destination = destination;
+        this.m_subscriptionName = sJmxId;
         this.m_btcProtocol = config.getDestinationBTProtocol(manager.getName(),
                                                              destination.getName());
         this.messageSelector = config.getDestinationMessageSelector(manager.getName(),
@@ -826,22 +833,61 @@ public class Trigger
     void createConsumer()
                  throws GeneralException, JMSException
     {
-        if ((session != null) || (m_consumer != null))
-        {
-            throw new GeneralException("Trigger is already initialized!");
-        }
+    	boolean created = false;        
+        try
+		{        	
+	    	if ((session != null) || (m_consumer != null))
+	        {
+	            throw new GeneralException("Trigger is already initialized!");
+	        }
+	    	
+	        session = m_destinationManager.createTriggerSession();
+	
+	        if (JMSConnector.jmsLogger.isDebugEnabled())
+	        {
+	            JMSConnector.jmsLogger.debug("Creating message consumer with specific message selector: " +
+	                                         this.messageSelector);
+	        }	        
+	
+	        // Durable subscription can be created for Topic only. The subscriber name is set to Trigger name
+	        if (m_destination.isDurableSubscriber())
+	        {
+				if (JMSConnector.jmsLogger.isDebugEnabled())
+				{
+				   JMSConnector.jmsLogger.debug("Creating Durable subscriber with Subscription Name :"+this.m_subscriptionName);
+				}
+				if (m_destination.getInnerDestination() instanceof Topic)
+				{
+					m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),this.m_subscriptionName);
+				}
+				else
+				{
+					throw new GeneralException(this.m_destination.getName() + " is not a Topic. Durable subscriber can be created for Topic only.");
+				}
+	        }
+	        else
+	        {        
+	        	m_consumer = session.createConsumer(m_destination.getInnerDestination(),
+	                                            this.messageSelector);
+	        }
+	        m_consumer.setMessageListener(this);
+	        created = true;	        
+		}catch (JMSException e)
+		{
+			throw e;
+		}catch (Exception e)
+		{	
+			throw new GeneralException(e);
+		}
+		finally
+		{
+			// Shutdown the Trigger 
+			if (!created) 
+			{
+				close(false);
+			}
+		}
 
-        session = m_destinationManager.createTriggerSession();
-
-        if (JMSConnector.jmsLogger.isDebugEnabled())
-        {
-            JMSConnector.jmsLogger.debug("Creating message consumer with specific message selector: " +
-                                         this.messageSelector);
-        }
-
-        m_consumer = session.createConsumer(m_destination.getInnerDestination(),
-                                            this.messageSelector);
-        m_consumer.setMessageListener(this);
     }
 
     /**
