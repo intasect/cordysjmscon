@@ -1,0 +1,488 @@
+
+<caf>
+	<documentProperties>
+		<name>JC_ConfigLoadDialog</name>
+		<description>XMLStore Load and Save Dialog</description>
+		<caption/>
+		<mimeType>caf</mimeType>
+		<notes/>
+		<version>vcmdemo10</version>
+		<revision/>
+		<createdBy></createdBy>
+		<creationDate></creationDate>
+		<lastModifiedBy></lastModifiedBy>
+		<lastModificationDate></lastModificationDate>
+	</documentProperties>
+	<content>
+		<xformhtml
+			xmlns=""
+			xformsversion="1"
+			xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+			xmlns:ev="http://www.w3.org/2001/xml-events"
+			xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+			xmlns:eibus="http://schemas.cordys.com/wcp/webframework"
+			key="/JC_ConfigLoadDialog_vcmdemo10.caf"
+			focusatstartup="true"
+			wcpforms:vcmVersion="vcmdemo10">
+			<xhead
+				xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+				<script
+					src="/cordys/coe/jmsconnector/savedlg.js"
+					sync_id="1"
+				/>
+				<xforms:model
+					id="SaveToXmlStoreModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="false"
+					wcpforms:businessElement="tuple"
+					promptToSave="false"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					wcpforms:nontransactional="true"
+					sync_id="3"
+					associatedmodel="">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+						<wcpforms:dataset
+							src="http://schemas.cordys.com/1.0/xmlstore/UpdateXMLObject"
+							type="get"
+							xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+							<tuple
+								xmlns="http://schemas.cordys.com/1.0/xmlstore"
+								key=""
+								version=""
+								isFolder="false"
+								unconditional="false"
+								recursive="false"
+								lastModified="">
+								<new
+									xmlns="http://schemas.cordys.com/1.0/xmlstore"
+								/>
+							</tuple>
+						</wcpforms:dataset>
+					</xforms:instance>
+					<wcpforms:instanceschema/>
+				</xforms:model>
+				<xforms:model
+					id="XmlStoreFolderModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:automatic="true"
+					wcpforms:businessElement="tuple"
+					promptToSave="false"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					wcpforms:nontransactional="true"
+					sync_id="1"
+					associatedmodel="">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+						<wcpforms:dataset
+							src="http://schemas.cordys.com/1.0/xmlstore/GetCollection"
+							type="get"
+							xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+							<folder
+								xmlns="http://schemas.cordys.com/1.0/xmlstore"
+								recursive="false"
+								detail="false"
+								version=""
+							/>
+						</wcpforms:dataset>
+					</xforms:instance>
+					<wcpforms:instanceschema/>
+					<xforms:action
+						ev:event="xforms-onrequest">
+						<xforms:XmlStoreFolderModel_OnRequest/>
+					</xforms:action>
+					<xforms:action
+						ev:event="xforms-onresponse">
+						<xforms:XmlStoreFolderModel_OnResponse/>
+					</xforms:action>
+					<xforms:action
+						ev:event="xforms-ondatacompleted">
+						<xforms:XmlStoreFolderModel_OnDataCompleted/>
+					</xforms:action>
+				</xforms:model>
+				<xforms:model
+					id="XmlStoreObjectModel"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:nontransactional="true"
+					wcpforms:automatic="false"
+					wcpforms:businessElement="tuple"
+					promptToSave="false"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					isApplyAccessControl="false"
+					associatedmodel="">
+					<xforms:instance
+						wcpforms:timeout="30000"
+						wcpforms:iteratorSize="50"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+						<wcpforms:dataset
+							src="http://schemas.cordys.com/1.0/xmlstore/GetXMLObject"
+							type="get"
+							xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms">
+							<key
+								xmlns="http://schemas.cordys.com/1.0/xmlstore"
+								version=""
+							/>
+						</wcpforms:dataset>
+					</xforms:instance>
+					<wcpforms:instanceschema/>
+				</xforms:model>
+				<xml>
+					<xml
+						id="xmlID"
+					/>
+				</xml>
+			</xhead>
+			<xbody>
+				<xforms:group
+					wcpforms:layout="free"
+					id="xbody_group"
+					wcpforms:labelalign="ontop">
+					<xforms:output
+						id="CurrentFolderOutput"
+						doEBIValidate="false"
+						sync_id="1"
+						wcpforms:class="f_layout"
+						wcpforms:size="440 null"
+						wcpforms:position="27 14">
+						<xforms:label
+							wcpforms:class="v_label">Current Folder</xforms:label>
+					</xforms:output>
+					<xforms:repeat
+						id="XmlStoreEntryTable"
+						nodeset="tuple"
+						model="XmlStoreFolderModel"
+						synchronizedDialogFrame="main"
+						sync_id="1"
+						wcpforms:gridtype="datagrid"
+						wcpforms:checkboxes="false"
+						wcpforms:layout="table"
+						wcpforms:class="f_layout"
+						wcpforms:size="440 220"
+						fixedWidth="true"
+						wcpforms:position="30 50">
+						<xforms:group
+							appearance="elementbar"
+							id="_elementBar">
+							<xforms:group
+								appearance="paginationbar"
+								id="_paginationBar"
+								wcpforms:class="paginationbar">
+								<xforms:trigger
+									id="navFirst1"
+									standardid="navFirst">
+									<xforms:label>
+										<img
+											xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+											src="/cordys/wcp/icons/pagination/first_eb.gif"
+										/>
+									</xforms:label>
+									<xforms:hint>First</xforms:hint>
+								</xforms:trigger>
+								<xforms:trigger
+									id="navPrevious1"
+									standardid="navPrevious">
+									<xforms:label>
+										<img
+											xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+											src="/cordys/wcp/icons/pagination/previous_eb.gif"
+										/>
+									</xforms:label>
+									<xforms:hint>Previous</xforms:hint>
+								</xforms:trigger>
+								<xforms:trigger
+									id="navFind1"
+									standardid="navFind">
+									<xforms:label>
+										<img
+											xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+											src="/cordys/wcp/icons/action/find_eb.gif"
+										/>
+									</xforms:label>
+									<xforms:hint>Find</xforms:hint>
+								</xforms:trigger>
+								<xforms:trigger
+									id="navNext1"
+									standardid="navNext">
+									<xforms:label>
+										<img
+											xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+											src="/cordys/wcp/icons/pagination/next_eb.gif"
+										/>
+									</xforms:label>
+									<xforms:hint>Next</xforms:hint>
+								</xforms:trigger>
+								<xforms:trigger
+									id="navLast1"
+									standardid="navLast">
+									<xforms:label>
+										<img
+											xmlns="http://schemas.cordys.com/1.0/cas-vcm"
+											src="/cordys/wcp/icons/pagination/last_eb.gif"
+										/>
+									</xforms:label>
+									<xforms:hint>Last</xforms:hint>
+								</xforms:trigger>
+							</xforms:group>
+						</xforms:group>
+						<xforms:output
+							id="TupleNameOutput"
+							doEBIValidate="false"
+							sync_id="1"
+							ref="@name"
+							wcpforms:size="330 null">
+							<xforms:label>Name</xforms:label>
+							<xforms:action
+								ev:event="xforms-before-data-bind">
+								<xforms:TupleNameOutput_BeforeBind/>
+							</xforms:action>
+						</xforms:output>
+						<xforms:output
+							id="LevelOutput"
+							ref="@level"
+							model="XmlStoreFolderModel"
+							doEBIValidate="false"
+							sync_id="1">
+							<xforms:label>Level</xforms:label>
+						</xforms:output>
+						<xforms:action
+							ev:event="xforms-onrowselect">
+							<xforms:XmlStoreEntryTable_OnSelectRow/>
+						</xforms:action>
+					</xforms:repeat>
+					<xforms:group
+						id="group1"
+						wcpforms:layout="free"
+						wcpforms:class="f_layout"
+						wcpforms:size="450 50"
+						wcpforms:labelalign="ontop"
+						wcpforms:position="20 280">
+						<xforms:input
+							id="SaveConfigNameInput"
+							doEBIValidate="false"
+							sync_id="1"
+							wcpforms:class="f_layout"
+							wcpforms:size="210 null"
+							wcpforms:position="12 2">
+							<xforms:label
+								wcpforms:class="v_label">Name</xforms:label>
+						</xforms:input>
+						<xforms:group
+							appearance="controlbox"
+							id="controlbox3"
+							controltype="button"
+							wcpforms:layout="horizontal"
+							wcpforms:class="f_layout"
+							wcpforms:align="left_align"
+							wcpforms:size="210 23"
+							wcpforms:position="231 11">
+							<xforms:trigger
+								id="ActionButton"
+								sync_id="1"
+								wcpforms:class="h_button"
+								wcpforms:size="92 23">
+								<xforms:label>Action</xforms:label>
+								<xforms:action
+									ev:event="xforms-activate">
+									<xforms:ActionButton_Click/>
+								</xforms:action>
+							</xforms:trigger>
+							<xforms:trigger
+								id="CancelButton"
+								sync_id="1"
+								wcpforms:class="h_button"
+								wcpforms:size="90 23">
+								<xforms:label>Cancel</xforms:label>
+								<xforms:action
+									ev:event="xforms-activate">
+									<xforms:CancelButton_Click/>
+								</xforms:action>
+							</xforms:trigger>
+						</xforms:group>
+					</xforms:group>
+				</xforms:group>
+			</xbody>
+			<xformsscript
+				xmlns="http://schemas.cordys.com/1.0/cas-vcm">
+				<![CDATA[var appData = null;
+var currentFolder = "/Cordys";
+var isSaveDialog = false;
+var dataToSave = null;
+var loadDataXPath = null;
+
+function Form_Init(eventObject)
+{
+    if (application.event) {
+        appData = application.event.data;            
+    }        
+    
+    //testDialog();
+  
+    if (appData) {
+        if (appData.currentFolder) {
+            currentFolder = appData.currentFolder;
+        }
+        
+        if (appData.isSaveDialog) {
+            isSaveDialog= true;
+            
+            if (! appData.dataToSave) {
+                alert("Data to be saved is not passed to this dialog.");
+                return;
+            }
+ 
+            dataToSave = appData.dataToSave;
+        } else {
+            loadDataXPath = appData.loadDataXPath;
+        }
+    }
+    
+    if (! isSaveDialog) {
+        ActionButton.setLabel("Load");
+        SaveConfigNameInput.hide();
+    } else {
+        ActionButton.setLabel("Save");
+    }
+}
+
+function testDialog() {
+   appData = new Object();
+    appData.isSaveDialog = confirm("Save dialog?");
+    //appData.currentFolder = "/";
+    
+    var xml = new ActiveXObject( "Microsoft.XMLDOM" );
+    
+    xml.loadXML("<test><name>My Save Dialog Test</name></test>");
+    appData.dataToSave = xml.documentElement;
+    appData.loadDataXPath = "configuration[@type]";
+}
+
+function ActionButton_Click(eventObject)
+{
+    var sSelectionKey;
+    
+    if (isSaveDialog) {
+        var sFileName = SaveConfigNameInput.getValue();
+    
+        if (! sFileName ) {
+            alert("Enter a name first.");
+            return;
+        }
+        
+        sSelectionKey = currentFolder + "/" + sFileName ;
+        
+        if (! saveXmlStoreModelData(XmlStoreFolderModel, SaveToXmlStoreModel, sSelectionKey, dataToSave)) {
+            return;
+        }
+
+        if (appData && appData.onok) {
+     appData.onok(appData);
+        }
+    } else {
+        var oRes = getXmlStoreTableSelection(XmlStoreFolderModel, null, XmlStoreObjectModel, loadDataXPath);    
+    
+        if (oRes == null) {
+            return;
+        }
+        
+        if (oRes.isFolder) {
+            alert("Select a file first.");
+        return;
+        }
+        
+        if (! oRes.data) {
+            alert("Selection contains no data.");
+            return;
+     }
+        
+        if (appData && appData.onok) {
+            appData.loadedData = oRes.data.cloneNode(true);
+            appData.onok(appData);
+        }
+    }
+
+    application.container.close();
+}
+
+function CancelButton_Click(eventObject)
+{
+    if (appData && appData.oncancel) {
+        appData.oncancel(appData);
+    }
+
+    application.container.close();
+
+}
+
+function XmlStoreFolderModel_OnRequest(eventObject)
+{
+    CurrentFolderOutput.setValue(currentFolder);
+    setXmlStoreModelRequestKey(eventObject.request, currentFolder);
+}
+
+function XmlStoreEntryTable_OnSelectRow(eventObject)
+{
+    var oRes = getXmlStoreTableSelection(XmlStoreFolderModel, eventObject);    
+    
+    if (oRes == null) {
+        return;
+    }
+    
+    if (oRes.isFolder) {
+        currentFolder = oRes.key;
+        XmlStoreFolderModel.reset();
+    } else {
+        if (isSaveDialog) {
+         SaveConfigNameInput.setValue(oRes.name);
+        }
+    }
+}
+function XmlStoreFolderModel_OnResponse(eventObject)
+{    
+    sortGetCollectionResponse(eventObject.response);
+    addParentFolderTupleToXmlStoreResponse(eventObject.response, currentFolder);
+}
+
+function TupleNameOutput_BeforeBind(eventObject)
+{
+    // Check if this is a folder and change the name to "[folder name]"
+  if (eventObject.businessObject && eventObject.dataNode) {
+        var sIsFolder = eventObject.businessObject.getAttribute("isFolder");
+        
+        if (sIsFolder) {
+            var sName = "[ " + eventObject.dataNode.text + " ]";
+     
+            eventObject.srcElement.setValue(sName);
+            eventObject.returnValue = false;
+            return false;
+        }
+    }
+    
+  return true;
+}
+
+
+function XmlStoreFolderModel_OnDataCompleted(eventObject)
+{
+    XmlStoreEntryTable.setIndex(0);
+
+}]]>
+			</xformsscript>
+			<xforms:action
+				ev:event="xforms-init">
+				<xforms:Form_Init/>
+			</xforms:action>
+		</xformhtml>
+	</content>
+</caf>
