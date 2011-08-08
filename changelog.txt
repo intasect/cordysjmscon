@@ -1,3 +1,6 @@
+version 1.1.39 (released 2011-08-08)
+-add: Enable durbale subscription on a Topic destination.This can be enabled by checking Is Durable Subscription on Destination
+
 version 1.1.38 (released 2011-01-13)
 -fix: Organization DN and User DN does not get listed down in Processor properties.This is fixed now
 
