@@ -1,4 +1,7 @@
-version 1.1.39 (released 2011-08-08)
+version 1.1.40 (released 2011-08-09)
+-fix: Fixed support for Message selectors for durable subscribers
+
+version 1.1.39 (released 2011-08-05)
 -add: Enable durbale subscription on a Topic destination.This can be enabled by checking Is Durable Subscription on Destination
 
 version 1.1.38 (released 2011-01-13)
