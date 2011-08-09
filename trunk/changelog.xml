@@ -13,10 +13,10 @@
     </template>
     <body>
         <release description="Development release" version="@NEXT@">
+				</release>
+<release date="2011-08-09" description="Development release" version="1.1.40">
+		<action dev="psrinivas2" type="fix">Fixed support for Message selectors for durable subscribers</action>
 				</release>				
-			<release date="2011-08-09" description="Developement release" version="1.1.39">
-				<action dev="psrinivas2" type="fix">Fixed support for Message selectors for durable subscribers</action>
-			</release>
 			<release date="2011-08-05" description="Developement release" version="1.1.39">
 				<action dev="psrinivas2" type="add">Enable durbale subscription on a Topic destination.This can be enabled by checking Is Durable Subscription on Destination</action>
 			</release>
