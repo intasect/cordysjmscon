@@ -858,8 +858,8 @@ public class Trigger
 				}
 				if (m_destination.getInnerDestination() instanceof Topic)
 				{
-					m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),this.m_subscriptionName,
-															this.messageSelector,false);
+					m_consumer = session.createDurableSubscriber((Topic)m_destination.getInnerDestination(),m_subscriptionName,
+															messageSelector,false);
 				}
 				else
 				{
