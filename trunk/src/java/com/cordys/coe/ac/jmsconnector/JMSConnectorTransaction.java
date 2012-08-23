@@ -31,6 +31,8 @@ import com.eibus.util.system.Native;
 
 import com.eibus.xml.nom.Node;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -102,6 +104,7 @@ public class JMSConnectorTransaction
             }
             catch (JMSException e)
             {
+            	JMSConnector.jmsLogger.error("Exception during the rollback or closure of the session ",e);
             } // ignore
         }
         destinationManagerSessions.clear();
@@ -129,25 +132,72 @@ public class JMSConnectorTransaction
      * JMS sessions.
      */
     public void commit()
-    {
-        // abort all sessions
-        Iterator<Session> sessions = destinationManagerSessions.values().iterator();
+    {	
+    	//This is thread safe. 
+    	// Added proper exception handling during commit failures
+    	Enumeration<String> dmNames = destinationManagerSessions.keys();
+    	Hashtable<String, JMSException> failedSessionExceptions = new Hashtable<String, JMSException>();
+    	
+    	try
+    	{
+    		while (dmNames.hasMoreElements()) 
+        	{
+    			 String dmName = (String) dmNames.nextElement();
+    			 Session session = destinationManagerSessions.get(dmName);
 
-        while (sessions.hasNext())
-        {
-            Session session = sessions.next();
-
-            try
-            {
-                session.commit();
-                session.close();
-            }
-            catch (JMSException e)
-            {
-            } // ignore
+    			 try
+    	            {
+    	                session.commit();
+    	            }
+    	            catch (JMSException commitEx)
+    	            {
+    	            	JMSConnector.jmsLogger.error("Exception while commiting the session for Destination Manager "+dmName,commitEx);
+    	            	//Hold the failed exception against the DM name
+    	            	failedSessionExceptions.put(dmName, commitEx);
+    	            	
+    	            	// Rollback this failed session only
+    	            	try 
+    	            	{
+    	            		session.rollback();
+    					} 
+    	            	catch (JMSException rollbackEx) 
+    					{
+    						JMSConnector.jmsLogger.error("Exception during rollback of a session that failed to commit for Destination Manager "+dmName,rollbackEx);
+    					}
+    	            }
+    	            finally
+    	            {
+    	            	try 
+    	            	{
+    						session.close();    						
+    					}
+    	            	catch (JMSException closeEx) //Ignore the exception as already session is committed / rolledback   
+    					{
+    						JMSConnector.jmsLogger.error("Exception during closure of the session for Destination Manager "+dmName,closeEx);
+    					}
+    	            }
+    		}
+    	}
+		finally
+	    {
+			destinationManagerSessions.clear();	
+	    } 
+        
+        if (failedSessionExceptions.size()>0)
+        {	
+        	StringBuilder errorBuilder = new StringBuilder();
+        	Enumeration<String> failedDMNames = failedSessionExceptions.keys();
+        	
+        	while (failedDMNames.hasMoreElements()) 
+        	{
+				String failedDMName = (String) failedDMNames.nextElement();
+				JMSException jmsEx = failedSessionExceptions.get(failedDMName);				
+				errorBuilder.append("Exception : "+jmsEx.getMessage() + " ,while committing the session for the destination manager "+failedDMName).append("\r\n");
+			}
+        	
+        	throw new RuntimeException(errorBuilder.toString());
         }
-        destinationManagerSessions.clear();
-
+        
         if (JMSConnector.jmsLogger.isInfoEnabled())
         {
             JMSConnector.jmsLogger.info(LogMessages.TRANSACTION_COMMIT);
